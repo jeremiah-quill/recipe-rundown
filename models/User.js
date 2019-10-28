@@ -31,7 +31,7 @@ const UserSchema = new Schema({
         type: Array,
         required: false
     },
-    follower: {
+    followers: {
         type: Array,
         required: false
     },

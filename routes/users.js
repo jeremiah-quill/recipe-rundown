@@ -19,15 +19,17 @@ router.get('/register', (req, res) => {
 });
 
 // Dashboard route
-// router.get('/dashboard', ensureAuthenticated, (req, res) => {
-//     Idea.find({user: req.user.id})
-//     .sort({date:'desc'})
-//     .then(ideas => {
-//         res.render('users/dashboard', {
-//             ideas:ideas
-//         })
-//     });
-// });
+router.get('/dashboard', ensureAuthenticated, (req, res) => {
+    res.render('users/dashboard')
+    // Idea.find({user: req.user.id})
+    // .sort({date:'desc'})
+    // .then(ideas => {
+    //     res.render('users/dashboard', {
+    //         ideas:ideas
+    //     })
+    // });
+   
+});
 
 // Login form POST
 router.post('/login', (req, res, next) => {
@@ -55,7 +57,7 @@ router.post('/register', (req, res) => {
             errors: errors,
             firstName: req.body.firstName,
             lastName: req.body.lastName,
-            userame: req.body.username,
+            username: req.body.username,
             password: req.body.password,
             password2: req.body.password2
         })
@@ -91,8 +93,6 @@ router.post('/register', (req, res) => {
         });
                 }
             })
-
-
     }
 });
 
