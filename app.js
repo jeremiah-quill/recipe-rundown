@@ -62,5 +62,11 @@ app.get('/', (req, res) => {
     res.render('home')
     });
 
+app.get('/logout', function(req, res){
+        req.logout();
+        req.flash('success_msg', 'You have successfully logged out')
+        res.redirect('/');
+      });
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
