@@ -34,7 +34,7 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
 // Login form POST
 router.post('/login', (req, res, next) => {
     passport.authenticate('local', {
-        successRedirect:'/dashboard',
+        successRedirect:'/users/dashboard',
         failureRedirect: '/users/login',
         failureFlash: true
     })(req, res, next);
