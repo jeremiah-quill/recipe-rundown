@@ -26,6 +26,11 @@ mongoose.connect(db.mongoURI, { useNewUrlParser: true, useUnifiedTopology: true 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
+// Body parser middleware
+app.use(bodyParser.urlencoded({ extended: false}));
+app.use(bodyParser.json());
+
+
 app.use(session({
     secret: 'secret',
     resave: true,
@@ -38,9 +43,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
-// Body parser middleware
-app.use(bodyParser.urlencoded({ extended: false}));
-app.use(bodyParser.json());
+
 // Method Override middleware
 app.use(methodOverride('_method'));
 
