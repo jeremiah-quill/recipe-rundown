@@ -11,7 +11,7 @@ const users = require('./routes/users');
 
 
 
-// require('./config/passport')(passport); 
+require('./config/passport')(passport); 
 const db = require('./config/database')
 
 // Connect to Mongoose
