@@ -44,14 +44,10 @@ app.use((req, res, next) => {
 
 app.use('/users', users);
 
-
 // Landing page
 app.get('/', (req, res) => {
-    const title = 'Welcome'
     res.render('home')
     });
-
-
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
