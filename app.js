@@ -10,7 +10,6 @@ const bodyParser = require('body-parser');
 var hbs = exphbs.create({ /* config */ });
 
 const app = express();
-const users = require('./routes/users');
 const index = require('./routes/index');
 
 require('./config/passport')(passport); 
@@ -56,9 +55,7 @@ app.use((req, res, next) => {
 
 
 app.use('/', index);
-app.use('/users', users);
-
-
+// app.use('/users', users);
 
 
 
