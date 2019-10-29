@@ -11,12 +11,12 @@ const User = mongoose.model('users');
 
 // Landing page
 router.get('/', (req, res) => {
-    res.render('home')
+    res.render('index/home')
     });
 
 // Dashboard route
 router.get('/dashboard', ensureAuthenticated, (req, res) => {
-    res.render('users/dashboard')
+    res.render('index/dashboard')
     // Idea.find({user: req.user.id})
     // .sort({date:'desc'})
     // .then(ideas => {
@@ -87,7 +87,7 @@ router.post('/register', (req, res) => {
                             .save()
                             .then(user => {
                             req.flash('success_msg', 'Account created');
-                            res.redirect('dashboard');
+                            res.redirect('login');
                         })
                             .catch(err => {
                             console.log(err);

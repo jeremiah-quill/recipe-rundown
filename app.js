@@ -21,7 +21,9 @@ mongoose.connect(db.mongoURI, { useNewUrlParser: true, useUnifiedTopology: true 
     .catch(err => console.log(err));
 
 // Middleware
-app.engine('handlebars', hbs.engine);
+app.engine('handlebars', exphbs({
+    defaultLayout: 'main'
+}));
 app.set('view engine', 'handlebars');
 
 // Body parser middleware
