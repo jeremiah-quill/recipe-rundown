@@ -54,13 +54,12 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use('/users', users);
-app.use('/', index);
 
-// Landing page
-app.get('/', (req, res) => {
-    res.render('home')
-    });
+app.use('/', index);
+app.use('/users', users);
+
+
+
 
 
 const PORT = process.env.PORT || 5000;

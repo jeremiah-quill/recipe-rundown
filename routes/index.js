@@ -1,17 +1,14 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/logout', function(req, res){
-    req.logout();
-    req.flash('success_msg', 'You have successfully logged out')
-    res.redirect('/');
-  });
-
-
+  // Landing page
+app.get('/', (req, res) => {
+    res.render('home')
+    });
 
 // Dashboard route
 router.get('/dashboard', ensureAuthenticated, (req, res) => {
-    res.render('users/dashboard')
+    res.render('dashboard')
     // Idea.find({user: req.user.id})
     // .sort({date:'desc'})
     // .then(ideas => {
@@ -20,9 +17,6 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
     //     })
     // });
 });
-
-
-
 
 
 module.exports = router;
