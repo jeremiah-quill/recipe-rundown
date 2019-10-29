@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
+const {ensureAuthenticated} = require('../helpers/auth');
 
   // Landing page
-app.get('/', (req, res) => {
+router.get('/', (req, res) => {
     res.render('home')
     });
 
