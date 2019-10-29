@@ -11,7 +11,7 @@ const User = mongoose.model('users');
 
 // Landing page
 router.get('/', (req, res) => {
-    res.render('index/home')
+    res.render('index/welcome')
     });
 
 // Dashboard route

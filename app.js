@@ -7,10 +7,12 @@ const session = require('express-session');
 const methodOverride = require('method-override');
 const bodyParser = require('body-parser');
 
+
 var hbs = exphbs.create({ /* config */ });
 
 const app = express();
 const index = require('./routes/index');
+const recipes = require('./routes/recipes')
 
 require('./config/passport')(passport); 
 const db = require('./config/database');
@@ -19,6 +21,8 @@ const db = require('./config/database');
 mongoose.connect(db.mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('MongoDB Connected...'))
     .catch(err => console.log(err));
+
+app.use("/public", express.static(__dirname + "/public"));
 
 // Middleware
 app.engine('handlebars', exphbs({
@@ -57,7 +61,8 @@ app.use((req, res, next) => {
 
 
 app.use('/', index);
-// app.use('/users', users);
+app.use('/recipes', recipes)
+
 
 
 
