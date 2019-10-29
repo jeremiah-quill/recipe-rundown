@@ -18,19 +18,6 @@ router.get('/register', (req, res) => {
     res.render('users/register');
 });
 
-// Dashboard route
-router.get('/dashboard', ensureAuthenticated, (req, res) => {
-    res.render('users/dashboard')
-    // Idea.find({user: req.user.id})
-    // .sort({date:'desc'})
-    // .then(ideas => {
-    //     res.render('users/dashboard', {
-    //         ideas:ideas
-    //     })
-    // });
-   
-});
-
 // Login form POST
 router.post('/login', (req, res, next) => {
     passport.authenticate('local', {

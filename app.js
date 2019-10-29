@@ -4,18 +4,17 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const flash = require('connect-flash');
 const session = require('express-session');
-const methodOverride = require('method-override')
-const bodyParser = require('body-parser')
+const methodOverride = require('method-override');
+const bodyParser = require('body-parser');
 
 var hbs = exphbs.create({ /* config */ });
 
 const app = express();
 const users = require('./routes/users');
-
-
+const index = require('./routes/index');
 
 require('./config/passport')(passport); 
-const db = require('./config/database')
+const db = require('./config/database');
 
 // Connect to Mongoose
 mongoose.connect(db.mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -56,17 +55,13 @@ app.use((req, res, next) => {
 });
 
 app.use('/users', users);
+app.use('/', index);
 
 // Landing page
 app.get('/', (req, res) => {
     res.render('home')
     });
 
-app.get('/logout', function(req, res){
-        req.logout();
-        req.flash('success_msg', 'You have successfully logged out')
-        res.redirect('/');
-      });
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
