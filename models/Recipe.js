@@ -7,6 +7,10 @@ const RecipeSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'users'
     },
+    username: {
+        type: String,
+        required:true
+    },
     name: {
         type: String,
         required: true
@@ -15,30 +19,28 @@ const RecipeSchema = new Schema({
     //     type: String,
     //     required: true
     // },
-    ingredients: [{
+    ingredients: {
         name: {
-            type: String,
+            type: Array,
             required: true
         },
         quantity: {
-            type: Number,
+            type: Array,
             required: true
         },
         measurement: {
-            type: String,
+            type: Array,
             required: true
         },
         // type: {
         //     type: String,
         //     required: true
         // },
-    }],
-    instructions: [{
-        steps: {
-            type: String,
+    },
+    instructions: {
+            type: Array,
             required: true
-        }
-    }],
+    },
     // score: {
     //     type: Number,
     //     required: false
@@ -49,4 +51,4 @@ const RecipeSchema = new Schema({
     }
 });
 
-mongoose.model('recipes', RecipeSchema);
+mongoose.model('recipes', RecipeSchema, 'recipes');

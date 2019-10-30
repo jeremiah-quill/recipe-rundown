@@ -1,10 +1,9 @@
 
-<nav class="navbar navbar-expand-sm navbar-light bg-light mb-2">
+<nav class="navbar navbar-expand-sm navbar-light bg-light mb-2 sticky-top">
   <a class="navbar-brand" href="/">Mom's Cookbook</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav">
       <li class="nav-item">
@@ -21,46 +20,33 @@
           <a class="dropdown-item" href="#">Something else here</a>
         </div>
       </li> --}}
-       {{#if user}}
-            <li class="nav-item">
-                <a href="/dashboard" class="nav-link">Dashboard</a>
-            </li>
-            <li class="nav-item">
-                <a href="/cookbook" class="nav-link">My Cookbook</a>
-            </li>
-            <li class="nav-item">
-                <a href="/recipes" class="nav-link">All Recipes</a>
-            </li>
-
-          
-
-    <a href="/recipes/add" class="btn btn-lg btn-success rounded-circle"><i class="fa fa-plus" style="color: white"></i></a>
-
-
-{{/if}}
-
-      </ul>
-      <ul class="navbar-nav ml-auto">
-                 {{#if user}}
-
-            <li class="nav-item">
-               <a href="logout" class="nav-link">Logout</a>
-            </li>
-            {{else}}
-        <li class="nav-item">
-                <a href="/register" class="nav-link">Register</a>
-            </li>
-            <li class="nav-item">
-                <a href="/login" class="nav-link">Login</a>
-            </li>
-            {{/if}}  
-    </ul>
-    
-  
-
-    
       
-
-
+      {{#if user}}
+      <li class="nav-item">
+          <a href="/dashboard" class="nav-link">Dashboard</a>
+      </li>
+      <li class="nav-item">
+          <a href="/cookbook" class="nav-link">My Cookbook</a>
+      </li>
+      <li class="nav-item">
+          <a href="/recipes" class="nav-link">All Recipes</a>
+      </li>
+      <a href="/recipes/add" class="btn btn-lg btn-success rounded-circle"><i class="fa fa-plus" style="color: white"></i></a>
+      {{/if}}
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      {{#if user}}
+      <li class="nav-item">
+        <a href="/logout" class="nav-link">Logout</a>
+      </li>
+      {{else}}
+      <li class="nav-item">
+        <a href="/register" class="nav-link">Register</a>
+      </li>
+      <li class="nav-item">
+        <a href="/login" class="nav-link">Login</a>
+      </li>
+      {{/if}}  
+    </ul>
   </div>
 </nav>

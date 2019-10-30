@@ -6,9 +6,18 @@ const flash = require('connect-flash');
 const session = require('express-session');
 const methodOverride = require('method-override');
 const bodyParser = require('body-parser');
-
-
-var hbs = exphbs.create({ /* config */ });
+const hbs = exphbs.create({
+    helpers: {
+        arrayLoop:function(quantityArray, measurementArray, ingredientArray) {
+            let list = `<ul>`
+            for(let i=0; i<quantityArray.length; i++) {
+                list += `<li>${quantityArray[i]} ${measurementArray[i]} ${ingredientArray[i]}</li>`
+            }
+            list += `</ul>`
+            return list
+        } 
+    }
+});
 
 const app = express();
 const index = require('./routes/index');
@@ -24,16 +33,14 @@ mongoose.connect(db.mongoURI, { useNewUrlParser: true, useUnifiedTopology: true 
 
 app.use("/public", express.static(__dirname + "/public"));
 
+
 // Middleware
-app.engine('handlebars', exphbs({
-    defaultLayout: 'main'
-}));
+app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
 // Body parser middleware
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
-
 
 app.use(session({
     secret: 'secret',
@@ -45,8 +52,6 @@ app.use(flash());
 
 app.use(passport.initialize());
 app.use(passport.session());
-
-
 
 // Method Override middleware
 app.use(methodOverride('_method'));
@@ -62,8 +67,6 @@ app.use((req, res, next) => {
 
 app.use('/', index);
 app.use('/recipes', recipes)
-
-
 
 
 const PORT = process.env.PORT || 5000;

@@ -16,14 +16,7 @@ router.get('/', (req, res) => {
 
 // Dashboard route
 router.get('/dashboard', ensureAuthenticated, (req, res) => {
-    res.render('index/dashboard')
-    // Idea.find({user: req.user.id})
-    // .sort({date:'desc'})
-    // .then(ideas => {
-    //     res.render('users/dashboard', {
-    //         ideas:ideas
-    //     })
-    // });
+    res.render('index/dashboard');
 });
 
 // User login
@@ -64,7 +57,6 @@ router.post('/register', (req, res) => {
             password2: req.body.password2
         })
     } 
-    // console.log(req.body)
     else {
         User.findOne({username: req.body.username})
             .then(user => {
@@ -99,7 +91,6 @@ router.post('/register', (req, res) => {
             })
     }
 });
-
 
 // Logout
 router.get('/logout', function(req, res){

@@ -77,7 +77,7 @@ function addInstruction() {
         <div class="input-group-prepend">
             <div class="input-group-text steps">Step ${stepCount}</div>
         </div>
-        <input type="text" class="form-control" id="inlineFormInputGroup">
+        <input name="step" type="text" class="form-control" id="inlineFormInputGroup">
     </div>
 </div>
 <div class="form-group col-1 d-flex">

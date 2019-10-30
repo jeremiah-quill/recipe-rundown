@@ -2,85 +2,75 @@
     <div class="mx-auto">
         <div class="card card-body">
             <h3 class="text-center">Create Recipe</h3>
-            <form method="post" action="/register">
+            <form method="post" action="/recipes/add">
                 <div class="form-group">
                     <label for="recipeName">Recipe Name</label>
                     <input name="recipeName" value="{{recipeName}}" type="text" class="form-control" required>
                 </div>
-
-
-<h3 class="text-center mt-5">Ingredients <button type="button" class="btn btn-success ml-2" style="height: 38px"><i class="fa fa-plus addIngredientBtn"></i></button></h3>
-
-
-<!--STATIC Ingredient-->
-<div class="ingredientContainer">
-                <div class="form-row">
-                    <div class="form-group col-2">
-                        <label for="quantity">Quantity</label>
-                        <input name="quantity" type="number" class="form-control">
-                    </div>
-                    <div class="form-group col-3">
-                        <label for="measurement">Measurement</label>
-                        <select name="measurement" class="custom-select measurement">
-                            <option selected></option>
-                            <option value="Drop">Drop</option>
-                            <option value="Tsp">Tsp</option>
-                            <option value="Tbsn">Tbsn</option>
-                            <option value="Oz">Oz</option>
-                            <option value="Cup">Cup</option>
-                            <option value="Pint">Pint</option>
-                            <option value="Qt">Qt</option>
-                            <option value="Gal">Gal</option>
-                            <option value="ML">ML</option>
-                            <option value="L">L</option>
-                            <option value="Pinch">Pinch</option>
-                            <option value="Piece">Piece</option>
-                        </select>
-                    </div>
-                    <div class="form-group col-5">
-                        <label for="ingredient">Ingredient</label>
-                        <input name="ingredient" type="text" class="form-control">
-                    </div>
-                    <div class="form-group col-1 d-flex">
-                        
-                        {{!-- <button type="button" class="btn btn-danger mt-auto" style="height: 38px"><i class="fa fa-minus deleteIngredientBtn"></i></button> --}}
-                    </div>
-                </div>
-
-                </div>
-
-               
-
-<!--STATIC DIRECTION-->
-<h3 class="text-center mt-5">Instructions <button type="button" class="btn btn-success ml-2" style="height: 38px"><i class="fa fa-plus addInstructionBtn"></i></button></h3>
-<div class="instructionContainer">
-                <div class="form-row">
-                    <div class="form-group col-10">
-                        <label for="inlineFormInputGroup">Directions</label>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text steps">Step 1</div>
-                            </div>
-                            <input type="text" class="form-control" id="inlineFormInputGroup">
-                        </div>
-                    </div>
-                    <div class="form-group col-1 d-flex">
-                        {{!-- <button type="button" class="btn btn-danger mt-auto" style="height: 38px"><i class="fa fa-minus deleteStep"></i></button> --}}
-                    </div>
-                </div>
-
+                <div class="container d-flex mt-5 justify-content-center">
+                <h3 class="text-center">Ingredients</h3> 
+                <button type="button" class="btn btn-success ml-2" style="height: 38px">
+                    <i class="fa fa-plus addIngredientBtn"></i>
+                </button>
                 </div>
                 
-
-
-                <button type="submit" class="btn btn-primary mt-5">Submit</button>
+<!--STATIC Ingredient-->
+                <div class="ingredientContainer">
+                    <div class="form-row">
+                        <div class="form-group col-2">
+                            <label for="quantity">Quantity</label>
+                            <input name="quantity" type="number" class="form-control">
+                        </div>
+                        <div class="form-group col-3">
+                            <label for="measurement">Measurement</label>
+                            <select name="measurement" class="custom-select measurement">
+                                <option selected></option>
+                                <option value="Drop">Drop</option>
+                                <option value="Tsp">Tsp</option>
+                                <option value="Tbsn">Tbsn</option>
+                                <option value="Oz">Oz</option>
+                                <option value="Cup">Cup</option>
+                                <option value="Pint">Pint</option>
+                                <option value="Qt">Qt</option>
+                                <option value="Gal">Gal</option>
+                                <option value="ML">ML</option>
+                                <option value="L">L</option>
+                                <option value="Pinch">Pinch</option>
+                                <option value="Piece">Piece</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-5">
+                            <label for="ingredient">Ingredient</label>
+                            <input name="ingredient" type="text" class="form-control">
+                        </div>
+                        <div class="form-group col-1 d-flex"></div>
+                    </div>
+                </div>
+<!--STATIC DIRECTION-->
+<div class="container mt-5 d-flex justify-content-center">
+                <h3 class="text-center">Instructions</h3>
+                <button type="button" class="btn btn-success ml-2" style="height: 38px">
+                        <i class="fa fa-plus addInstructionBtn"></i>
+                </button>
+                </div>
+                <div class="instructionContainer">
+                    <div class="form-row">
+                        <div class="form-group col-10">
+                            <label for="inlineFormInputGroup">Directions</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text steps">Step 1</div>
+                                </div>
+                                <input name="step" type="text" class="form-control" id="inlineFormInputGroup">
+                            </div>
+                        </div>
+                        <div class="form-group col-1 d-flex">
+                        </div>
+                    </div>
+                </div>
+                <input type="submit" value="Submit" class="btn btn-primary mt-5">
             </form>
-
-
-
-
         </div>
     </div>
 </div>
-
 <script src='/public/custom-js.js'></script>
