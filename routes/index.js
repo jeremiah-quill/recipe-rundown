@@ -9,6 +9,10 @@ const {ensureAuthenticated} = require('../helpers/auth');
 require('../models/User');
 const User = mongoose.model('users');
 
+// // Load Recipe Model
+require('../models/Recipe');
+const Recipe = mongoose.model('recipes');
+
 // Landing page
 router.get('/', (req, res) => {
     res.render('index/welcome')
@@ -18,6 +22,30 @@ router.get('/', (req, res) => {
 router.get('/dashboard', ensureAuthenticated, (req, res) => {
     res.render('index/dashboard');
 });
+
+//Recipe stream
+router.get('/', (req, res) => {
+    Recipe.find({})
+    .sort({date:'desc'})
+    .then(recipes => {
+        res.render('recipes/index', {
+            recipes: recipes
+        })
+    })
+});
+
+
+// My cookbook route
+router.get('/cookbook', ensureAuthenticated, (req, res) => {
+    Recipe.find({user: req.user.id})
+    .sort({date:'desc'})
+    .then(recipes => {
+        res.render('recipes/index', {
+            recipes:recipes
+        })
+    })
+});
+  
 
 // User login
 router.get('/login', (req, res) => {
@@ -98,6 +126,7 @@ router.get('/logout', function(req, res){
     req.flash('success_msg', 'You have successfully logged out')
     res.redirect('/');
 });
+
 
 
 

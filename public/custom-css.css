@@ -1,18 +1,35 @@
-.recipeDisplay:hover {
-    /* box-shadow: 0px 0px 16px -5px rgba(0,0,0,1);*/
-    transition: 200ms;
-    transform: scale(1.005);
-    cursor: pointer;
-    box-shadow: 0px 0px 16px -5px rgba(0,0,0,1);
-};
-
-/* .recipeDisplay:hover {
-    transform: scale(1.02);
-    cursor: pointer;
-}; */
 .recipeDisplay {
     box-shadow: 0px 0px 16px -5px rgba(0,0,0,1);
- 
+    margin-bottom: 30px;
     transition: 500ms;
-    
-};
+}
+
+.recipeDisplay:hover {
+    transform: scale(1.02);
+    /* cursor: pointer; */
+}
+
+.addRecipeFloat {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+}
+
+/* .editBtn {
+    position: absolute;
+    top: 0;
+    left: 0;
+} */
+
+/* .viewBtn {
+    position: absolute;
+    top: 0;
+    left: 45px;
+} */
+
+.buttonContainer {
+    position: absolute;
+    /* top: 0px;
+    left: 0px; */
+    display: flex;
+}

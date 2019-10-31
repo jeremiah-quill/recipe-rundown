@@ -1,22 +1,29 @@
-
 <div class="row">
 {{#each recipes}}
 
-  <div class="col-md-6 col-lg-4 mb-4">
-    <div class="card recipeDisplay" data-toggle="modal" data-target="#{{_id}}">
-  <img src="/public/healthyCoverPhoto.jpg" class="card-img-top" alt="...">
-  <div class="card-body">
-    <p class="card-text">{{name}}</p>
-    <p class="card-text"><small class="text-muted">By: {{username}}</small></p>
+  <div class="col-md-6 col-lg-4 mb-4"> 
+    <div class="card recipeDisplay">
+      <div class="buttonContainer d-flex w-100">
+        <!--View Btn-->
+        <a href="#" data-toggle="modal" data-target="#{{_id}}" class="btn btn-primary"><i class="fa fa-eye"></i></a>
+        <!--Edit Btn-->
+        {{{privateEdit user ../user/id id}}}
+        <!--Delete Btn-->
+        {{{privateDelete user ../user/id id}}}
+        <a href="/recipes/{{id}}" class="btn btn-light ml-auto"><i class="fa fa-star" style="color: gold"></i></a>
+      </div>  
+      <img src="/public/healthyCoverPhoto.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <p class="card-text">{{name}}</p>
+        <p class="card-text"><small class="text-muted">By: {{username}}</small></p>
+      </div>
+    </div>
   </div>
-</div>
-</div>
 {{/each}}
 </div>
 
-
 {{#each recipes}}
-<!-- Modal -->
+<!-- Preview Modal -->
 <div class="modal fade" id="{{_id}}" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -35,4 +42,33 @@
     </div>
   </div>
 </div>
+
+<!-- Confirm Delete Modal -->
+<div class="modal fade" id="del{{_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Confirm</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Do you really want to delete "{{name}}"?  This action cannot be undone.
+      </div>
+      <div class="modal-footer">   
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <form action="/recipes/{{_id}}?_method=DELETE" method="post">
+          <button type="submit" class="btn btn-danger">Confirm
+          </button>
+        </form> 
+      </div>
+    </div>
+  </div>
+</div>
 {{/each}}
+
+
+
+
+

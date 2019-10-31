@@ -19,7 +19,7 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
-    cookbooks: {
+    favorites: {
         type: Array,
         required: false
     },
@@ -41,4 +41,4 @@ const UserSchema = new Schema({
     }
 });
 
-mongoose.model('users', UserSchema);
+mongoose.model('users', UserSchema, 'users');
