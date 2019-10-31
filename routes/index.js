@@ -20,8 +20,15 @@ router.get('/', (req, res) => {
 
 // Dashboard route
 router.get('/dashboard', ensureAuthenticated, (req, res) => {
-    res.render('index/dashboard');
-});
+    // User.find({
+    //     _id: req.user.id
+    // })
+    // .then(user => {
+        res.render('index/dashboard')
+    
+        
+    });
+
 
 //Recipe stream
 router.get('/', (req, res) => {

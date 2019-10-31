@@ -141,68 +141,34 @@ router.get('/:id', (req, res) => {
         _id: req.params.id
     })
     .then(recipe => {
-
-if(req.user.favorites.length>0){
-console.log(recipe.id)
-
-for(let i=0; i<req.user.favorites.length; i++){
-    if(recipe.id == JSON.stringify(req.user.favorites[i]._id)) {
-        req.flash('error_msg', 'Recipe already added to favorites');
-        res.redirect('/recipes')
-    } else {
-        User.updateOne({_id: req.user.id}, {$push: {favorites: recipe}})
-        .then(() => {
-            req.flash('success_msg', 'Recipe added to favorites');
-            res.redirect('/dashboard')
-        })
-        .catch(err => {
-            console.log(err)
-        })  
-    }
-}
-
-} else {
-    User.updateOne({_id: req.user.id}, {$push: {favorites: recipe}})
-        .then(() => {
-            req.flash('success_msg', 'Recipe added to favorites');
-            res.redirect('/dashboard')
-        })
-        .catch(err => {
-            console.log(err)
-        })
-}
-
-        // if(req.params.id = JSON.stringify(req.user.favorites[0]._id)) {
-        //     console.log('they are equal')
-        // } else {
-        //     console.log('they are not equal')
-        // }
-
-
-
-        // console.log(req.params.id = req.user.favorites[0].id)
-        // console.log(typeof req.user.favorites[0]._id)
-
-        // if(req.user.favorites.Object._id.contains(req.params.id)) {
-        //     req.flash('error_msg', 'Recipe already added to favorites');
-        //     res.redirect('/dashboard')
-        // } else 
-            // User.updateOne({_id: req.user.id}, {$push: {favorites: recipe}})
-            // .then(() => {
-            //     req.flash('success_msg', 'Recipe added to favorites');
-            //     res.redirect('/dashboard')
-            // })
-            // .catch(err => {
-            //     console.log(err)
-            // })
-
+        if(req.user.favorites.length>0){
+            let match = 0;
+            for(let i=0; i<req.user.favorites.length; i++){
+                if(recipe.id == req.user.favorites[i]._id) {
+                    match += 1
+                }} 
+            if(match > 0) {
+                req.flash('error_msg', 'Recipe already added to favorites');
+                res.redirect('/recipes')  
+            } else {  
+                User.updateOne({_id: req.user.id}, {$push: {favorites: recipe}})
+                .then(() => {
+                    req.flash('success_msg', 'Recipe added to favorites');
+                    res.redirect('/recipes')
+                })
+            }
+        } else {
+            User.updateOne({_id: req.user.id}, {$push: {favorites: recipe}})
+            .then(() => {
+                req.flash('success_msg', 'Recipe added to favorites');
+                res.redirect('/recipes') 
+            })
+        }
     })
-    
-    
-    
+}) 
 
-  
-});
+
+    
 
 
 

@@ -41,4 +41,4 @@ const UserSchema = new Schema({
     }
 });
 
-mongoose.model('users', UserSchema, 'users');
+mongoose.model('users', UserSchema);
