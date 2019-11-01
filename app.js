@@ -8,11 +8,11 @@ const methodOverride = require('method-override');
 const bodyParser = require('body-parser');
 const hbs = exphbs.create({
     helpers: {
-        privateEdit:function(userId, loggedId, recipeId) {
-            if (userId == loggedId) {
-                return `<a href="/recipes/edit/${recipeId}" class="btn btn-warning"><i class="fa fa-pencil" ></i></a>`
-            } 
-        },
+        // privateEdit:function(userId, loggedId, recipeId) {
+        //     if (userId == loggedId) {
+        //         return `<a href="/recipes/edit/${recipeId}" class="btn btn-warning"><i class="fa fa-pencil" ></i></a>`
+        //     } 
+        // },
         privateDelete: function(userId, loggedId, recipeId) {
             if(userId==loggedId){
                 return `<a href="#" data-toggle="modal" data-target="#del${recipeId}" class="btn btn-danger"><i class="fa fa-trash"></i></a>`
@@ -26,67 +26,67 @@ const hbs = exphbs.create({
             list += `</ul>`
             return list
         },
-        populateFormIngredients:function(quantityArray, measurementArray, ingredientArray) {
-            let editIngredients = '';
-            for(let i=1; i<quantityArray.length; i++) {
-                editIngredients += 
-                `
-                <div class="form-row">
-                        <div class="form-group col-2">
+        // populateFormIngredients:function(quantityArray, measurementArray, ingredientArray) {
+        //     let editIngredients = '';
+        //     for(let i=1; i<quantityArray.length; i++) {
+        //         editIngredients += 
+        //         `
+        //         <div class="form-row">
+        //                 <div class="form-group col-2">
                             
-                            <input name="quantity" type="number" class="form-control" value="${quantityArray[i]}">
-                        </div>
-                        <div class="form-group col-3">
+        //                     <input name="quantity" type="number" class="form-control" value="${quantityArray[i]}">
+        //                 </div>
+        //                 <div class="form-group col-3">
                             
-                            <select name="measurement" class="custom-select measurement" value="${measurementArray[i]}">
-                                <option selected ></option>
-                                <option value="Drop">Drop</option>
-                                <option value="Tsp">Tsp</option>
-                                <option value="Tbsn">Tbsn</option>
-                                <option value="Oz">Oz</option>
-                                <option value="Cup">Cup</option>
-                                <option value="Pint">Pint</option>
-                                <option value="Qt">Qt</option>
-                                <option value="Gal">Gal</option>
-                                <option value="ML">ML</option>
-                                <option value="L">L</option>
-                                <option value="Pinch">Pinch</option>
-                                <option value="Piece">Piece</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-5">
+        //                     <select name="measurement" class="custom-select measurement" value="${measurementArray[i]}">
+        //                         <option selected ></option>
+        //                         <option value="Drop">Drop</option>
+        //                         <option value="Tsp">Tsp</option>
+        //                         <option value="Tbsn">Tbsn</option>
+        //                         <option value="Oz">Oz</option>
+        //                         <option value="Cup">Cup</option>
+        //                         <option value="Pint">Pint</option>
+        //                         <option value="Qt">Qt</option>
+        //                         <option value="Gal">Gal</option>
+        //                         <option value="ML">ML</option>
+        //                         <option value="L">L</option>
+        //                         <option value="Pinch">Pinch</option>
+        //                         <option value="Piece">Piece</option>
+        //                     </select>
+        //                 </div>
+        //                 <div class="form-group col-5">
                            
-                            <input name="ingredient" type="text" class="form-control" value="${ingredientArray[i]}">
-                        </div>
-                        <div class="form-group col-1 d-flex">
-                        <button type="button" class="btn btn-danger mt-auto" style="height: 38px"><i class="fa fa-minus deleteInstructionBtn"></i></button>
-                        </div>
-                    </div>`
-            }
-            return editIngredients
-        },
-        populateFormSteps:function(instructions){
-            let addedInstructions =''
-            for (let i=1; i<instructions.length; i++){
-                addedInstructions+=
-                `  <div class="form-row">
-                <div class="form-group col-10">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <div class="input-group-text steps">Step 1</div>
-                        </div>
-                        <input name="step" type="text" class="form-control" id="inlineFormInputGroup" value="${instructions[i]}">
-                    </div>
-                </div>
-                <div class="form-group col-1 d-flex">
-                <button type="button" class="btn btn-danger mt-auto" style="height: 38px"><i class="fa fa-minus deleteInstructionBtn"></i></button>
-                </div>
-            </div>`
+        //                     <input name="ingredient" type="text" class="form-control" value="${ingredientArray[i]}">
+        //                 </div>
+        //                 <div class="form-group col-1 d-flex">
+        //                 <button type="button" class="btn btn-danger mt-auto" style="height: 38px"><i class="fa fa-minus deleteInstructionBtn"></i></button>
+        //                 </div>
+        //             </div>`
+        //     }
+        //     return editIngredients
+        // },
+        // populateFormSteps:function(instructions){
+        //     let addedInstructions =''
+        //     for (let i=1; i<instructions.length; i++){
+        //         addedInstructions+=
+        //         `  <div class="form-row">
+        //         <div class="form-group col-10">
+        //             <div class="input-group">
+        //                 <div class="input-group-prepend">
+        //                     <div class="input-group-text steps">Step 1</div>
+        //                 </div>
+        //                 <input name="step" type="text" class="form-control" id="inlineFormInputGroup" value="${instructions[i]}">
+        //             </div>
+        //         </div>
+        //         <div class="form-group col-1 d-flex">
+        //         <button type="button" class="btn btn-danger mt-auto" style="height: 38px"><i class="fa fa-minus deleteInstructionBtn"></i></button>
+        //         </div>
+        //     </div>`
 
 
-            }
-            return addedInstructions
-        }
+        //     }
+        //     return addedInstructions
+        // }
     }
 });
 

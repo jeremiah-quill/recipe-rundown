@@ -21,7 +21,8 @@ const UserSchema = new Schema({
     },
     favorites: {
         type: Array,
-        required: false
+        required: false,
+        ref: "favorites"
     },
     score: {
         type: Number,

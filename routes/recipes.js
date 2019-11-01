@@ -31,20 +31,20 @@ router.get('/add', (req, res) => {
 })
 
 // Edit recipe page
-router.get('/edit/:id', ensureAuthenticated, (req, res) => {
-    Recipe.findOne({
-        _id: req.params.id
-    })
-    .then(recipe => {
-        if(recipe.user != req.user.id){
-            req.flash('error_msg', 'This is not your recipe');
-            res.redirect('/recipes')
-        } else {
-            res.render('recipes/edit', {
-                recipe: recipe
-            })};
-        });
-    });
+// router.get('/edit/:id', ensureAuthenticated, (req, res) => {
+//     Recipe.findOne({
+//         _id: req.params.id
+//     })
+//     .then(recipe => {
+//         if(recipe.user != req.user.id){
+//             req.flash('error_msg', 'This is not your recipe');
+//             res.redirect('/recipes')
+//         } else {
+//             res.render('recipes/edit', {
+//                 recipe: recipe
+//             })};
+//         });
+//     });
        
   
 
@@ -81,30 +81,29 @@ router.post('/add', (req, res) => {
 
 
 // Edit recipe form submit
-router.put('/:id', (req, res) => {
-    Recipe.findOne({
-        _id: req.params.id
-    })
-    .then(recipe => {
-        recipe.name = req.body.name;
-        recipe.ingredients = req.body.ingredients
+// router.put('/:id', (req, res) => {
+//     Recipe.findOne({
+//         _id: req.params.id
+//     })
+//     .then(recipe => {
+//         recipe.name = req.body.name;
+//         recipe.ingredients = req.body.ingredients
 
-        recipe.name = req.body.recipeName,
-        recipe.ingredients = {
-            name: req.body.ingredient,
-            quantity: req.body.quantity,
-            measurement: req.body.measurement
-        },
-        recipe.instructions = req.body.step
-        recipe.save()
-            .then(recipe => {
-                req.flash('success_msg', 'Recipe updated');
-                res.redirect('/recipes');
-            })
+//         recipe.name = req.body.recipeName,
+//         recipe.ingredients = {
+//             name: req.body.ingredient,
+//             quantity: req.body.quantity,
+//             measurement: req.body.measurement
+//         },
+//         recipe.instructions = req.body.step
+//         recipe.save()
+//             .then(recipe => {
+//                 req.flash('success_msg', 'Recipe updated');
+//                 res.redirect('/recipes');
+//             })
       
-    })
-})
-
+//     })
+// })
 
 // Delete Recipe
 router.delete('/:id', (req,res) => {
@@ -126,14 +125,6 @@ router.delete('/:id', (req,res) => {
         }
     })
 })
-
-
-// router.get('/:id', (req, rest) => {
-//     User.findOneAndUpdate({
-//         id: req.user.id 
-//     }, {$push: {favorites: }})
-// });
-
 
 // Favorite Recipe
 router.get('/:id', (req, res) => {
@@ -165,7 +156,30 @@ router.get('/:id', (req, res) => {
             })
         }
     })
-}) 
+});
+
+
+// Unfavorite Recipe
+router.get('/favorites/:id', (req,res) => {
+    //THIS WORKS
+    User.findOne({
+        _id: req.user.id
+    })
+    .then(user => {
+        for(let i=0; i<user.favorites.length; i++){
+            if(user.favorites[i]._id == req.params.id){
+                // let recipe = user.favorites[i];
+                // console.log(recipe)
+                User.updateOne({_id: req.user.id}, {$pull: {"favorites": user.favorites[i]}})
+                .then(()=> {
+   req.flash('success_msg', 'Entry removed from favorites')
+        res.redirect('/favorites'); 
+                })
+            }
+        }
+    })
+    .catch(err=> console.log(err))
+})
 
 
     

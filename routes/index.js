@@ -18,6 +18,11 @@ router.get('/', (req, res) => {
     res.render('index/welcome')
     });
 
+// Favorites route
+router.get('/favorites', (req, res) => {
+   res.render('index/favorites');
+})
+
 // Dashboard route
 router.get('/dashboard', ensureAuthenticated, (req, res) => {
     // User.find({
@@ -28,18 +33,6 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
     
         
     });
-
-
-//Recipe stream
-router.get('/', (req, res) => {
-    Recipe.find({})
-    .sort({date:'desc'})
-    .then(recipes => {
-        res.render('recipes/index', {
-            recipes: recipes
-        })
-    })
-});
 
 
 // My cookbook route

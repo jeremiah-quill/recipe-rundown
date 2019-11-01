@@ -1,5 +1,14 @@
+{{!-- {{#each user.favorites}}
+<h1>{{name}}</h1>
+
+
+{{/each}} --}}
+
+
+
+
 <div class="row">
-{{#each recipes}}
+{{#each user.favorites}}
 
   <div class="col-md-6 col-lg-4 mb-4"> 
     <div class="card recipeDisplay">
@@ -12,10 +21,10 @@
         <!-- privateEdit user ../user/id id -->
         
         <!--Delete Btn-->
-        {{{privateDelete user ../user/id id}}}
+        {{!-- {{{privateDelete user ../user/id id}}} --}}
         
         <!-- Favorite Btn -->
-        <a href="/recipes/{{id}}" class="btn btn-light ml-auto"><i class="fa fa-star" style="color: gold"></i></a>
+        <a href="#" data-toggle="modal" data-target="#remove{{_id}}" class="btn btn-danger ml-auto"><i class="fa fa-trash"></i></a>
         
       </div>  
       <img src="/public/healthyCoverPhoto.jpg" class="card-img-top" alt="...">
@@ -28,7 +37,7 @@
 {{/each}}
 </div>
 
-{{#each recipes}}
+{{#each user.favorites}}
 <!-- Preview Modal -->
 <div class="modal fade" id="{{_id}}" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -49,8 +58,8 @@
   </div>
 </div>
 
-<!-- Confirm Delete Modal -->
-<div class="modal fade" id="del{{_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Confirm Remove favorite Modal -->
+<div class="modal fade" id="remove{{_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -60,21 +69,16 @@
         </button>
       </div>
       <div class="modal-body">
-        Do you really want to delete "{{name}}"?  This action cannot be undone.
+        Do you really want to remove "{{name}}" from favorites?  If {{username}} has deleted this recipe from their cookbook, you will not be able to find it again.
       </div>
       <div class="modal-footer">   
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <form action="/recipes/{{_id}}?_method=DELETE" method="post">
-          <button type="submit" class="btn btn-danger">Confirm
-          </button>
-        </form> 
+        {{!-- <form action="/recipes/{{_id}}?_method=DELETE" method="post"> --}}
+          <a href="/recipes/favorites/{{_id}}" class="btn btn-danger">Confirm
+          </a>
+        {{!-- </form>  --}}
       </div>
     </div>
   </div>
 </div>
 {{/each}}
-
-
-
-
-

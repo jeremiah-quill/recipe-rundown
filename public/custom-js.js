@@ -87,8 +87,9 @@ function addInstruction() {
   
   `
   instructionContainer.appendChild(newInstruction);
-}
+};
 
 function labelInstructions() {
     document.querySelectorAll('.steps').forEach((instruction, index) => instruction.textContent = 'Step ' + (index+1) )
-}
+};
+
