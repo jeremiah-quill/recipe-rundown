@@ -35,15 +35,21 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
             user:user
         })
     })
-
-
-
-    // .exec(function(err, user) {
-    //     res.render('index/dashboard', {
-    //         user:user
-    //     })
-    // })
     });
+
+router.get('/dashboard/:username', (req, res) => {
+    User.findOne({
+        username: req.params.username
+    })
+    .populate('following')
+    .populate('followers')
+    .then(user => {
+        res.render('index/dashboard', {
+            user: user
+        })
+    })
+})
+
 
 
 // My cookbook route

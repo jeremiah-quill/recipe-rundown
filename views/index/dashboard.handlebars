@@ -18,7 +18,7 @@
             <ul class="list-group list-group-flush">
                 {{#if user.following}}
                 {{#each user.following}}
-                <li class="list-group-item">{{username}}</li>
+                <li class="list-group-item"><a href="/dashboard/{{username}}">{{username}}</a></li>
                 {{/each}}
                 {{else}}
                 <li class="list-group-item">You are not following anyone</li>
@@ -45,7 +45,7 @@
             <ul class="list-group list-group-flush">
                 {{#if user.followers}}
                 {{#each user.followers}}
-                <li class="list-group-item">{{username}}</li>
+                <li class="list-group-item"><a href="/dashboard/{{username}}">{{username}}</a></li>
                 {{/each}}
                 {{else}}
                 <li class="list-group-item">No followers</li>
