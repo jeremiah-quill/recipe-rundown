@@ -19,20 +19,20 @@ router.get('/', (req, res) => {
     });
 
 // Favorites route
-router.get('/favorites', (req, res) => {
+router.get('/favorites', ensureAuthenticated, (req, res) => {
    res.render('index/favorites');
 })
 
 // Dashboard route
-router.get('/dashboard', ensureAuthenticated, (req, res) => {
-    // User.find({
-    //     _id: req.user.id
-    // })
-    // .then(user => {
-        res.render('index/dashboard')
+// router.get('/dashboard', ensureAuthenticated, (req, res) => {
+//     // User.find({
+//     //     _id: req.user.id
+//     // })
+//     // .then(user => {
+//         res.render('index/dashboard')
     
         
-    });
+//     });
 
 
 // My cookbook route
@@ -60,7 +60,7 @@ router.get('/register', (req, res) => {
 // Login form POST
 router.post('/login', (req, res, next) => {
     passport.authenticate('local', {
-        successRedirect:'/dashboard',
+        successRedirect:'/recipes',
         failureRedirect: '/login',
         failureFlash: true
     })(req, res, next);

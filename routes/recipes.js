@@ -26,7 +26,7 @@ router.get('/', (req, res) => {
 });
   
 // Add recipe page
-router.get('/add', (req, res) => {
+router.get('/add',  ensureAuthenticated, (req, res) => {
     res.render('recipes/add')
 })
 
@@ -48,10 +48,18 @@ router.get('/add', (req, res) => {
        
   
 
-// Show recipe page
-// router.get('/show', (req, res) => {
-//     res.render('recipes/show')
-// })
+// Showcase recipe
+router.get('/showcase/:id', (req, res) => {
+    Recipe.findOne({
+        _id: req.params.id
+    })
+    .then(recipe => {
+        res.render('recipes/showcase', {
+            recipe: recipe
+        })
+    })
+})
+
 
 
 
@@ -178,6 +186,10 @@ router.get('/favorites/:id', (req,res) => {
             }
         }
     })
+
+
+
+    
     .catch(err=> console.log(err))
 })
 

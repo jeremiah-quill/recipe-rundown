@@ -1,4 +1,5 @@
-<div class="row">
+<div class="row recipeRow">
+{{#if recipes}}
 {{#each recipes}}
 
   <div class="col-md-6 col-lg-4 mb-4"> 
@@ -15,12 +16,14 @@
         {{{privateDelete user ../user/id id}}}
         
         <!-- Favorite Btn -->
+        {{#if ../user}}
         <a href="/recipes/{{id}}" class="btn btn-light ml-auto"><i class="fa fa-star" style="color: gold"></i></a>
-        
+        {{/if}}
+
       </div>  
       <img src="/public/healthyCoverPhoto.jpg" class="card-img-top" alt="...">
       <div class="card-body">
-        <p class="card-text">{{name}}</p>
+        <p class="card-text"><a href="/recipes/showcase/{{_id}}">{{name}}</a></p>
         <p class="card-text"><small class="text-muted">By: {{username}}</small></p>
       </div>
     </div>
@@ -73,6 +76,18 @@
   </div>
 </div>
 {{/each}}
+{{else}}
+<div class="card"> 
+<div class="card-body">
+  No recipes added.
+</div>
+</div>
+
+
+
+
+{{/if}}
+
 
 
 

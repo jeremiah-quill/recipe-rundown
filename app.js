@@ -26,6 +26,8 @@ const hbs = exphbs.create({
             list += `</ul>`
             return list
         },
+        
+
         // populateFormIngredients:function(quantityArray, measurementArray, ingredientArray) {
         //     let editIngredients = '';
         //     for(let i=1; i<quantityArray.length; i++) {

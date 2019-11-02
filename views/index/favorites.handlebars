@@ -1,13 +1,5 @@
-{{!-- {{#each user.favorites}}
-<h1>{{name}}</h1>
-
-
-{{/each}} --}}
-
-
-
-
-<div class="row">
+<div class="row recipeRow">
+  {{#if user.favorites}}
 {{#each user.favorites}}
 
   <div class="col-md-6 col-lg-4 mb-4"> 
@@ -24,12 +16,13 @@
         {{!-- {{{privateDelete user ../user/id id}}} --}}
         
         <!-- Favorite Btn -->
+        
         <a href="#" data-toggle="modal" data-target="#remove{{_id}}" class="btn btn-danger ml-auto"><i class="fa fa-trash"></i></a>
         
       </div>  
       <img src="/public/healthyCoverPhoto.jpg" class="card-img-top" alt="...">
       <div class="card-body">
-        <p class="card-text">{{name}}</p>
+        <p class="card-text"><a href="/recipes/showcase/{{_id}}">{{name}}</a></p>
         <p class="card-text"><small class="text-muted">By: {{username}}</small></p>
       </div>
     </div>
@@ -82,3 +75,10 @@
   </div>
 </div>
 {{/each}}
+{{else}}
+<div class="card"> 
+<div class="card-body">
+  No recipes added.
+</div>
+</div>
+{{/if}}
