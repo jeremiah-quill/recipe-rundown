@@ -1,2 +1,62 @@
 <h1 class="mx-auto text-center">{{user.firstName}}'s Dashboard</h1>
 
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                My recipes will go here
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card mb-5">
+            <div class="card-header">
+            Following
+            </div>
+            <ul class="list-group list-group-flush">
+                {{#if user.following}}
+                {{#each user.following}}
+                <li class="list-group-item">{{username}}</li>
+                {{/each}}
+                {{else}}
+                <li class="list-group-item">You are not following anyone</li>
+                {{/if}}
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                Something else will go here
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card mb-5">
+            <div class="card-header">
+            Followers
+            </div>
+            <ul class="list-group list-group-flush">
+                {{#if user.followers}}
+                {{#each user.followers}}
+                <li class="list-group-item">{{username}}</li>
+                {{/each}}
+                {{else}}
+                <li class="list-group-item">No followers</li>
+                {{/if}}
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+
+

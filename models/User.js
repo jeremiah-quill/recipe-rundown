@@ -28,16 +28,21 @@ const UserSchema = new Schema({
         type: Number,
         required: false
     },
-    friends: [{
-        users: {
+    following: [{
+       
             type: Schema.Types.ObjectId,
             ref: 'users'
-        }
+        
+       
     }],
-    followers: {
-        type: Array,
-        required: false
-    },
+    followers: [{
+        type: Schema.Types.ObjectId,
+        ref: 'users'
+    }],
+    // followers: {
+    //     type: Array,
+    //     required: false
+    // },
     date: {
         type: Date,
         default: Date.now
