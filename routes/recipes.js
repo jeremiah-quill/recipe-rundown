@@ -14,10 +14,11 @@ const User = mongoose.model('users');
 
 // Routes ###################################################
 
-// Public Recipes
+// Public Recipes DONE
 router.get('/', (req, res) => {
     Recipe.find({})
     .sort({date:'desc'})
+    // .populate('userId')
     .then(recipes => {
         res.render('recipes/index', {
             recipes: recipes
@@ -25,7 +26,7 @@ router.get('/', (req, res) => {
     })
 });
   
-// Add recipe page
+// Add recipe page DONE
 router.get('/add',  ensureAuthenticated, (req, res) => {
     res.render('recipes/add')
 })
@@ -48,7 +49,7 @@ router.get('/add',  ensureAuthenticated, (req, res) => {
        
   
 
-// Showcase recipe
+// Showcase recipe DONE
 router.get('/showcase/:name', (req, res) => {
     Recipe.findOne({
         name: req.params.name
@@ -60,23 +61,69 @@ router.get('/showcase/:name', (req, res) => {
     })
 })
 
+router.get('/showcase2/:id', (req,res) => {
+    User.findOne({
+        _id: req.user.id
+    })
+    .then(user => {
+        for(let i=0; i<user.favorites.length; i++){
+            if(user.favorites[i]._id == req.params.id){
+                let recipe = user.favorites[i]
+          
+                res.render('recipes/showcase2', {
+                    recipe:recipe
+                })
+            }
+
+
+        }
+
+    })})
+        
+    
+    // console.log(typeof user.favorites[0]._id))})
+        
+        
+//         {
+//         for(let i=0; i<user.favorites; i++){
+//             if(user.favorites[i]._id == req.params.id){
+//                 let recipe = user.favorites[i].currentRecipe
+//                 console.log(recipe)
+//                 // res.render('recipes/showcaseDeleted', {
+//                 //     recipe: recipe
+//                 // })
+//             }
+//         }
+        
+//     })
+
+    
+// })
+
 
 
 
 // Recipe Functionality ########################################
 
-// Add recipe form submit
+// Add recipe form submit DONE
 router.post('/add', (req, res) => {
     const newRecipe = {
+        name: req.body.recipeName,
         userId: req.user.id,
         username: req.user.username,
-        name: req.body.recipeName,
-        ingredients: {
-            name: req.body.ingredient,
-            quantity: req.body.quantity,
-            measurement: req.body.measurement
-        },
-        instructions: req.body.step
+        currentRecipe: {
+            // name: this.name,
+            // username: this.username,
+            
+            // username: req.user.username,
+           
+            ingredients: {
+                name: req.body.ingredient,
+                quantity: req.body.quantity,
+                measurement: req.body.measurement
+            },
+            instructions: req.body.step
+        }
     }
     new Recipe(newRecipe)
     .save()
@@ -113,7 +160,7 @@ router.post('/add', (req, res) => {
 //     })
 // })
 
-// Delete Recipe
+// Delete Recipe DONE
 router.delete('/:id', (req,res) => {
     Recipe.findOne({
         _id: req.params.id
@@ -134,7 +181,7 @@ router.delete('/:id', (req,res) => {
     })
 })
 
-// Favorite Recipe
+// Favorite Recipe DONE
 router.get('/:id', (req, res) => {
     Recipe.findOne({
         _id: req.params.id
@@ -167,7 +214,7 @@ router.get('/:id', (req, res) => {
 });
 
 
-// Unfavorite Recipe
+// Unfavorite Recipe 
 router.get('/favorites/:id', (req,res) => {
     //THIS WORKS
     User.findOne({

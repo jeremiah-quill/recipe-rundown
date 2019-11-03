@@ -7,7 +7,7 @@
       <div class="buttonContainer d-flex w-100">
         
         <!--View Btn-->
-        <a href="#" data-toggle="modal" data-target="#{{_id}}" class="btn btn-primary"><i class="fa fa-eye"></i></a>
+        <a href="#" data-toggle="modal" data-target="#{{id}}" class="btn btn-primary"><i class="fa fa-eye"></i></a>
         
         <!--Edit Btn-->
         <!-- privateEdit user ../user/id id -->
@@ -44,7 +44,7 @@
         </button>
       </div>
       <div class="modal-body">
-        {{{arrayLoop ingredients.quantity ingredients.measurement ingredients.name}}}
+        {{{arrayLoop currentRecipe.ingredients.quantity currentRecipe.ingredients.measurement currentRecipe.ingredients.name}}}
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

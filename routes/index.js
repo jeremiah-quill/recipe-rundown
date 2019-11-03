@@ -19,9 +19,22 @@ router.get('/', (req, res) => {
     });
 
 // Favorites route
-router.get('/favorites', ensureAuthenticated, (req, res) => {
-   res.render('index/favorites');
-})
+// router.get('/favorites', ensureAuthenticated, (req, res) => {
+//    res.render('index/favorites');
+// })
+
+router.get('/favorites', (req, res) => {
+    Recipe.find({})
+    .sort({date:'desc'})
+    .populate('userId')
+    .then(recipes => {
+        res.render('index/favorites', {
+            recipes: recipes
+        })
+    })
+});
+
+
 
 // Dashboard route
 router.get('/dashboard', ensureAuthenticated, (req, res) => {
@@ -71,17 +84,17 @@ router.get('/cookbook', ensureAuthenticated, (req, res) => {
 });
   
 
-// User login
+// User login DONE
 router.get('/login', (req, res) => {
     res.render('users/login');
 });
 
-// User register
+// User register DONE
 router.get('/register', (req, res) => {
     res.render('users/register');
 });
 
-// Login form POST
+// Login form POST DONE
 router.post('/login', (req, res, next) => {
     passport.authenticate('local', {
         successRedirect:'/recipes',
@@ -90,7 +103,7 @@ router.post('/login', (req, res, next) => {
     })(req, res, next);
 })
 
-// Register form POST
+// Register form POST DONE
 router.post('/register', (req, res) => {
     let errors = [];
     if(req.body.password !== req.body.password2) {
@@ -161,7 +174,7 @@ router.post('/register', (req, res) => {
 
 
 
-// //FOLLOW
+// //FOLLOW DONE
 router.get('/follow/:id', ensureAuthenticated, async (req, res) => {
     try {
     const id = new mongoose.Types.ObjectId(req.params.id)

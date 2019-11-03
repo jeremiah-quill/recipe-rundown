@@ -22,8 +22,9 @@
       </div>  
       <img src="/public/healthyCoverPhoto.jpg" class="card-img-top" alt="...">
       <div class="card-body">
-        <p class="card-text"><a href="/recipes/showcase/{{name}}">{{name}}</a></p>
-        <p class="card-text"><small class="text-muted">By: {{username}}<a href="/follow/{{userId}}"><i class="fa fa-user-plus"></i></small></p>
+        {{!-- <p class="card-text"><a href="/recipes/showcase/{{name}}">{{name}}</a></p> --}}
+        <p class="card-text"><a href="/recipes/showcase2/{{_id}}">{{name}}</a></p>
+        <p class="card-text"><small class="text-muted">By: {{username}} <a href="/follow/{{userId}}"><i class="fa fa-user-plus"></i></a></small></p>
       </div>
     </div>
   </div>
@@ -42,7 +43,7 @@
         </button>
       </div>
       <div class="modal-body">
-        {{{arrayLoop ingredients.quantity ingredients.measurement ingredients.name}}}
+        {{{arrayLoop currentRecipe.ingredients.quantity currentRecipe.ingredients.measurement currentRecipe.ingredients.name}}}
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

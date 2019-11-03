@@ -3,52 +3,49 @@ const Schema = mongoose.Schema;
 
 // Create Schema
 const RecipeSchema = new Schema({
-
-    userId: {
-        type: Schema.Types.ObjectId,
-        ref: 'users'
-    },
-    username: {
-        type: String,
-        required:true
-    },
     name: {
         type: String,
         required: true
     },
-    // recipePic: {
-    //     type: String,
-    //     required: true
-    // },
-    ingredients: {
-        name: {
-            type: Array,
-            required: true
+    username: {
+        type: String,
+        required: true
+    },
+    userId: {
+        type: Schema.Types.ObjectId,
+        ref: 'users'
+    },
+    currentRecipe: {
+        ingredients: {
+            name: {
+                type: Array,
+                required: true
+            },
+            quantity: {
+                type: Array,
+                required: true
+            },
+            measurement: {
+                type: Array,
+                required: true
+            },
+            // type: {
+            //     type: String,
+            //     required: true
+            // },
         },
-        quantity: {
-            type: Array,
-            required: true
+        instructions: {
+                type: Array,
+                required: true
         },
-        measurement: {
-            type: Array,
-            required: true
-        },
-        // type: {
-        //     type: String,
-        //     required: true
+        // score: {
+        //     type: Number,
+        //     required: false
         // },
-    },
-    instructions: {
-            type: Array,
-            required: true
-    },
-    // score: {
-    //     type: Number,
-    //     required: false
-    // },
-    date: {
-        type: Date,
-        default: Date.now
+        date: {
+            type: Date,
+            default: Date.now
+        }
     }
 });
 
