@@ -13,7 +13,7 @@
         <!-- privateEdit user ../user/id id -->
         
         <!--Delete Btn-->
-        {{{privateDelete user ../user/id id}}}
+        {{{privateDelete userId ../user/id id}}}
         
         <!-- Favorite Btn -->
         {{#if ../user}}
@@ -23,8 +23,8 @@
       </div>  
       <img src="/public/healthyCoverPhoto.jpg" class="card-img-top" alt="...">
       <div class="card-body">
-        <p class="card-text"><a href="/recipes/showcase/{{_id}}">{{name}}</a></p>
-        <p class="card-text"><small class="text-muted">By: {{username}} <a href="/follow/{{user}}"><i class="fa fa-user-plus"></i>
+        <p class="card-text"><a href="/recipes/showcase/{{name}}">{{name}}</a></p>
+        <p class="card-text"><small class="text-muted">By: {{username}} <a href="/follow/{{userId}}"><i class="fa fa-user-plus"></i>
 </a></small></p>
       </div>
     </div>

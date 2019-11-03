@@ -3,7 +3,8 @@ const Schema = mongoose.Schema;
 
 // Create Schema
 const RecipeSchema = new Schema({
-    user: {
+
+    userId: {
         type: Schema.Types.ObjectId,
         ref: 'users'
     },

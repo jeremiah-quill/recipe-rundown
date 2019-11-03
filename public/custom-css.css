@@ -107,6 +107,11 @@ img.bg {
     background-color: white;
 }
 
+.recipeList li {
+    list-style-type: none;
+}
+
+
 
 
 

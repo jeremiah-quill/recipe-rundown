@@ -25,36 +25,43 @@ router.get('/favorites', ensureAuthenticated, (req, res) => {
 
 // Dashboard route
 router.get('/dashboard', ensureAuthenticated, (req, res) => {
-    User.findOne({
-        _id: req.user.id
-    })
+    Recipe.find({userId: req.user.id})
+    .then(recipe => {
+        User.findOne({
+            _id: req.user.id
+        })
     .populate('following')
     .populate('followers')
     .then(user => {
         res.render('index/dashboard', {
-            user:user
+            user:user,
+            recipe:recipe
         })
     })
-    });
+    })})
 
-router.get('/dashboard/:username', (req, res) => {
-    User.findOne({
-        username: req.params.username
+
+    // Profile
+router.get('/profile/:id', (req, res) => {
+    Recipe.find({
+        userId: req.params.id
     })
-    .populate('following')
-    .populate('followers')
-    .then(user => {
-        res.render('index/dashboard', {
-            user: user
+    .populate('user')
+    .then(recipe => {
+        User.findOne({_id: req.params.id})
+        .then(profile => {
+        res.render('index/profile', {
+            recipe: recipe,
+            profile: profile
         })
+    })
     })
 })
 
 
-
 // My cookbook route
 router.get('/cookbook', ensureAuthenticated, (req, res) => {
-    Recipe.find({user: req.user.id})
+    Recipe.find({userId: req.user.id})
     .sort({date:'desc'})
     .then(recipes => {
         res.render('recipes/index', {
@@ -155,7 +162,7 @@ router.post('/register', (req, res) => {
 
 
 // //FOLLOW
-router.get('/follow/:id', async (req, res) => {
+router.get('/follow/:id', ensureAuthenticated, async (req, res) => {
     try {
     const id = new mongoose.Types.ObjectId(req.params.id)
 
@@ -166,7 +173,7 @@ router.get('/follow/:id', async (req, res) => {
 
         // check if your id doesn't match the id of the user you want to follow
         if (req.user.id === req.params.id) {
-            return res.status(400).json({ error: 'You cannot follow yourself' })
+            return req.flash('error_msg', "Sorry, you can't follow yourself")
         }
 
         // add the id of the user you want to follow in following array
@@ -196,8 +203,9 @@ router.get('/follow/:id', async (req, res) => {
         if (!updated || !secondUpdated) {
             return res.status(404).json({ error: 'Unable to follow that user' })
         }
-
-        res.status(200).json(update)
+        req.flash('success_msg', 'Added to followers');
+        res.redirect('/recipes');
+        
     } catch (err) {
         res.status(400).send({ error: err.message })
     }

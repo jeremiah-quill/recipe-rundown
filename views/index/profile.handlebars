@@ -1,0 +1,31 @@
+<h1 class="mx-auto text-center">{{profile.username}}'s Profile</h1>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <ul class="list-group list-group-flush recipeList">
+                    {{#each recipe}}
+                   <a href="/recipes/showcase/{{this.name}}" class="list-group-item"><li >{{this.name}}</li></a>
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+{{!-- 
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                Something else will go here
+            </div>
+        </div>
+    </div> --}}
+
+
+
+
+
+
+

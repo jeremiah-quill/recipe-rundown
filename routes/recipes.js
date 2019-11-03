@@ -49,9 +49,9 @@ router.get('/add',  ensureAuthenticated, (req, res) => {
   
 
 // Showcase recipe
-router.get('/showcase/:id', (req, res) => {
+router.get('/showcase/:name', (req, res) => {
     Recipe.findOne({
-        _id: req.params.id
+        name: req.params.name
     })
     .then(recipe => {
         res.render('recipes/showcase', {
@@ -68,7 +68,7 @@ router.get('/showcase/:id', (req, res) => {
 // Add recipe form submit
 router.post('/add', (req, res) => {
     const newRecipe = {
-        user: req.user.id,
+        userId: req.user.id,
         username: req.user.username,
         name: req.body.recipeName,
         ingredients: {
@@ -119,7 +119,7 @@ router.delete('/:id', (req,res) => {
         _id: req.params.id
     })
     .then(recipe => {
-        if(recipe.user != req.user.id){
+        if(recipe.userId != req.user.id){
             req.flash('error_msg', 'This is not your recipe');
             res.redirect('/recipes')
         } else {
