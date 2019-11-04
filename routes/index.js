@@ -24,12 +24,13 @@ router.get('/', (req, res) => {
 // })
 
 router.get('/favorites', (req, res) => {
-    Recipe.find({})
-    .sort({date:'desc'})
-    .populate('userId')
-    .then(recipes => {
+    User.findOne({
+        _id: req.user.id
+    })
+    .populate('favorites.live')
+    .then(user => {
         res.render('index/favorites', {
-            recipes: recipes
+            user: user
         })
     })
 });

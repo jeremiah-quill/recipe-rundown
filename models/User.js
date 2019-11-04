@@ -23,11 +23,21 @@ const UserSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'recipes'
     }],
-    favorites: {
-        type: Array,
-        required: false,
-        ref: "favorites"
-    },
+    favorites: [{
+        static: {
+            type: Object
+        },
+        live: {
+            type: Schema.Types.ObjectId,
+            ref: 'recipes'
+        }
+    }],
+
+
+    // favorites: {
+    //     type: Array,
+    //     required: false,
+    // },
     score: {
         type: Number,
         required: false

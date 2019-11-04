@@ -4,9 +4,13 @@
         <div class="card">
             <div class="card-body">
                 <ul class="list-group list-group-flush recipeList">
+                    {{#if recipe}}
                     {{#each recipe}}
-                   <a href="/recipes/showcase/{{this.name}}" class="list-group-item"><li >{{this.name}}</li></a>
+                    <a href="/recipes/showcase/{{this.name}}" class="list-group-item"><li >{{this.name}}</li></a>
                     {{/each}}
+                    {{else}}
+                    <li>{{profile.username}} has no recipes</li>
+                    {{/if}}
                 </ul>
             </div>
         </div>

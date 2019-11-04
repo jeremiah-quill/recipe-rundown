@@ -6,8 +6,80 @@ const flash = require('connect-flash');
 const session = require('express-session');
 const methodOverride = require('method-override');
 const bodyParser = require('body-parser');
+// // Load Recipe Model
+require('./models/Recipe');
+const Recipe = mongoose.model('recipes');
+
 const hbs = exphbs.create({
     helpers: {
+        //THIS WORKS
+        findCurrentRecipe:function(previewId, currentRecipes) {
+            for(let i=0; i<currentRecipes.length; i++) {
+                if(previewId == currentRecipes[i].id){
+                    
+                    return `<p>${currentRecipes[i].ingredients.name}</p>`
+                    `<li>${currentRecipes[i].ingredients.quantity} ${currentREcipes[i].ingredients.measurement} ${currentRecipes[i].ingredients.anem}</li>`
+                }
+            }},
+
+
+
+// THSI WORKS
+        //     let list = `<ul>`
+            
+        //     for(let i=0; i<currentRecipes.length; i++) {
+        //         list += `<li>${currentRecipes[0].ingredients.quantity} ${currentRecipes[0].ingredients.measurement} ${currentRecipes[0].ingredients.name}</li>`
+        //     }
+        //     list += `</ul>`
+        //     return list
+        // },
+
+
+
+        // findCurrentRecipe: function(previewRecipe, currentRecipes) {
+        //     let list = ''
+        //     for(let j=0; j< currentRecipes.length; j++){
+        //         list+=  `<p>${currentRecipes[j].ingredients}</p>`
+        //         // if(previewRecipe == currentRecipes[j]){
+        //         //     return `<p>${currentRecipes[j]}</p>`
+        //         // }
+        //     }
+        //     console.log(ingredients)
+            
+            // if(previewRecipe == currentRecipes[0].id){
+            //     for(let i=0; i<currentRecipes[i].ingredients.quantity.length; i++){
+            //      return `<li>${currentRecipes[i].ingredients.quantity} ${currentRecipes[i].ingredients.measurement} ${currentRecipes[i].ingredients.name}</li>`
+            //     }
+            // }  else {
+            //     return `<p>fuck this</p>`
+            // }
+            
+
+            // return `<p>${previewRecipe}</p>
+            // <p>${currentRecipes[0].id}</p>
+            // `
+            
+            
+            // return `<p>this worked</p>`
+
+            // let list = `<ul>`
+            // for(let i=0; i<currentRecipes.length; i++){
+                
+            //     if(previewRecipe == currentRecipes[i]._id){
+            //         // let list = `<ul>`
+            //         for(let i=0; i<quantityArray.length; i++) {
+            //             list += `<li>${quantityArray[i]} ${measurementArray[i]} ${ingredientArray[i]}</li>`
+            //         }
+            //         list += `</ul>`
+            //         return list
+            //     } else {
+            //         return `<p>bad</p>`
+            //     }
+         
+            // }
+            // return list
+
+        // },
         // privateEdit:function(userId, loggedId, recipeId) {
         //     if (userId == loggedId) {
         //         return `<a href="/recipes/edit/${recipeId}" class="btn btn-warning"><i class="fa fa-pencil" ></i></a>`

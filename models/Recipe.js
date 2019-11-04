@@ -15,7 +15,7 @@ const RecipeSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'users'
     },
-    currentRecipe: {
+    
         ingredients: {
             name: {
                 type: Array,
@@ -46,7 +46,7 @@ const RecipeSchema = new Schema({
             type: Date,
             default: Date.now
         }
-    }
+    
 });
 
 mongoose.model('recipes', RecipeSchema, 'recipes');

@@ -1,3 +1,4 @@
+<div class="favoriteContainer">
 <div class="row recipeRow">
   {{#if user.favorites}}
 {{#each user.favorites}}
@@ -7,8 +8,8 @@
       <div class="buttonContainer d-flex w-100">
         
         <!--View Btn-->
-        <a href="#" data-toggle="modal" data-target="#{{_id}}" class="btn btn-primary"><i class="fa fa-eye"></i></a>
-        
+        <a href="#" data-toggle="modal" data-target="#{{static._id}}" class="btn btn-primary"><i class="fa fa-eye"></i></a>
+        <a href="#" data-toggle="modal" data-target="#updated{{live._id}}" class="btn btn-success"><i class="fa fa-cloud-download"></i></a>
         <!--Edit Btn-->
         <!-- privateEdit user ../user/id id -->
         
@@ -16,15 +17,14 @@
         {{!-- {{{privateDelete user ../user/id id}}} --}}
         
         <!-- Favorite Btn -->
-        
-        <a href="#" data-toggle="modal" data-target="#remove{{_id}}" class="btn btn-danger ml-auto"><i class="fa fa-trash"></i></a>
+        <a href="#" data-toggle="modal" data-target="#remove{{static._id}}" class="btn btn-danger ml-auto"><i class="fa fa-trash"></i></a>
         
       </div>  
       <img src="/public/healthyCoverPhoto.jpg" class="card-img-top" alt="...">
       <div class="card-body">
         {{!-- <p class="card-text"><a href="/recipes/showcase/{{name}}">{{name}}</a></p> --}}
-        <p class="card-text"><a href="/recipes/showcase2/{{_id}}">{{name}}</a></p>
-        <p class="card-text"><small class="text-muted">By: {{username}} <a href="/follow/{{userId}}"><i class="fa fa-user-plus"></i></a></small></p>
+        <p class="card-text"><a href="/recipes/showcase2/{{static._id}}">{{static.name}}</a></p>
+        <p class="card-text"><small class="text-muted">By: {{static.username}} <a href="/follow/{{static.userId}}"><i class="fa fa-user-plus"></i></a></small></p>
       </div>
     </div>
   </div>
@@ -33,17 +33,21 @@
 
 {{#each user.favorites}}
 <!-- Preview Modal -->
-<div class="modal fade" id="{{_id}}" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade" id="{{static._id}}" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">{{name}}</h5>
+        <h5 class="modal-title">{{static.name}} <button type="button" class=' ml-3 btn btn-sm btn-dark updateBtn'>Update</button></h5>
+        
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        {{{arrayLoop currentRecipe.ingredients.quantity currentRecipe.ingredients.measurement currentRecipe.ingredients.name}}}
+      <div class="modal-body static">
+        {{{arrayLoop static.ingredients.quantity static.ingredients.measurement static.ingredients.name}}}
+      </div>
+      <div class="modal-body live d-none">
+        {{{arrayLoop live.ingredients.quantity live.ingredients.measurement live.ingredients.name}}}
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -51,6 +55,27 @@
     </div>
   </div>
 </div>
+
+<!-- Preview Modal -->
+<div class="modal fade" id="updated{{static._id}}" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{live.name}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+         {{{arrayLoop live.ingredients.quantity live.ingredients.measurement live.ingredients.name}}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <!-- Confirm Remove favorite Modal -->
 <div class="modal fade" id="remove{{_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -83,3 +108,14 @@
 </div>
 </div>
 {{/if}}
+</div>
+
+
+
+<script src='/public/favorites.js'></script>
+
+
+
+
+
+

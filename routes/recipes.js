@@ -59,7 +59,7 @@ router.get('/showcase/:name', (req, res) => {
             recipe: recipe
         })
     })
-})
+});
 
 router.get('/showcase2/:id', (req,res) => {
     User.findOne({
@@ -67,15 +67,13 @@ router.get('/showcase2/:id', (req,res) => {
     })
     .then(user => {
         for(let i=0; i<user.favorites.length; i++){
-            if(user.favorites[i]._id == req.params.id){
-                let recipe = user.favorites[i]
-          
+            if(user.favorites[i].live == req.params.id){
+                // i think below recipe should be neither static nor live, and I will choose that in handlebars
+                let recipe = user.favorites[i].static
                 res.render('recipes/showcase2', {
                     recipe:recipe
                 })
             }
-
-
         }
 
     })})
@@ -111,19 +109,12 @@ router.post('/add', (req, res) => {
         name: req.body.recipeName,
         userId: req.user.id,
         username: req.user.username,
-        currentRecipe: {
-            // name: this.name,
-            // username: this.username,
-            
-            // username: req.user.username,
-           
-            ingredients: {
-                name: req.body.ingredient,
-                quantity: req.body.quantity,
-                measurement: req.body.measurement
-            },
-            instructions: req.body.step
-        }
+        ingredients: {
+            name: req.body.ingredient,
+            quantity: req.body.quantity,
+            measurement: req.body.measurement
+        },
+        instructions: req.body.step
     }
     new Recipe(newRecipe)
     .save()
@@ -156,7 +147,6 @@ router.post('/add', (req, res) => {
 //                 req.flash('success_msg', 'Recipe updated');
 //                 res.redirect('/recipes');
 //             })
-      
 //     })
 // })
 
@@ -190,25 +180,42 @@ router.get('/:id', (req, res) => {
         if(req.user.favorites.length>0){
             let match = 0;
             for(let i=0; i<req.user.favorites.length; i++){
-                if(recipe.id == req.user.favorites[i]._id) {
+                if(recipe.id == req.user.favorites[i].live) {
                     match += 1
                 }} 
             if(match > 0) {
                 req.flash('error_msg', 'Recipe already added to favorites');
                 res.redirect('/recipes')  
-            } else {  
-                User.updateOne({_id: req.user.id}, {$push: {favorites: recipe}})
+            } else {
+                User.findOne({_id: req.user.id})
+                .then(user => {
+                    const newFavorite = {
+                        static: recipe,
+                        live: req.params.id
+                    }
+                    user.favorites.push(newFavorite);
+                    user.save()
+                })
                 .then(() => {
                     req.flash('success_msg', 'Recipe added to favorites');
                     res.redirect('/recipes')
                 })
             }
         } else {
-            User.updateOne({_id: req.user.id}, {$push: {favorites: recipe}})
-            .then(() => {
-                req.flash('success_msg', 'Recipe added to favorites');
-                res.redirect('/recipes') 
+            User.findOne({_id: req.user.id})
+            .then(user => {
+                const newFavorite = {
+                    static: recipe,
+                    live: req.params.id
+                }
+                user.favorites.push(newFavorite);
+                user.save()
+                .then(() => {
+                    req.flash('success_msg', 'Recipe added to favorites');
+                    res.redirect('/recipes')
+                })
             })
+      
         }
     })
 });

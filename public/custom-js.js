@@ -2,7 +2,7 @@ const body = document.querySelector('body');
 const ingredientContainer = document.querySelector('.ingredientContainer');
 const addIngredientBtn = document.querySelector('.addIngredientBtn');
 const instructionContainer = document.querySelector('.instructionContainer');
-const addInstructionBtn = document.querySelector('.addInstructionBtn')
+const addInstructionBtn = document.querySelector('.addInstructionBtn');
 
 
 // body.addEventListener('click', (e) =>{
