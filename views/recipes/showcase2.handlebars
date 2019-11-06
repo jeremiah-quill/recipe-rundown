@@ -1,30 +1,35 @@
-
-<div class="favoriteContainer">
 <div class="card">
     <div class="card-header text-center"><h4>{{recipe.static.name}}<button class="btn btn-success ml-3 updateBtn"><i class="fa fa-retweet"></i></button></h4></div>
-    <div class="card-body">
+    <div class="card-body static">
         <div class="row">
             <div class="col-md-3 whatINeed">
                 <h5 class="text-center mb-3">What I need</h5>
-                <div class="static">
+                <div>
                     {{{arrayLoop recipe.static.ingredients.quantity recipe.static.ingredients.measurement recipe.static.ingredients.name}}}
                 </div>
-                <div class="d-none live">
+                {{!-- <div>
+
                     {{{arrayLoop recipe.live.ingredients.quantity recipe.live.ingredients.measurement recipe.live.ingredients.name}}}
-                </div>
+
+                </div> --}}
             </div>
             <div class="col-md-9">
                 <h5 class="text-center mb-3">What I do</h5>
-                <ol class="static">
+               
+                <ol >
                     {{#each recipe.static.instructions}}
                     <li class="ml-5">{{this}}</li>
                     {{/each}}
                 </ol>
-                <ol class="d-none live">
+                
+                
+                {{!-- <ol >
                     {{#each recipe.live.instructions}}
                     <li class="ml-5">{{this}}</li>
                     {{/each}}
-                </ol>
+                </ol> --}}
+               
+
             </div>
         </div>
         <hr>
@@ -35,14 +40,45 @@
             </div>
         </div>
     </div>
-</div>
+
+    
+        <div class="card-body live d-none">
+            {{#if recipe.live}}
+        <div class="row">
+            <div class="col-md-3 whatINeed">
+                <h5 class="text-center mb-3">What I need</h5>
+                    {{{arrayLoop recipe.live.ingredients.quantity recipe.live.ingredients.measurement recipe.live.ingredients.name}}}
+            </div>
+            <div class="col-md-9">
+                <h5 class="text-center mb-3">What I do</h5>
+                <ol>
+                    {{#each recipe.live.instructions}}
+                    <li class="ml-5">{{this}}</li>
+                    {{/each}}
+
+                </ol>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h5>What I think</h5>
+                Notes will go here
+            </div>
+        </div>
+            {{else}}
+<p>The original recipe has been deleted...keep this favorite safe!</p>
+{{/if}}
+    </div>
+
 </div>
 
 
-{{!-- <div class="udpatedContainer">
+{{!-- {{#if recipe.live}}
+<div class="liveContainer d-none live">
 <div class="card">
-    <div class="card-header text-center"><h4>{{recipe.live.name}}</h4></div>
-    <div class="card-body">
+    <div class="card-header text-center"><h4>{{recipe.static.name}}<button class="btn btn-success ml-3 updateBtn"><i class="fa fa-retweet"></i></button></h4></div>
+    <div class="card-body live d-none">
         <div class="row">
             <div class="col-md-3 whatINeed">
                 <h5 class="text-center mb-3">What I need</h5>
@@ -67,6 +103,9 @@
         </div>
     </div>
 </div>
-</div> --}}
+</div>
+{{else}}
+<p>The original recipe has been deleted...keep this favorite safe!</p>
+{{/if}} --}}
 
-<script src='/public/favorites.js'></script>
+<script src='/public/showcase2.js'></script>

@@ -69,7 +69,7 @@ router.get('/showcase2/:id', (req,res) => {
     .then(
         user => {
         for(let i=0; i<user.favorites.length; i++){
-            if(user.favorites[i].live.id == req.params.id){
+            if(user.favorites[i].static._id == req.params.id){
                 // i think below recipe should be neither static nor live, and I will choose that in handlebars
                 let recipe = user.favorites[i]
                 res.render('recipes/showcase2', {

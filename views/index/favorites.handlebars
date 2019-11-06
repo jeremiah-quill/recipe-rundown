@@ -47,7 +47,12 @@
         {{{arrayLoop static.ingredients.quantity static.ingredients.measurement static.ingredients.name}}}
       </div>
       <div class="modal-body live d-none">
+        {{#if live}}
         {{{arrayLoop live.ingredients.quantity live.ingredients.measurement live.ingredients.name}}}
+        {{else}}
+        <p>The original recipe has been deleted...keep this favorite safe!</p>
+        {{/if}}
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -57,7 +62,7 @@
 </div>
 
 <!-- Preview Modal -->
-<div class="modal fade" id="updated{{static._id}}" tabindex="-1" role="dialog" aria-hidden="true">
+{{!-- <div class="modal fade" id="updated{{static._id}}" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -74,7 +79,7 @@
       </div>
     </div>
   </div>
-</div>
+</div> --}}
 
 
 <!-- Confirm Remove favorite Modal -->
