@@ -177,7 +177,7 @@ router.post('/register', (req, res) => {
 
 // //FOLLOW DONE
 router.get('/follow/:id', ensureAuthenticated, async (req, res) => {
-    try {
+    
     const id = new mongoose.Types.ObjectId(req.params.id)
 
         // check if the id is a valid one
@@ -187,9 +187,12 @@ router.get('/follow/:id', ensureAuthenticated, async (req, res) => {
 
         // check if your id doesn't match the id of the user you want to follow
         if (req.user.id === req.params.id) {
-            return req.flash('error_msg', "Sorry, you can't follow yourself")
-        }
-
+            req.flash('error_msg', "Sorry, you can't follow yourself")
+            res.redirect('/recipes')
+        } else if (req.user.following.includes(req.params.id)){
+            req.flash('error_msg', "You are already following this user")
+            res.redirect('/recipes')
+        } else {
         // add the id of the user you want to follow in following array
         const query = {
             _id: req.user.id,
@@ -214,15 +217,18 @@ router.get('/follow/:id', ensureAuthenticated, async (req, res) => {
 
         const secondUpdated = await User.updateOne(secondQuery, secondUpdate)
 
-        if (!updated || !secondUpdated) {
-            return res.status(404).json({ error: 'Unable to follow that user' })
-        }
+        // if (!updated || !secondUpdated) {
+        //     return res.status(404).json({ error: 'Unable to follow that user' })
+        // }
         req.flash('success_msg', 'Added to followers');
         res.redirect('/recipes');
+
+
+        }
+
+
         
-    } catch (err) {
-        res.status(400).send({ error: err.message })
-    }
+
 })
 
 
