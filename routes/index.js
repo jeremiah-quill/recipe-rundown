@@ -5,25 +5,22 @@ const passport = require('passport');
 const router = express.Router();
 const {ensureAuthenticated} = require('../helpers/auth');
 
+
 // Load User Model
 require('../models/User');
 const User = mongoose.model('users');
 
-// // Load Recipe Model
+// Load Recipe Model
 require('../models/Recipe');
 const Recipe = mongoose.model('recipes');
 
-// Landing page
+// Landing page route
 router.get('/', (req, res) => {
     res.render('index/welcome')
     });
 
 // Favorites route
-// router.get('/favorites', ensureAuthenticated, (req, res) => {
-//    res.render('index/favorites');
-// })
-
-router.get('/favorites', (req, res) => {
+router.get('/favorites', ensureAuthenticated, (req, res) => {
     User.findOne({
         _id: req.user.id
     })
@@ -34,8 +31,6 @@ router.get('/favorites', (req, res) => {
         })
     })
 });
-
-
 
 // Dashboard route
 router.get('/dashboard', ensureAuthenticated, (req, res) => {
@@ -54,8 +49,7 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
     })
     })})
 
-
-    // Profile
+// Profile route
 router.get('/profile/:id', (req, res) => {
     Recipe.find({
         userId: req.params.id
@@ -72,7 +66,6 @@ router.get('/profile/:id', (req, res) => {
     })
 })
 
-
 // My cookbook route
 router.get('/cookbook', ensureAuthenticated, (req, res) => {
     Recipe.find({userId: req.user.id})
@@ -84,18 +77,17 @@ router.get('/cookbook', ensureAuthenticated, (req, res) => {
     })
 });
   
-
-// User login DONE
+// Login route
 router.get('/login', (req, res) => {
     res.render('users/login');
 });
 
-// User register DONE
+// Register route
 router.get('/register', (req, res) => {
     res.render('users/register');
 });
 
-// Login form POST DONE
+// Login Post
 router.post('/login', (req, res, next) => {
     passport.authenticate('local', {
         successRedirect:'/recipes',
@@ -104,7 +96,7 @@ router.post('/login', (req, res, next) => {
     })(req, res, next);
 })
 
-// Register form POST DONE
+// Register Post
 router.post('/register', (req, res) => {
     let errors = [];
     if(req.body.password !== req.body.password2) {
@@ -158,7 +150,6 @@ router.post('/register', (req, res) => {
     }
 });
 
-
 // Follow user WORKS
 // router.get('/follow/:id', function(req, res){
 //     const id = new mongoose.Types.ObjectId(req.params.id)
@@ -172,20 +163,9 @@ router.post('/register', (req, res) => {
 // .catch(err => console.log(err))
 // })
 
-
-
-
-// //FOLLOW DONE
+// Follow user
 router.get('/follow/:id', ensureAuthenticated, async (req, res) => {
-    
     const id = new mongoose.Types.ObjectId(req.params.id)
-
-        // check if the id is a valid one
-        // if (!ObjectID.isValid(req.params.id)) {
-        //     return res.status(404).json({ error: 'Invalid ID' })
-        // }
-
-        // check if your id doesn't match the id of the user you want to follow
         if (req.user.id === req.params.id) {
             req.flash('error_msg', "Sorry, you can't follow yourself")
             res.redirect('/recipes')
@@ -193,44 +173,26 @@ router.get('/follow/:id', ensureAuthenticated, async (req, res) => {
             req.flash('error_msg', "You are already following this user")
             res.redirect('/recipes')
         } else {
-        // add the id of the user you want to follow in following array
-        const query = {
-            _id: req.user.id,
-            following: { $not: { $elemMatch: { $eq: id } } }
-        }
-
-        const update = {
-            $addToSet: { following: id }
-        }
-
-        const updated = await User.updateOne(query, update)
-
-        // add your id to the followers array of the user you want to follow
-        const secondQuery = {
-            _id: id,
-            followers: { $not: { $elemMatch: { $eq: req.user.id } } }
-        }
-
-        const secondUpdate = {
-            $addToSet: { followers: req.user.id }
-        }
-
-        const secondUpdated = await User.updateOne(secondQuery, secondUpdate)
-
-        // if (!updated || !secondUpdated) {
-        //     return res.status(404).json({ error: 'Unable to follow that user' })
-        // }
-        req.flash('success_msg', 'Added to followers');
-        res.redirect('/recipes');
-
-
-        }
-
-
-        
-
+            const query = {
+                _id: req.user.id,
+                following: { $not: { $elemMatch: { $eq: id } } }
+            }
+            const update = {
+                $addToSet: { following: id }
+            }
+            const updated = await User.updateOne(query, update)
+            const secondQuery = {
+                _id: id,
+                followers: { $not: { $elemMatch: { $eq: req.user.id } } }
+            }
+            const secondUpdate = {
+                $addToSet: { followers: req.user.id }
+            }
+            const secondUpdated = await User.updateOne(secondQuery, secondUpdate)
+            req.flash('success_msg', 'Added to followers');
+            res.redirect('/recipes');
+            }
 })
-
 
 // //UNFOLLOW
 // router.patch('/unfollow/:id', authenticate, async (req, res) => {
@@ -280,7 +242,6 @@ router.get('/follow/:id', ensureAuthenticated, async (req, res) => {
 //         res.status(400).send({ error: err.message })
 //     }
 // })
-
 
 // Logout
 router.get('/logout', function(req, res){

@@ -5,7 +5,7 @@
             <form method="post" action="/recipes/{{recipe.id}}?_method=PUT">
                 <div class="form-group">
                     <label for="recipeName">Recipe Name</label>
-                    <input name="recipeName" value="{{recipe.name}}" type="text" class="form-control" required>
+                    <input name="recipeName" value="{{recipe.name}}" type="text" class="form-control" disabled>
                 </div>
                 <div class="container d-flex mt-5 justify-content-center">
                 <h3 class="text-center">Ingredients</h3> 
@@ -29,6 +29,11 @@
                                 <option value="Tsp">Tsp</option>
                                 <option value="Tbsn">Tbsn</option>
                                 <option value="Oz">Oz</option>
+                                <option value="Lb">Lb</option>
+                                <option value="Package">Package</option>
+                                <option value="Stick">Stick</option>
+                                <option value="Can">Can</option>
+                                <option value="Jar">Jar</option>
                                 <option value="Cup">Cup</option>
                                 <option value="Pint">Pint</option>
                                 <option value="Qt">Qt</option>

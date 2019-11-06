@@ -11,14 +11,10 @@ const Recipe = mongoose.model('recipes');
 require('../models/User');
 const User = mongoose.model('users');
 
-
-// Routes ###################################################
-
-// Public Recipes DONE
+// Public Recipes route
 router.get('/', (req, res) => {
     Recipe.find({})
     .sort({date:'desc'})
-    // .populate('userId')
     .then(recipes => {
         res.render('recipes/index', {
             recipes: recipes
@@ -26,65 +22,12 @@ router.get('/', (req, res) => {
     })
 });
   
-// Add recipe page DONE
+// Add recipe route
 router.get('/add',  ensureAuthenticated, (req, res) => {
     res.render('recipes/add')
-})
-
-// Edit recipe page
-// router.get('/edit/:id', ensureAuthenticated, (req, res) => {
-//     Recipe.findOne({
-//         _id: req.params.id
-//     })
-//     .then(recipe => {
-//         if(recipe.user != req.user.id){
-//             req.flash('error_msg', 'This is not your recipe');
-//             res.redirect('/recipes')
-//         } else {
-//             res.render('recipes/edit', {
-//                 recipe: recipe
-//             })};
-//         });
-//     });
-       
-  
-
-// Showcase recipe DONE
-router.get('/showcase/:name', (req, res) => {
-    Recipe.findOne({
-        name: req.params.name
-    })
-    .then(recipe => {
-        res.render('recipes/showcase', {
-            recipe: recipe
-        })
-    })
 });
 
-router.get('/showcase2/:id', (req,res) => {
-    User.findOne({
-        _id: req.user.id
-    })
-    .populate('favorites.live')
-    .then(
-        user => {
-        for(let i=0; i<user.favorites.length; i++){
-            if(user.favorites[i].static._id == req.params.id){
-                // i think below recipe should be neither static nor live, and I will choose that in handlebars
-                let recipe = user.favorites[i]
-                res.render('recipes/showcase2', {
-                    recipe:recipe
-                })
-            }
-        }
-    }
-    
-    
-    )})
-
-// Recipe Functionality ########################################
-
-// Add recipe form submit DONE
+// Add recipe form submit
 router.post('/add', (req, res) => {
     const newRecipe = {
         name: req.body.recipeName,
@@ -105,33 +48,74 @@ router.post('/add', (req, res) => {
     })
 });
 
-
+// Edit recipe route
+router.get('/edit/:id', ensureAuthenticated, (req, res) => {
+    Recipe.findOne({
+        _id: req.params.id
+    })
+    .then(recipe => {
+        if(recipe.userId != req.user.id){
+            req.flash('error_msg', 'This is not your recipe');
+            res.redirect('/recipes')
+        } else {
+            res.render('recipes/edit', {
+                recipe: recipe
+            })};
+        });
+    });
 
 // Edit recipe form submit
-// router.put('/:id', (req, res) => {
-//     Recipe.findOne({
-//         _id: req.params.id
-//     })
-//     .then(recipe => {
-//         recipe.name = req.body.name;
-//         recipe.ingredients = req.body.ingredients
+router.put('/:id', (req, res) => {
+    Recipe.findOne({
+        _id: req.params.id
+    })
+    .then(recipe => {
+        recipe.ingredients = {
+            name: req.body.ingredient,
+            quantity: req.body.quantity,
+            measurement: req.body.measurement
+        },
+        recipe.instructions = req.body.step
+        recipe.save()
+            .then(recipe => {
+                req.flash('success_msg', 'Recipe updated');
+                res.redirect('/recipes');
+            })
+    })
+})
+       
+// Showcase recipe route
+router.get('/showcase/:name', (req, res) => {
+    Recipe.findOne({
+        name: req.params.name
+    })
+    .then(recipe => {
+        res.render('recipes/showcase', {
+            recipe: recipe
+        })
+    })
+});
 
-//         recipe.name = req.body.recipeName,
-//         recipe.ingredients = {
-//             name: req.body.ingredient,
-//             quantity: req.body.quantity,
-//             measurement: req.body.measurement
-//         },
-//         recipe.instructions = req.body.step
-//         recipe.save()
-//             .then(recipe => {
-//                 req.flash('success_msg', 'Recipe updated');
-//                 res.redirect('/recipes');
-//             })
-//     })
-// })
+// Showcase recipe from favorites route
+router.get('/showcase2/:id', ensureAuthenticated, (req,res) => {
+    User.findOne({
+        _id: req.user.id
+    })
+    .populate('favorites.live')
+    .then(
+        user => {
+        for(let i=0; i<user.favorites.length; i++){
+            if(user.favorites[i].static._id == req.params.id){
+                let recipe = user.favorites[i]
+                res.render('recipes/showcase2', {
+                    recipe:recipe
+                })
+            }
+        }
+    }
+    )})
 
-// Delete Recipe DONE
+// Delete Recipe
 router.delete('/:id', (req,res) => {
     Recipe.findOne({
         _id: req.params.id
@@ -152,7 +136,7 @@ router.delete('/:id', (req,res) => {
     })
 })
 
-// Favorite Recipe DONE
+// Favorite Recipe
 router.get('/:id', (req, res) => {
     Recipe.findOne({
         _id: req.params.id
@@ -204,15 +188,12 @@ router.get('/:id', (req, res) => {
 
 // Unfavorite Recipe 
 router.get('/favorites/:id', (req,res) => {
-    //THIS WORKS
     User.findOne({
         _id: req.user.id
     })
     .then(user => {
         for(let i=0; i<user.favorites.length; i++){
             if(user.favorites[i].live == req.params.id){
-                // let recipe = user.favorites[i];
-                // console.log(recipe)
                 User.updateOne({_id: req.user.id}, {$pull: {"favorites": user.favorites[i]}})
                 .then(()=> {
    req.flash('success_msg', 'Entry removed from favorites')
@@ -221,10 +202,6 @@ router.get('/favorites/:id', (req,res) => {
             }
         }
     })
-
-
-
-    
     .catch(err=> console.log(err))
 })
 

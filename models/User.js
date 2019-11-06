@@ -32,31 +32,18 @@ const UserSchema = new Schema({
             ref: 'recipes'
         }
     }],
-
-
-    // favorites: {
-    //     type: Array,
-    //     required: false,
-    // },
     score: {
         type: Number,
         required: false
     },
     following: [{
-       
             type: Schema.Types.ObjectId,
             ref: 'users'
-        
-       
     }],
     followers: [{
         type: Schema.Types.ObjectId,
         ref: 'users'
     }],
-    // followers: {
-    //     type: Array,
-    //     required: false
-    // },
     date: {
         type: Date,
         default: Date.now

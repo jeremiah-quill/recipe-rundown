@@ -9,20 +9,16 @@
         
         <!--View Btn-->
         <a href="#" data-toggle="modal" data-target="#{{static._id}}" class="btn btn-primary"><i class="fa fa-eye"></i></a>
-        {{!-- <a href="#" data-toggle="modal" data-target="#updated{{live._id}}" class="btn btn-success"><i class="fa fa-cloud-download"></i></a> --}}
+
         <!--Edit Btn-->
         <!-- privateEdit user ../user/id id -->
         
-        <!--Delete Btn-->
-        {{!-- {{{privateDelete user ../user/id id}}} --}}
-        
-        <!-- Favorite Btn -->
+        <!-- Remove Favorite Btn -->
         <a href="#" data-toggle="modal" data-target="#remove{{static._id}}" class="btn btn-danger ml-auto"><i class="fa fa-trash"></i></a>
         
       </div>  
       <img src="/public/healthyCoverPhoto.jpg" class="card-img-top" alt="...">
       <div class="card-body">
-        {{!-- <p class="card-text"><a href="/recipes/showcase/{{name}}">{{name}}</a></p> --}}
         <p class="card-text"><a href="/recipes/showcase2/{{static._id}}">{{static.name}}</a></p>
         <p class="card-text"><small class="text-muted">By: {{static.username}} <a href="/follow/{{static.userId}}"><i class="fa fa-user-plus"></i></a></small></p>
       </div>
@@ -38,7 +34,6 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">{{static.name}} <button type="button" class=' ml-3 btn btn-sm btn-success updateBtn'><i class="fa fa-retweet"></i></button></h5>
-        
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -61,27 +56,6 @@
   </div>
 </div>
 
-<!-- Preview Modal -->
-{{!-- <div class="modal fade" id="updated{{static._id}}" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">{{live.name}}</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-         {{{arrayLoop live.ingredients.quantity live.ingredients.measurement live.ingredients.name}}}
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div> --}}
-
-
 <!-- Confirm Remove favorite Modal -->
 <div class="modal fade" id="remove{{static._id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -97,10 +71,8 @@
       </div>
       <div class="modal-footer">   
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        {{!-- <form action="/recipes/{{_id}}?_method=DELETE" method="post"> --}}
           <a href="/recipes/favorites/{{static._id}}" class="btn btn-danger">Confirm
           </a>
-        {{!-- </form>  --}}
       </div>
     </div>
   </div>

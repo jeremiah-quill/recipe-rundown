@@ -5,10 +5,7 @@
         <div class="row">
             <div class="col-md-3 whatINeed">
                 <h5 class="text-center mb-3">What I need</h5>
-             
-                   
                     {{{arrayLoop recipe.ingredients.quantity recipe.ingredients.measurement recipe.ingredients.name}}}
-                
             </div>
             <div class="col-md-9">
                 <h5 class="text-center mb-3">What I do</h5>
@@ -16,7 +13,6 @@
                     {{#each recipe.instructions}}
                     <li class="ml-5">{{this}}</li>
                     {{/each}}
-
                 </ol>
             </div>
         </div>

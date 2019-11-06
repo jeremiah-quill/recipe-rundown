@@ -4,11 +4,6 @@ const addIngredientBtn = document.querySelector('.addIngredientBtn');
 const instructionContainer = document.querySelector('.instructionContainer');
 const addInstructionBtn = document.querySelector('.addInstructionBtn');
 
-
-// body.addEventListener('click', (e) =>{
-//     console.log(e.target)
-// })
-
 addIngredientBtn.addEventListener('click', addIngredient)
 body.addEventListener('click', deleteIngredient)
 
@@ -46,6 +41,11 @@ function addIngredient() {
         <option value="Tsp">Tsp</option>
         <option value="Tbsn">Tbsn</option>
         <option value="Oz">Oz</option>
+        <option value="Lb">Lb</option>
+        <option value="Package">Package</option>
+        <option value="Stick">Stick</option>
+        <option value="Can">Can</option>
+        <option value="Jar">Jar</option>
         <option value="Cup">Cup</option>
         <option value="Pint">Pint</option>
         <option value="Qt">Qt</option>

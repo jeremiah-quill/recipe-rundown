@@ -7,11 +7,7 @@
                 <div>
                     {{{arrayLoop recipe.static.ingredients.quantity recipe.static.ingredients.measurement recipe.static.ingredients.name}}}
                 </div>
-                {{!-- <div>
 
-                    {{{arrayLoop recipe.live.ingredients.quantity recipe.live.ingredients.measurement recipe.live.ingredients.name}}}
-
-                </div> --}}
             </div>
             <div class="col-md-9">
                 <h5 class="text-center mb-3">What I do</h5>
@@ -22,14 +18,6 @@
                     {{/each}}
                 </ol>
                 
-                
-                {{!-- <ol >
-                    {{#each recipe.live.instructions}}
-                    <li class="ml-5">{{this}}</li>
-                    {{/each}}
-                </ol> --}}
-               
-
             </div>
         </div>
         <hr>
@@ -67,45 +55,11 @@
             </div>
         </div>
             {{else}}
-<p>The original recipe has been deleted...keep this favorite safe!</p>
-{{/if}}
+            <p>The original recipe has been deleted...keep this favorite safe!</p>
+            {{/if}}
     </div>
 
 </div>
 
 
-{{!-- {{#if recipe.live}}
-<div class="liveContainer d-none live">
-<div class="card">
-    <div class="card-header text-center"><h4>{{recipe.static.name}}<button class="btn btn-success ml-3 updateBtn"><i class="fa fa-retweet"></i></button></h4></div>
-    <div class="card-body live d-none">
-        <div class="row">
-            <div class="col-md-3 whatINeed">
-                <h5 class="text-center mb-3">What I need</h5>
-                    {{{arrayLoop recipe.live.ingredients.quantity recipe.live.ingredients.measurement recipe.live.ingredients.name}}}
-            </div>
-            <div class="col-md-9">
-                <h5 class="text-center mb-3">What I do</h5>
-                <ol>
-                    {{#each recipe.live.instructions}}
-                    <li class="ml-5">{{this}}</li>
-                    {{/each}}
-
-                </ol>
-            </div>
-        </div>
-        <hr>
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <h5>What I think</h5>
-                Notes will go here
-            </div>
-        </div>
-    </div>
-</div>
-</div>
-{{else}}
-<p>The original recipe has been deleted...keep this favorite safe!</p>
-{{/if}} --}}
-
-<script src='/public/showcase2.js'></script>
+<script src='/public/favorites.js'></script>
