@@ -1,20 +1,29 @@
 
 <div class="favoriteContainer">
 <div class="card">
-    <div class="card-header text-center"><h4>{{recipe.name}}</h4></div>
+    <div class="card-header text-center"><h4>{{recipe.static.name}}<button class="btn btn-success ml-3 updateBtn"><i class="fa fa-retweet"></i></button></h4></div>
     <div class="card-body">
         <div class="row">
             <div class="col-md-3 whatINeed">
                 <h5 class="text-center mb-3">What I need</h5>
-                    {{{arrayLoop recipe.ingredients.quantity recipe.ingredients.measurement recipe.ingredients.name}}}
+                <div class="static">
+                    {{{arrayLoop recipe.static.ingredients.quantity recipe.static.ingredients.measurement recipe.static.ingredients.name}}}
+                </div>
+                <div class="d-none live">
+                    {{{arrayLoop recipe.live.ingredients.quantity recipe.live.ingredients.measurement recipe.live.ingredients.name}}}
+                </div>
             </div>
             <div class="col-md-9">
                 <h5 class="text-center mb-3">What I do</h5>
-                <ol>
+                <ol class="static">
                     {{#each recipe.static.instructions}}
                     <li class="ml-5">{{this}}</li>
                     {{/each}}
-
+                </ol>
+                <ol class="d-none live">
+                    {{#each recipe.live.instructions}}
+                    <li class="ml-5">{{this}}</li>
+                    {{/each}}
                 </ol>
             </div>
         </div>
@@ -32,17 +41,17 @@
 
 {{!-- <div class="udpatedContainer">
 <div class="card">
-    <div class="card-header text-center"><h4>{{recipe.name}}</h4></div>
+    <div class="card-header text-center"><h4>{{recipe.live.name}}</h4></div>
     <div class="card-body">
         <div class="row">
             <div class="col-md-3 whatINeed">
                 <h5 class="text-center mb-3">What I need</h5>
-                    {{{arrayLoop recipe.ingredients.quantity recipe.ingredients.measurement recipe.ingredients.name}}}
+                    {{{arrayLoop recipe.live.ingredients.quantity recipe.live.ingredients.measurement recipe.live.ingredients.name}}}
             </div>
             <div class="col-md-9">
                 <h5 class="text-center mb-3">What I do</h5>
                 <ol>
-                    {{#each recipe.instructions}}
+                    {{#each recipe.live.instructions}}
                     <li class="ml-5">{{this}}</li>
                     {{/each}}
 
@@ -59,3 +68,5 @@
     </div>
 </div>
 </div> --}}
+
+<script src='/public/favorites.js'></script>

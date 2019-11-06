@@ -9,7 +9,7 @@
         
         <!--View Btn-->
         <a href="#" data-toggle="modal" data-target="#{{static._id}}" class="btn btn-primary"><i class="fa fa-eye"></i></a>
-        <a href="#" data-toggle="modal" data-target="#updated{{live._id}}" class="btn btn-success"><i class="fa fa-cloud-download"></i></a>
+        {{!-- <a href="#" data-toggle="modal" data-target="#updated{{live._id}}" class="btn btn-success"><i class="fa fa-cloud-download"></i></a> --}}
         <!--Edit Btn-->
         <!-- privateEdit user ../user/id id -->
         
@@ -37,7 +37,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">{{static.name}} <button type="button" class=' ml-3 btn btn-sm btn-dark updateBtn'>Update</button></h5>
+        <h5 class="modal-title">{{static.name}} <button type="button" class=' ml-3 btn btn-sm btn-success updateBtn'><i class="fa fa-retweet"></i></button></h5>
         
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -78,7 +78,7 @@
 
 
 <!-- Confirm Remove favorite Modal -->
-<div class="modal fade" id="remove{{_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="remove{{static._id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -88,12 +88,12 @@
         </button>
       </div>
       <div class="modal-body">
-        Do you really want to remove "{{name}}" from favorites?  If {{username}} has deleted this recipe from their cookbook, you will not be able to find it again.
+        Do you really want to remove "{{static.name}}" from favorites?  If {{static.username}} has deleted this recipe from their cookbook, you will not be able to find it again.
       </div>
       <div class="modal-footer">   
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
         {{!-- <form action="/recipes/{{_id}}?_method=DELETE" method="post"> --}}
-          <a href="/recipes/favorites/{{_id}}" class="btn btn-danger">Confirm
+          <a href="/recipes/favorites/{{static._id}}" class="btn btn-danger">Confirm
           </a>
         {{!-- </form>  --}}
       </div>

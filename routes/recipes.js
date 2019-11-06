@@ -65,41 +65,22 @@ router.get('/showcase2/:id', (req,res) => {
     User.findOne({
         _id: req.user.id
     })
-    .then(user => {
+    .populate('favorites.live')
+    .then(
+        user => {
         for(let i=0; i<user.favorites.length; i++){
-            if(user.favorites[i].live == req.params.id){
+            if(user.favorites[i].live.id == req.params.id){
                 // i think below recipe should be neither static nor live, and I will choose that in handlebars
-                let recipe = user.favorites[i].static
+                let recipe = user.favorites[i]
                 res.render('recipes/showcase2', {
                     recipe:recipe
                 })
             }
         }
-
-    })})
-        
+    }
     
-    // console.log(typeof user.favorites[0]._id))})
-        
-        
-//         {
-//         for(let i=0; i<user.favorites; i++){
-//             if(user.favorites[i]._id == req.params.id){
-//                 let recipe = user.favorites[i].currentRecipe
-//                 console.log(recipe)
-//                 // res.render('recipes/showcaseDeleted', {
-//                 //     recipe: recipe
-//                 // })
-//             }
-//         }
-        
-//     })
-
     
-// })
-
-
-
+    )})
 
 // Recipe Functionality ########################################
 
@@ -229,7 +210,7 @@ router.get('/favorites/:id', (req,res) => {
     })
     .then(user => {
         for(let i=0; i<user.favorites.length; i++){
-            if(user.favorites[i]._id == req.params.id){
+            if(user.favorites[i].live == req.params.id){
                 // let recipe = user.favorites[i];
                 // console.log(recipe)
                 User.updateOne({_id: req.user.id}, {$pull: {"favorites": user.favorites[i]}})

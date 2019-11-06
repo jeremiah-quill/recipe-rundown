@@ -1,13 +1,15 @@
-const updateBtn = document.querySelector('.updateBtn');
-const live = document.querySelector('.live');
-const static = document.querySelector('.static');
+const updateBtn = document.getElementsByClassName('updateBtn');
+const live = document.getElementsByClassName('live');
+const static = document.getElementsByClassName('static');
 
-updateBtn.addEventListener('click', () => {
-    live.classList.toggle('d-none');
-    static.classList.toggle('d-none');
-    if(updateBtn.innerHTML === 'Update'){
-        updateBtn.innerHTML = 'Back'
+for(let i=0; i<updateBtn.length; i++){
+updateBtn[i].addEventListener('click', () => {
+    live[i].classList.toggle('d-none');
+    static[i].classList.toggle('d-none');
+    if(updateBtn[i].innerHTML === '<i class="fa fa-retweet"></i>'){
+        updateBtn[i].innerHTML = '<i class="fa fa-undo"></i>'
     } else {
-        updateBtn.innerHTML = 'Update'
+        updateBtn[i].innerHTML = '<i class="fa fa-retweet"></i>'
     }
-});
+})
+}
