@@ -5,7 +5,7 @@
 
   <div class="col-md-6 col-lg-4 mb-4"> 
     <div class="card recipeDisplay">
-      <div class="buttonContainer d-flex w-100">
+      <div class="buttonContainer d-none w-100">
         
         <!--View Btn-->
         <a href="#" data-toggle="modal" data-target="#{{static._id}}" class="btn btn-primary"><i class="fa fa-eye"></i></a>
@@ -17,10 +17,16 @@
         <a href="#" data-toggle="modal" data-target="#remove{{static._id}}" class="btn btn-danger ml-auto"><i class="fa fa-trash"></i></a>
         
       </div>  
+
+      {{#if static.image.url}}
+      <img src="{{static.image.url}}" class="card-img-top" alt="...">
+      {{else}}
       <img src="/public/healthyCoverPhoto.jpg" class="card-img-top" alt="...">
+      {{/if}}
+
       <div class="card-body">
         <p class="card-text"><a href="/recipes/showcase2/{{static._id}}">{{static.name}}</a></p>
-        <p class="card-text"><small class="text-muted">By: {{static.username}} <a href="/follow/{{static.userId}}"><i class="fa fa-user-plus"></i></a></small></p>
+        <p class="card-text"><small class="text-muted">By: <a href="/profile/{{static.userId}}">{{static.username}}</a> <a href="/follow/{{static.userId}}"><i class="fa fa-user-plus"></i></a></small></p>
       </div>
     </div>
   </div>
@@ -33,7 +39,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">{{static.name}} <button type="button" class=' ml-3 btn btn-sm btn-success updateBtn'><i class="fa fa-retweet"></i></button></h5>
+        <h5 class="modal-title">{{static.name}} <button type="button" class=' ml-3 btn btn-sm btn-success updateBtn'>Check for updates</button></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -45,7 +51,7 @@
         {{#if live}}
         {{{arrayLoop live.ingredients.quantity live.ingredients.measurement live.ingredients.name}}}
         {{else}}
-        <p>The original recipe has been deleted...keep this favorite safe!</p>
+        <p>The original recipe has been deleted...keep this favorite safe or it will be lost forever!</p>
         {{/if}}
 
       </div>
@@ -67,7 +73,7 @@
         </button>
       </div>
       <div class="modal-body">
-        Do you really want to remove "{{static.name}}" from favorites?  If {{static.username}} has deleted this recipe from their cookbook, you will not be able to find it again.
+        Do you really want to remove "{{static.name}}" from favorites?  If {{static.username}} deletes this recipe from their cookbook, you will not be able to find it again.
       </div>
       <div class="modal-footer">   
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -81,7 +87,7 @@
 {{else}}
 <div class="card w-75 mx-auto"> 
 <div class="card-body text-center">
-  You have no favorites yet
+  You have no favorites
 </div>
 </div>
 {{/if}}
@@ -90,6 +96,7 @@
 
 
 <script src='/public/favorites.js'></script>
+<script src='/public/button-js.js'></script>
 
 
 

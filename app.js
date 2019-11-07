@@ -6,6 +6,11 @@ const flash = require('connect-flash');
 const session = require('express-session');
 const methodOverride = require('method-override');
 const bodyParser = require('body-parser');
+const multer = require("multer");
+const cloudinary = require("cloudinary");
+const cloudinaryStorage = require("multer-storage-cloudinary");
+
+
 // // Load Recipe Model
 require('./models/Recipe');
 const Recipe = mongoose.model('recipes');
@@ -53,8 +58,8 @@ const hbs = exphbs.create({
                         </div>
                         <div class="form-group col-3">
                             
-                            <select name="measurement" class="custom-select measurement" value="${measurementArray[i]}">
-                                <option selected ></option>
+                            <select name="measurement" class="custom-select measurement">
+                                <option selected >${measurementArray[i]}</option>
                                 <option value="Drop">Drop</option>
                                 <option value="Tsp">Tsp</option>
                                 <option value="Tbsn">Tbsn</option>
@@ -132,6 +137,21 @@ app.set('view engine', 'handlebars');
 // Body parser middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+cloudinary.config({
+    cloud_name: 'dww49dex1',
+    api_key: '487467146668313',
+    api_secret: 'rNImiqE4Ml81RHV5cJOqW1l9A24'
+    });
+    const storage = cloudinaryStorage({
+    cloudinary: cloudinary,
+    folder: "demo",
+    allowedFormats: ["jpg", "png"],
+    transformation: [{ width: 348, height: 236.81, crop: "limit" }]
+    });
+    const parser = multer({ storage: storage });
+
+
 
 // Method Override middleware
 app.use(methodOverride('_method'));

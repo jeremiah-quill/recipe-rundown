@@ -1,5 +1,5 @@
 <div class="card">
-    <div class="card-header text-center"><h4>{{recipe.static.name}}<button class="btn btn-success ml-3 updateBtn"><i class="fa fa-retweet"></i></button></h4></div>
+    <div class="card-header text-center"><h4>{{recipe.static.name}}<button class="btn btn-success ml-3 updateBtn">Check for updates</button></h4></div>
     <div class="card-body static">
         <div class="row">
             <div class="col-md-3 whatINeed">
@@ -21,12 +21,12 @@
             </div>
         </div>
         <hr>
-        <div class="row">
+        {{!-- <div class="row">
             <div class="col-md-12 text-center">
                 <h5>What I think</h5>
                 Notes will go here
             </div>
-        </div>
+        </div> --}}
     </div>
 
     
@@ -48,12 +48,12 @@
             </div>
         </div>
         <hr>
-        <div class="row">
+        {{!-- <div class="row">
             <div class="col-md-12 text-center">
                 <h5>What I think</h5>
                 Notes will go here
             </div>
-        </div>
+        </div> --}}
             {{else}}
             <p>The original recipe has been deleted...keep this favorite safe!</p>
             {{/if}}

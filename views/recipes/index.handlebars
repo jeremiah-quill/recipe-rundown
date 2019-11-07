@@ -4,7 +4,7 @@
 
   <div class="col-md-6 col-lg-4 mb-4"> 
     <div class="card recipeDisplay">
-      <div class="buttonContainer d-flex w-100">
+      <div class="buttonContainer d-none w-100">
         
         <!--View Btn-->
         <a href="#" data-toggle="modal" data-target="#{{id}}" class="btn btn-primary"><i class="fa fa-eye"></i></a>
@@ -20,11 +20,18 @@
         <a href="/recipes/{{id}}" class="btn btn-light ml-auto"><i class="fa fa-star" style="color: gold"></i></a>
         {{/if}}
 
-      </div>  
-      <img src="/public/healthyCoverPhoto.jpg" class="card-img-top" alt="...">
+      </div>
+{{!-- 
+      {{#if image.url}} --}}
+      <img src="{{image.url}}" class="card-img-top" alt="...">
+      {{!-- {{else}}
+      <img src="../public/healthyCoverPhoto.jpg" class="card-img-top" alt="...">
+      {{/if}} --}}
+
+
       <div class="card-body">
         <p class="card-text"><a href="/recipes/showcase/{{name}}">{{name}}</a></p>
-        <p class="card-text"><small class="text-muted">By: {{username}} <a href="/follow/{{userId}}"><i class="fa fa-user-plus"></i>
+        <p class="card-text"><small class="text-muted">By: <a href="/profile/{{userId}}">{{username}}</a> <a href="/follow/{{userId}}"><i class="fa fa-user-plus"></i>
 </a></small></p>
       </div>
     </div>
@@ -78,9 +85,9 @@
 </div>
 {{/each}}
 {{else}}
-<div class="card"> 
-<div class="card-body">
-  No recipes added.
+<div class="card w-75 mx-auto"> 
+<div class="card-body text-center">
+  To get started, add a recipe with the green button in the bottom right of the screen
 </div>
 </div>
 
@@ -88,6 +95,10 @@
 
 
 {{/if}}
+
+
+
+<script src='/public/button-js.js'></script>
 
 
 

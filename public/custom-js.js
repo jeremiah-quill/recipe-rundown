@@ -4,6 +4,10 @@ const addIngredientBtn = document.querySelector('.addIngredientBtn');
 const instructionContainer = document.querySelector('.instructionContainer');
 const addInstructionBtn = document.querySelector('.addInstructionBtn');
 
+
+
+
+
 addIngredientBtn.addEventListener('click', addIngredient)
 body.addEventListener('click', deleteIngredient)
 

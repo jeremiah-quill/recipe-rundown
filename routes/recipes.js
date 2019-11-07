@@ -2,6 +2,17 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const {ensureAuthenticated} = require('../helpers/auth');
+const multer = require("multer");
+const cloudinary = require("cloudinary");
+const cloudinaryStorage = require("multer-storage-cloudinary");
+const storage = cloudinaryStorage({
+    cloudinary: cloudinary,
+    folder: "demo",
+    allowedFormats: ["jpg", "png"],
+    transformation: [{ width: 348, height: 236.81, crop: "limit" }]
+    });
+    const parser = multer({ storage: storage });
+
 
 // // Load Recipe Model
 require('../models/Recipe');
@@ -28,11 +39,16 @@ router.get('/add',  ensureAuthenticated, (req, res) => {
 });
 
 // Add recipe form submit
-router.post('/add', (req, res) => {
+router.post('/add', parser.single("image"), (req, res) => {
+  if(req.file){
     const newRecipe = {
         name: req.body.recipeName,
         userId: req.user.id,
         username: req.user.username,
+        image: {
+            url: req.file.url,
+            // id: req.file.public_id
+        },
         ingredients: {
             name: req.body.ingredient,
             quantity: req.body.quantity,
@@ -42,10 +58,35 @@ router.post('/add', (req, res) => {
     }
     new Recipe(newRecipe)
     .save()
-    .then(recipe => {
+    .then(() => {
         req.flash('success_msg', 'Recipe added');
         res.redirect('/recipes')
     })
+  } else {
+    const newRecipe = {
+        name: req.body.recipeName,
+        userId: req.user.id,
+        username: req.user.username,
+        image: {
+            url: '../public/placeholder.png',
+            // id: req.file.public_id
+        },
+        ingredients: {
+            name: req.body.ingredient,
+            quantity: req.body.quantity,
+            measurement: req.body.measurement
+        },
+        instructions: req.body.step
+    }
+    new Recipe(newRecipe)
+    .save()
+    .then(() => {
+        req.flash('success_msg', 'Recipe added');
+        res.redirect('/recipes')
+    })
+  }
+
+
 });
 
 // Edit recipe route
@@ -65,11 +106,15 @@ router.get('/edit/:id', ensureAuthenticated, (req, res) => {
     });
 
 // Edit recipe form submit
-router.put('/:id', (req, res) => {
+router.put('/:id', parser.single("image"), (req, res) => {
     Recipe.findOne({
         _id: req.params.id
     })
     .then(recipe => {
+        // recipe.image = {
+        //     url: req.file.url,
+        //     id: req.file.public_id
+        // },
         recipe.ingredients = {
             name: req.body.ingredient,
             quantity: req.body.quantity,

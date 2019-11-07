@@ -62,6 +62,10 @@ font-family: 'Nunito', sans-serif;
     font-family: 'Nunito', sans-serif;
 }
 
+body {
+    background-color: gainsboro;
+}
+
 .btn {
     border-radius: 3px;
 }
@@ -85,6 +89,17 @@ font-family: 'Nunito', sans-serif;
 .recipeList li {
     list-style-type: none;
 }
+
+.nav-item a {
+    color: orange;
+}
+
+.card-img-top {
+    max-height: 300px;
+}
+
+
+
 
 
 

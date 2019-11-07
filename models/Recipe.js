@@ -41,6 +41,17 @@ const RecipeSchema = new Schema({
         //     type: Number,
         //     required: false
         // },
+        image: {
+            url: {
+                type: String,
+                required: false,
+                default: '../public/healthyCoverPhoto.jpg'
+            },
+            // id: {
+            //     type: String,
+            //     required: false
+            // }
+        },
         date: {
             type: Date,
             default: Date.now

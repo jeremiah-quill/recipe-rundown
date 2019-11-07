@@ -6,10 +6,10 @@ for(let i=0; i<updateBtn.length; i++){
 updateBtn[i].addEventListener('click', () => {
     live[i].classList.toggle('d-none');
     static[i].classList.toggle('d-none');
-    if(updateBtn[i].innerHTML === '<i class="fa fa-retweet"></i>'){
-        updateBtn[i].innerHTML = '<i class="fa fa-undo"></i>'
+    if(updateBtn[i].innerHTML === 'Check for updates'){
+        updateBtn[i].innerHTML = 'Back to favorite'
     } else {
-        updateBtn[i].innerHTML = '<i class="fa fa-retweet"></i>'
+        updateBtn[i].innerHTML = 'Check for updates'
     }
 })
 }
