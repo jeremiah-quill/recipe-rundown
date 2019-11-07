@@ -53,6 +53,15 @@ img.bg {
     font-family: 'Liu Jian Mao Cao', cursive;
 }
 
+
+.navbar{
+font-family: 'Nunito', sans-serif;
+}
+
+* {
+    font-family: 'Nunito', sans-serif;
+}
+
 .btn {
     border-radius: 3px;
 }
@@ -61,9 +70,9 @@ img.bg {
     border-right: 1px solid black;
 }
 
-.navbar-nav {
+/* .navbar-nav {
     padding: 20px;
-}
+} */
 
 .navbar-nav li {
     margin-right: 10px;
@@ -76,6 +85,7 @@ img.bg {
 .recipeList li {
     list-style-type: none;
 }
+
 
 
 

@@ -1,22 +1,22 @@
-<h1 class="mx-auto text-center">{{user.username}}'s Dashboard</h1>
+<h2 class="mx-auto text-center page-title mb-5">{{user.username}}'s Dashboard</h2>
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-9">
         <div class="card">
-            <div class="card-body">
+            <div class="card-body p-0">
                 <ul class="list-group list-group-flush recipeList">
                     {{#if recipe}}
                     {{#each recipe}}
-                    <a href="/recipes/showcase/{{name}}" class="list-group-item"><li>{{name}}</li></a>
+                    <a href="/recipes/showcase/{{name}}" class="list-group-item list-group-item-action text-center">{{name}}</a>
                     {{/each}}
                     {{else}}
-                    <li class="list-group-item">You have no recipes</li>
+                    <li class="list-group-item text-center">You have no recipes</li>
                     {{/if}}
                 </ul>
             </div>
         </div>
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-3">
         <div class="card mb-5">
             <div class="card-header">
             Following
@@ -24,7 +24,7 @@
             <ul class="list-group list-group-flush recipeList">
                 {{#if user.following}}
                 {{#each user.following}}
-                <a href="/profile/{{_id}}" class="list-group-item"><li>{{username}}</li></a>
+                <a href="/profile/{{_id}}" class="list-group-item list-group-item-action">{{username}}</a>
                 {{/each}}
                 {{else}}
                 <li class="list-group-item">You are not following anyone</li>
@@ -35,15 +35,15 @@
 </div>
 
 <div class="row">
-    <div class="col-md-6">
+    {{!-- <div class="col-md-6">
         <div class="card">
             <div class="card-body">
                 Something else will go here
             </div>
         </div>
-    </div>
+    </div> --}}
 
-    <div class="col-md-6">
+    <div class="col-md-3 ml-auto">
         <div class="card mb-5">
             <div class="card-header">
             Followers
@@ -51,7 +51,7 @@
             <ul class="list-group list-group-flush recipeList">
                 {{#if user.followers}}
                 {{#each user.followers}}
-                <a href="/profile/{{_id}}" class="list-group-item"><li>{{username}}</li></a>
+                <a href="/profile/{{_id}}" class="list-group-item list-group-item-action"><li>{{username}}</li></a>
                 {{/each}}
                 {{else}}
                 <li class="list-group-item">No followers</li>
