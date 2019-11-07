@@ -41,23 +41,23 @@ function addIngredient() {
     
     <select name="measurement" class="custom-select measurement">
         <option selected></option>
-        <option value="Drop">Drop</option>
-        <option value="Tsp">Tsp</option>
-        <option value="Tbsn">Tbsn</option>
-        <option value="Oz">Oz</option>
-        <option value="Lb">Lb</option>
-        <option value="Package">Package</option>
-        <option value="Stick">Stick</option>
-        <option value="Can">Can</option>
-        <option value="Jar">Jar</option>
-        <option value="Cup">Cup</option>
-        <option value="Pint">Pint</option>
-        <option value="Qt">Qt</option>
-        <option value="Gal">Gal</option>
-        <option value="ML">ML</option>
+        <option value="tsp.">tsp.</option>
+        <option value="tbsp.">tbsp.</option>
+        <option value="oz">oz</option>
+        <option value="cups">cups</option>
+        <option value="pints">pints</option>
+        <option value="quarts">quarts</option>
+        <option value="gallons">gallons</option>
+        <option value="mL">mL</option>
         <option value="L">L</option>
-        <option value="Pinch">Pinch</option>
-        <option value="Piece">Piece</option>
+        <option value="lb">lb</option>
+        <option value="drops">drops</option>
+        <option value="pinches">pinches</option>
+        <option value="sticks">sticks</option>
+        <option value="sprigs">sprigs</option>
+        <option value="cans">cans</option>
+        <option value="jars">jars</option>
+        <option value="pieces">pieces</option>
     </select>
 </div>
 <div class="form-group col-5">
