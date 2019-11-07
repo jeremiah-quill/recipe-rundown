@@ -3,10 +3,18 @@
 <div class="jumbotron-fluid text-center">
     <div class="container">
   <h1 class="display-4">Welcome to Mom's Cookbook</h1>
-  <p class="lead">Create</p>
-  <p class="lead">Discover</p>
-  <p class="lead">Share</p>
-  <p class="lead">Never Forget</p>
+
+<div class="container welcomeContainer mb-3">
+  <div class="row">
+    <div class="col-6">  Create <i class="fa fa-pencil"></i></div>
+    <div class="col-6">Discover<i class="fa fa-eye"></i></div>
+  </div>
+   <div class="row">
+    <div class="col-6">Share<i class="fa fa-share"></i></div>
+    <div class="col-6">Manage<i class="fa fa-tasks"></i></div>
+  </div>
+
+  </div>
     
   {{#unless user}}
   <a class="btn btn-light btn-lg" href="register" role="button">Register</a>
