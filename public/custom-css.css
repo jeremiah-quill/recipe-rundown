@@ -114,6 +114,10 @@ body {
     flex-direction: column;
 }
 
+ .nav-color {
+     color: orange;
+ }
+
 
 
 

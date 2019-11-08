@@ -54,7 +54,7 @@ const hbs = exphbs.create({
                 <div class="form-row">
                         <div class="form-group col-2">
                             
-                            <input name="quantity" step="0.5" type="number" class="form-control" value="${quantityArray[i]}">
+                            <input name="quantity" step="0.01" type="number" class="form-control" value="${quantityArray[i]}">
                         </div>
                         <div class="form-group col-3">
                             

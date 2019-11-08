@@ -35,7 +35,7 @@ function addIngredient() {
     newIngredient.innerHTML = 
     `<div class="form-group col-2">
                        
-    <input name="quantity" type="number" class="form-control">
+    <input name="quantity" type="number" step="0.01" class="form-control">
 </div>
 <div class="form-group col-3">
     
