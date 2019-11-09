@@ -53,6 +53,19 @@ img.bg {
     font-family: 'Liu Jian Mao Cao', cursive;
 } */
 
+/* .carousel {
+    margin: 0px 300px 300px;
+} */
+
+.carousel-control {
+    margin: 125px 0;
+}
+
+.recipe-thumb {
+    width: 82px;
+    height: auto;
+}
+
 
 .navbar{
 font-family: 'Nunito', sans-serif;

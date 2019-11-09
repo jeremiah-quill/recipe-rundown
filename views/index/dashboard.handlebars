@@ -6,7 +6,56 @@
                 <ul class="list-group list-group-flush recipeList">
                     {{#if recipe}}
                     {{#each recipe}}
-                    <a href="/recipes/showcase/{{name}}" class="list-group-item list-group-item-action text-center">{{name}}</a>
+
+                    <li class="list-group-item list-group-item-action d-flex p-0">
+                    <a href="/recipes/showcase/{{name}}" class="list-group-item-action">
+                    
+                    
+
+                          {{#if image.url}}
+      <img src="{{image.url}}" alt="" class="recipe-thumb">
+      {{else}}
+      <img src="../public/placeholder.png" class="recipe-thumb" alt="...">
+      {{/if}}
+
+                    <span class="ml-3">{{name}}</span>
+                    
+                    
+                    </a>
+ <div class='d-flex flex-column justify-content-center w-25'>
+                        <a href="/recipes/edit/{{id}}" class="btn btn-warning"><i class="fa fa-pencil" ></i></a>
+                        <a href="#" data-toggle="modal" data-target="#del{{id}}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+
+                    </div>  
+                    </li>
+
+                    <!-- Confirm Delete Modal -->
+<div class="modal fade" id="del{{id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Confirm</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Do you really want to delete "{{name}}"?  This action cannot be undone.
+      </div>
+      <div class="modal-footer">   
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <form action="/recipes/{{id}}?_method=DELETE" method="post">
+          <button type="submit" class="btn btn-danger">Confirm
+          </button>
+        </form> 
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
                     {{/each}}
                     {{else}}
                     <li class="list-group-item text-center">To get started, add a recipe with the green button in the bottom right of the screen</li>

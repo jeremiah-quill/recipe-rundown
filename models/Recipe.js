@@ -45,7 +45,7 @@ const RecipeSchema = new Schema({
             url: {
                 type: String,
                 required: false,
-                default: '../public/healthyCoverPhoto.jpg'
+                // default: '../public/healthyCoverPhoto.jpg'
             },
             // id: {
             //     type: String,

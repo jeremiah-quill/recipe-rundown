@@ -1,6 +1,8 @@
 
 <div class="card">
     <div class="card-header text-center"><h4>{{recipe.name}}</h4></div>
+    <div class="card-header text-center"><a href="/profile/{{recipe.userId}}"><h6>More from {{recipe.username}}</h6></a></div>
+
     <div class="card-body">
         <div class="row">
             <div class="col-md-3 whatINeed">
@@ -19,7 +21,7 @@
         <hr>
         {{!-- <div class="row">
             <div class="col-md-12 text-center">
-                <h5>What I think</h5>
+                <h5>What I think</h5>           
                 Notes will go here
             </div>
         </div> --}}
