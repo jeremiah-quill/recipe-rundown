@@ -60,7 +60,7 @@ router.post('/add', parser.single("image"), (req, res) => {
     .save()
     .then(() => {
         req.flash('success_msg', 'Recipe added');
-        res.redirect('/recipes')
+        res.redirect('/dashboard')
     })
   } else {
     const newRecipe = {
@@ -82,7 +82,7 @@ router.post('/add', parser.single("image"), (req, res) => {
     .save()
     .then(() => {
         req.flash('success_msg', 'Recipe added');
-        res.redirect('/recipes')
+        res.redirect('/dashboard')
     })
   }
 
@@ -141,14 +141,8 @@ router.put('/:id', parser.single("image"), (req, res) => {
                 req.flash('success_msg', 'Recipe updated');
                 res.redirect('/dashboard');
             })
-
-
-
-
     }
 }
-    
-    
     )
 })
        
@@ -231,7 +225,7 @@ router.get('/:id', (req, res) => {
                 })
                 .then(() => {
                     req.flash('success_msg', 'Recipe added to favorites');
-                    res.redirect('/recipes')
+                    res.redirect('/favorites')
                 })
             }
         } else {
