@@ -57,21 +57,18 @@ img.bg {
     margin: 0px 300px 300px;
 } */
 
-.carousel-control {
-    margin: 125px 0;
-}
 
 .recipe-thumb {
-    width: 75px;
+    width: 90px;
     height: auto;
     justify-content: center;
     
 }
 
 
-.navbar{
+/* .navbar{
 font-family: 'Nunito', sans-serif;
-}
+} */
 
 * {
     font-family: 'Nunito', sans-serif;
@@ -116,7 +113,7 @@ body {
 }
 
 .card-img-top {
-    max-height: 300px;
+    height: 300px;
 }
 
 

@@ -5,18 +5,18 @@
     <div class="card-body static">
         <div class="row">
             <div class="col-md-3 whatINeed">
-                <h5 class="text-center mb-3">What I need</h5>
+                <h5 class="text-center mb-3">What you need</h5>
                 <div>
                     {{{arrayLoop recipe.static.ingredients.quantity recipe.static.ingredients.measurement recipe.static.ingredients.name}}}
                 </div>
 
             </div>
             <div class="col-md-9">
-                <h5 class="text-center mb-3">What I do</h5>
+                <h5 class="text-center mb-3">What to do</h5>
                
-                <ol >
+                <ol>
                     {{#each recipe.static.instructions}}
-                    <li class="ml-5">{{this}}</li>
+                    <li class="ml-5 text-blue">{{this}}</li>
                     {{/each}}
                 </ol>
                 

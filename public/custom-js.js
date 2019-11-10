@@ -51,6 +51,13 @@ function addIngredient() {
         <option value="mL">mL</option>
         <option value="L">L</option>
         <option value="lb">lb</option>
+        <option value="box">box</option>
+        <option value="leaves">leaves</option>
+        <option value="ears">ears</option>
+        <option value="bunches">bunches</option>
+        <option value="whole">whole</option>
+        <option value="jars">jars</option>
+        <option value="bags">bags</option>
         <option value="drops">drops</option>
         <option value="pinches">pinches</option>
         <option value="sticks">sticks</option>
