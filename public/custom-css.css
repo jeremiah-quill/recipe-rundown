@@ -62,8 +62,10 @@ img.bg {
 }
 
 .recipe-thumb {
-    width: 82px;
+    width: 75px;
     height: auto;
+    justify-content: center;
+    
 }
 
 
@@ -102,6 +104,12 @@ body {
 .recipeList li {
     list-style-type: none;
 }
+
+/* .recipeList li:nth-child(n+2) {
+    margin-top: 10px;
+  } */
+
+
 
 .nav-item a {
     color: orange;

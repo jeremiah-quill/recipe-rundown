@@ -111,7 +111,8 @@ router.put('/:id', parser.single("image"), (req, res) => {
         _id: req.params.id
     })
     .then(recipe => {
-        if(recipe.get('image')){
+        if(recipe.image.url){
+        
         recipe.ingredients = {
             name: req.body.ingredient,
             quantity: req.body.quantity,
@@ -124,7 +125,7 @@ router.put('/:id', parser.single("image"), (req, res) => {
                 res.redirect('/dashboard');
             })
     } else {
-
+       
         recipe.image = {
             url: req.file.url,
             // id: req.file.public_id

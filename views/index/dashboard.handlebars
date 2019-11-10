@@ -7,27 +7,20 @@
                     {{#if recipe}}
                     {{#each recipe}}
 
-                    <li class="list-group-item list-group-item-action d-flex p-0">
-                    <a href="/recipes/showcase/{{name}}" class="list-group-item-action">
-                    
-                    
-
-                          {{#if image.url}}
-      <img src="{{image.url}}" alt="" class="recipe-thumb">
-      {{else}}
-      <img src="../public/placeholder.png" class="recipe-thumb" alt="...">
-      {{/if}}
-
-                    <span class="ml-3">{{name}}</span>
-                    
-                    
+                  <li class="list-group-item list-group-item-action d-flex p-0">
+                    <a href="/recipes/showcase/{{name}}" class="list-group-item-action d-flex">
+                      {{#if image.url}}
+                      <img src="{{image.url}}" alt="" class="recipe-thumb">
+                      {{else}}
+                      <img src="../public/placeholder.png" class="recipe-thumb" alt="...">
+                      {{/if}}
+                     <p class="ml-3 align-self-center mb-0">{{name}}</p>
                     </a>
- <div class='d-flex flex-column justify-content-center w-25'>
-                        <a href="/recipes/edit/{{id}}" class="btn btn-warning"><i class="fa fa-pencil" ></i></a>
-                        <a href="#" data-toggle="modal" data-target="#del{{id}}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
-
+                    <div class='d-flex flex-column justify-content-center w-25'>
+                      <a href="/recipes/edit/{{id}}" class="btn btn-warning"><i class="fa fa-pencil" ></i></a>
+                      <a href="#" data-toggle="modal" data-target="#del{{id}}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                     </div>  
-                    </li>
+                  </li>
 
                     <!-- Confirm Delete Modal -->
 <div class="modal fade" id="del{{id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -52,10 +45,6 @@
     </div>
   </div>
 </div>
-
-
-
-
                     {{/each}}
                     {{else}}
                     <li class="list-group-item text-center">To get started, add a recipe with the green button in the bottom right of the screen</li>
