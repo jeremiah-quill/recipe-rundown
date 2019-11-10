@@ -111,7 +111,7 @@ router.put('/:id', parser.single("image"), (req, res) => {
         _id: req.params.id
     })
     .then(recipe => {
-        if(recipe.image.url){
+        if(!req.file){
         
         recipe.ingredients = {
             name: req.body.ingredient,

@@ -7,14 +7,14 @@
                     <label for="recipeName">Recipe Name</label>
                     <input name="recipeName" value="{{recipe.name}}" type="text" class="form-control" disabled>
                 </div>
-
-                {{#unless recipe.image.url}}
+{{!-- 
+                {{#unless recipe.image.url}} --}}
                 <div class="form-group mt-5">
                     <label for="image">Upload an Image (you can leave blank and upload later)</label>
                     <br>
                       <input type='file' name='image' />
                 </div>
-                {{/unless}}
+                {{!-- {{/unless}} --}}
 
 
 
