@@ -1,7 +1,11 @@
 
 <div class="card">
-    <div class="card-header text-center"><h4>{{recipe.name}}</h4></div>
-    <div class="card-header text-center"><a href="/profile/{{recipe.userId}}"><h6>More from {{recipe.username}}</h6></a></div>
+    <div class="card-header d-flex"><a href="/recipes/{{recipe.id}}" class="btn btn-dark mr-3"><i class="fa fa-star" style="color: gold"></i></a><h4>{{recipe.name}}</h4>
+    
+<div class="ml-auto">
+<a href="/profile/{{recipe.userId}}" class="ml-auto"><button class="btn btn-primary">More from {{recipe.username}}</button></a>    
+</div>
+</div>
 
     <div class="card-body">
         <div class="row">

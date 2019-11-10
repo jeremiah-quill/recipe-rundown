@@ -1,74 +1,17 @@
-<h2 class="mx-auto text-center mb-5">{{profile.username}}'s Profile</h2>
-    {{!-- <div class="profileContainer">
-        <div class="row justify-content-center">
-            <div class="col-4">
-                <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner">
-                        {{#if recipe}}
-                        {{#each recipe}}
-                        <div class="carousel-item active">
-                        <img src="{{this.image.url}}" class="d-block w-100" alt="...">
-                        <a href="/recipes/showcase/{{this.name}}" class="text-center px-5">       
-                            <h5 class="m-0">{{this.name}}</h5>
-                        </a>   
-                        </div>
-                        {{/each}}
-                        {{else}}
-                        <li class="list-group-item text-center">{{profile.username}} has no recipes</li>
-                        {{/if}}
-                    </div>
-                    <a class="carousel-control-prev bg-dark carousel-control" href="#carouselExampleCaptions" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next bg-dark carousel-control" href="#carouselExampleCaptions" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
-                </div>
-
-
-</div></div>
-
-    </div> --}}
-
-
-
-
-
-{{!-- <div class="row">
-    <div class="col-md-12">
-        <div class="card">
-            <div class="card-body p-0">
-                <ul class="list-group list-group-flush recipeList">
-                    {{#if recipe}}
-                    {{#each recipe}}
-                    <a href="/recipes/showcase/{{this.name}}" class="list-group-item list-group-item-action text-center">{{this.name}}</a>
-                    {{/each}}
-                    {{else}}
-                    <li class="list-group-item text-center">{{profile.username}} has no recipes</li>
-                    {{/if}}
-                </ul>
-            </div>
-        </div>
-    </div> --}}
+{{!-- <h2 class="mx-auto text-center mb-5">{{profile.username}}'s Profile</h2> --}}
+<h3 class="fixed-top text-center mx-auto profileRecipes mb-0">{{profile.username}}'s Recipes</h3>
 
 <div class="row recipeRow">
 {{#if recipe}}
 {{#each recipe}}
 
-  <div class="col-md-6 col-lg-4 mb-1"> 
+  <div class="col-md-6 col-lg-4 mb-1 mt-4"> 
     <div class="card recipeDisplay">
       <div class="buttonContainer w-100">
         
         <!--View Btn-->
         <a href="#" data-toggle="modal" data-target="#{{id}}" class="btn btn-primary"><i class="fa fa-eye"></i></a>
         
-        <!--Edit Btn-->
-        {{!-- {{{privateEdit userId ../user/id id}}} --}}
-        
-        <!--Delete Btn-->
-        {{!-- {{{privateDelete userId ../user/id id}}} --}}
         
         <!-- Favorite Btn -->
         {{#if ../user}}
@@ -114,29 +57,7 @@
   </div>
 </div>
 
-<!-- Confirm Delete Modal -->
-{{!-- <div class="modal fade" id="del{{_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Confirm</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        Do you really want to delete "{{name}}"?  This action cannot be undone.
-      </div>
-      <div class="modal-footer">   
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <form action="/recipes/{{_id}}?_method=DELETE" method="post">
-          <button type="submit" class="btn btn-danger">Confirm
-          </button>
-        </form> 
-      </div>
-    </div>
-  </div>
-</div> --}}
+
 {{/each}}
 {{else}}
 <div class="card w-75 mx-auto"> 

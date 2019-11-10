@@ -258,7 +258,7 @@ router.get('/favorites/:id', (req,res) => {
             if(user.favorites[i].live == req.params.id){
                 User.updateOne({_id: req.user.id}, {$pull: {"favorites": user.favorites[i]}})
                 .then(()=> {
-   req.flash('success_msg', 'Entry removed from favorites')
+   req.flash('success_msg', 'Recipe removed from favorites')
         res.redirect('/favorites'); 
                 })
             }

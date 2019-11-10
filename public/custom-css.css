@@ -43,8 +43,12 @@ img.bg {
     margin-top: 40px;
 }
 
+.display-4 {
+    font-family: 'Liu Jian Mao Cao', cursive;
+}
+
 .jumbotron-fluid {
-    margin-top: 100px;
+    margin-top: 80px;
     position: relative;
     color: #fff8dcde;
 }
@@ -59,8 +63,8 @@ img.bg {
 
 
 .recipe-thumb {
-    width: 90px;
-    height: auto;
+    width: 75px;
+    height: 75px;
     justify-content: center;
     
 }
@@ -125,7 +129,7 @@ body {
 .welcomeContainer .col-6 {
     height: 100px;
     width: 100px;
-    border: 1px solid white;
+    border: 1px solid #fff8dcde;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -135,6 +139,26 @@ body {
  .nav-color {
      color: orange;
  }
+
+ /* Style the active class (and buttons on mouse-over) */
+.current  {
+    background-color: lightgray;
+    color: black !important;
+    /* transition: 1000ms */
+    border-radius: 5px;
+  }
+
+  .profileRecipes {
+    margin-top: 56px;
+    background-color: gainsboro;
+    height: 50px; 
+    padding-top: 8px;
+    
+  }
+
+  
+
+
 
 
 

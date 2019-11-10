@@ -1,6 +1,11 @@
 <div class="card">
-    <div class="card-header text-center"><h4>{{recipe.static.name}}<button class="btn btn-success ml-3 updateBtn">Check for updates</button></h4></div>
-        <div class="card-header text-center"><a href="/profile/{{recipe.static.userId}}"><h6>More from {{recipe.static.username}}</h6></a></div>
+    <div class="card-header d-flex"><h4>{{recipe.static.name}}</h4>
+    
+<div class="ml-auto">
+<a href="/profile/{{recipe.static.userId}}" class="ml-auto"><button class="btn btn-primary">More from {{recipe.static.username}}</button></a>    
+<button class="btn btn-secondary updateBtn ml-auto">Check for updates</button></div>
+</div>
+   
 
     <div class="card-body static">
         <div class="row">
@@ -36,11 +41,11 @@
             {{#if recipe.live}}
         <div class="row">
             <div class="col-md-3 whatINeed">
-                <h5 class="text-center mb-3">What I need</h5>
+                <h5 class="text-center mb-3">What you need</h5>
                     {{{arrayLoop recipe.live.ingredients.quantity recipe.live.ingredients.measurement recipe.live.ingredients.name}}}
             </div>
             <div class="col-md-9">
-                <h5 class="text-center mb-3">What I do</h5>
+                <h5 class="text-center mb-3">What to do</h5>
                 <ol>
                     {{#each recipe.live.instructions}}
                     <li class="ml-5">{{this}}</li>
