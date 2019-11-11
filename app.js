@@ -91,7 +91,7 @@ const hbs = exphbs.create({
                             <input name="ingredient" type="text" class="form-control" value="${ingredientArray[i]}">
                         </div>
                         <div class="form-group col-1 d-flex">
-                        <button type="button" class="btn btn-danger mt-auto" style="height: 38px"><i class="fa fa-minus deleteInstructionBtn"></i></button>
+                        <button type="button" class="btn btn-dark mt-auto" style="height: 38px"><i class="fa fa-minus deleteInstructionBtn"></i></button>
                         </div>
                     </div>`
             }
@@ -111,7 +111,7 @@ const hbs = exphbs.create({
                     </div>
                 </div>
                 <div class="form-group col-1 d-flex">
-                <button type="button" class="btn btn-danger mt-auto" style="height: 38px"><i class="fa fa-minus deleteInstructionBtn"></i></button>
+                <button type="button" class="btn btn-dark mt-auto" style="height: 38px"><i class="fa fa-minus deleteInstructionBtn"></i></button>
                 </div>
             </div>`
 

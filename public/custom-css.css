@@ -261,6 +261,10 @@ body {
       color: rgb(198, 168, 97) !important;
   }
 
+  .fa-minus {
+    color: rgb(198, 168, 97) !important;
+  }
+
   .btn-dark:hover {
     background-color: gray;
     border-color: gray;
