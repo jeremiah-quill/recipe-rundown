@@ -72,7 +72,7 @@ function addIngredient() {
     <input name="ingredient" type="text" class="form-control">
 </div>
 <div class="form-group col-1 d-flex">
-    <button type="button" class="btn btn-danger mt-auto" style="height: 38px"><i class="fa fa-minus deleteIngredientBtn"></i></button>
+    <button type="button" class="btn btn-dark mt-auto" style="height: 38px"><i class="fa fa-minus deleteIngredientBtn"></i></button>
 </div>`
 ingredientContainer.appendChild(newIngredient);
 };
@@ -93,7 +93,7 @@ function addInstruction() {
 </div>
 <div class="form-group col-1 d-flex">
 
-    <button type="button" class="btn btn-danger mt-auto" style="height: 38px"><i class="fa fa-minus deleteInstructionBtn"></i></button>
+    <button type="button" class="btn btn-dark mt-auto" style="height: 38px"><i class="fa fa-minus deleteInstructionBtn"></i></button>
 </div>
   
   `
