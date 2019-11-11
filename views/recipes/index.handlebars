@@ -9,11 +9,11 @@
         <!--View Btn-->
         <a href="#" data-toggle="modal" data-target="#{{id}}" class="btn btn-primary"><i class="fa fa-eye"></i></a>
         
-        <!--Edit Btn-->
+        {{!-- <!--Edit Btn-->
         {{{privateEdit userId ../user/id id}}}
         
         <!--Delete Btn-->
-        {{{privateDelete userId ../user/id id}}}
+        {{{privateDelete userId ../user/id id}}} --}}
         
         <!-- Favorite Btn -->
         {{#if ../user}}
@@ -61,7 +61,7 @@
 </div>
 
 <!-- Confirm Delete Modal -->
-<div class="modal fade" id="del{{_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+{{!-- <div class="modal fade" id="del{{_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -82,7 +82,7 @@
       </div>
     </div>
   </div>
-</div>
+</div> --}}
 {{/each}}
 {{else}}
 <div class="card w-75 mx-auto"> 

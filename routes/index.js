@@ -87,8 +87,16 @@ router.get('/register', (req, res) => {
     res.render('users/register');
 });
 
+
+function usernameToLowerCase(req, res, next){
+    req.body.username = req.body.username.toLowerCase();
+    next();
+}
+
+
+
 // Login Post
-router.post('/login', (req, res, next) => {
+router.post('/login', usernameToLowerCase, (req, res, next) => {
     passport.authenticate('local', {
         successRedirect:'/dashboard',
         failureRedirect: '/login',
@@ -96,8 +104,12 @@ router.post('/login', (req, res, next) => {
     })(req, res, next);
 })
 
+
+
+
+
 // Register Post
-router.post('/register', (req, res) => {
+router.post('/register', usernameToLowerCase, (req, res) => {
     let errors = [];
     if(req.body.password !== req.body.password2) {
         errors.push({text:'Passwords do not match'})

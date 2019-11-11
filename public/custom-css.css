@@ -8,6 +8,19 @@
     box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
 }
 
+/* links color */
+a {
+    color: rgb(190, 108, 65);
+  }
+
+  a:hover {
+    color: rgb(217, 138, 95)
+  }
+
+.button-secondary {
+    color: lightgray !important;
+}
+
 .addRecipeFloat {
     position: fixed;
     bottom: 15px;
@@ -98,10 +111,6 @@ body {
     margin-right: 10px;
 }
 
-.active {
-    background-color: white;
-}
-
 .recipeList li {
     list-style-type: none;
 }
@@ -112,8 +121,26 @@ body {
 
 
 
-.nav-item a {
-    color: orange;
+
+.nav-item a:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: rgb(198, 168, 97);
+    visibility: hidden;
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transition: all 0.3s ease-in-out 0s;
+    transition: all 0.3s ease-in-out 0s;
+}
+
+.nav-item a:hover:before {
+    visibility: visible;
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
 }
 
 .card-img-top {
@@ -136,25 +163,122 @@ body {
     flex-direction: column;
 }
 
- .nav-color {
-     color: orange;
- }
+ /* .nav-color {
+     color: lightgray;
+ } */
 
  /* Style the active class (and buttons on mouse-over) */
 .current  {
-    background-color: lightgray;
-    color: black !important;
+    background-color: none !important;
+    color: rgb(198, 168, 97) !important;
     /* transition: 1000ms */
     border-radius: 5px;
   }
 
   .profileRecipes {
     margin-top: 56px;
-    background-color: gainsboro;
+    background-color: rgb(145 59 51);
     height: 50px; 
     padding-top: 8px;
+    color: lightgray;
     
   }
+
+  .nav-item a {
+    color: lightgray;
+    position: relative;
+}
+
+
+   /* delete button */
+  .btn-danger {
+      background-color: #f4d2d4;
+      border-color: #f4d2d4;
+  }
+  .fa-trash {
+      color: black;
+  }
+  .btn-danger:hover .fa-trash{
+      color: white;
+  }
+
+
+/* edit button */
+  .btn-warning {
+      background-color: #e6e6e6;
+      border-color: #e6e6e6;
+  }
+  .fa-pencil {
+    color: black;
+}
+  .btn-danger:hover .fa-pencil{
+      color: white;
+  }
+
+
+/* navbar color */
+  .nav-color {
+      background-color: rgb(101, 117, 100)
+  }
+
+
+
+
+
+/* preview button */
+  .btn-primary {
+    background-color: rgb(145 59 51);
+    border-color: rgb(145 59 51);
+  }
+  .btn-primary .fa-eye {
+      color: lightgray;
+  }
+
+  .btn-primary:hover {
+    background-color: rgb(181, 93, 85);
+    border-color: rgb(181, 93, 85)
+  }
+ 
+
+
+  /* add button */
+  .btn-success {
+      background-color: rgb(145 59 51);
+      border-color: rgb(145 59 51);
+  }
+
+  .btn-success:hover {
+      background-color: rgb(181, 93, 85);
+      border-color: rgb(181, 93, 85)
+  }
+
+  .nav-background {
+      background-color: rgb(75, 84, 74) !important;
+      border-radius: 5px;
+  }
+
+  .fa-star {
+      color: rgb(198, 168, 97) !important;
+  }
+
+  .btn-dark:hover {
+    background-color: gray;
+    border-color: gray;
+  }
+
+  .fa-trash {
+    color: lightgray !important;
+  }
+
+  .fa-pencil {
+      color: lightgray !important;
+  }
+
+  .dashboardBtnContainer {
+      width: 100px;
+  }
+
+
 
   
 

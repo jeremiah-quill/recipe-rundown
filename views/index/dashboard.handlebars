@@ -1,6 +1,6 @@
 {{!-- <h2 class="mx-auto text-center page-title mb-5">{{user.username}}'s Dashboard</h2> --}}
 <div class="row">
-    <div class="col-md-9">
+    <div class="col-md-8">
         <div class="card mb-5">
             <div class="card-body p-0">
               <div class="card-header text-center">
@@ -19,9 +19,9 @@
                       {{/if}}
                      <p class="ml-3 align-self-center mb-0">{{name}}</p>
                     </a>
-                    <div class='d-flex flex-column justify-content-center w-25'>
-                      <a href="/recipes/edit/{{id}}" class="btn btn-warning"><i class="fa fa-pencil" ></i></a>
-                      <a href="#" data-toggle="modal" data-target="#del{{id}}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                    <div class='d-flex flex-column justify-content-center dashboardBtnContainer'>
+                      <a href="/recipes/edit/{{id}}" class="btn btn-primary"><i class="fa fa-pencil" ></i></a>
+                      <a href="#" data-toggle="modal" data-target="#del{{id}}" class="btn btn-dark"><i class="fa fa-trash"></i></a>
                     </div>  
                   </li>
 
@@ -57,7 +57,7 @@
         </div>
     </div>
 
-    <div class="col-md-3">
+    <div class="col-md-4">
         <div class="card mb-5">
             <div class="card-header text-center">
             Following
