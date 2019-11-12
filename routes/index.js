@@ -258,7 +258,7 @@ router.get('/follow/:id', ensureAuthenticated, async (req, res) => {
 // Logout
 router.get('/logout', function(req, res){
     req.logout();
-    req.flash('success_msg', 'You have successfully logged out')
+    // req.flash('success_msg', 'You have successfully logged out')
     res.redirect('/');
 });
 
