@@ -2,10 +2,10 @@
 
 <div class="jumbotron-fluid text-center">
     <div class="container">
-  <h1 class="display-4 gray">Welcome to Recipe Rundown</h1>
-  <p class="mb-5 gray">A social network for sharing and discovering recipes between friends and family</p>
+  <h1 class="display-4 gray mb-3">Welcome to Recipe Rundown</h1>
+  <p class="gray">A social network for sharing and discovering recipes between friends and family</p>
 
-<div class="container welcomeContainer mb-5">
+{{!-- <div class="container welcomeContainer mb-5">
   <div class="row">
     <div class="col-6 gray">  Create <i class="fa fa-pencil"></i></div>
     <div class="col-6 gray">Discover<i class="fa fa-eye"></i></div>
@@ -15,14 +15,16 @@
     <div class="col-6 gray">Manage<i class="fa fa-tasks"></i></div>
   </div>
 
-  </div>
+  </div> --}}
 
 
     
   {{#unless user}}
-  <a class="btn btn-light btn-lg" href="register" role="button">Register</a>
-  <a class="btn btn-light btn-lg" href="login" role="button">Login</a>
-  <a class="btn btn-light btn-lg" href="recipes" role="button">Continue as guest</a>
+  <div class="mt-5">
+  <a class="btn btn-info btn-lg" href="register" role="button">Register</a>
+  <a class="btn btn-info btn-lg" href="login" role="button">Login</a>
+  <a class="btn btn-info btn-lg" href="recipes" role="button">Continue as guest</a>
+  </div>
   {{/unless}} 
 
   </div>
