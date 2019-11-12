@@ -1,5 +1,5 @@
 {{!-- <h2 class="mx-auto text-center mb-5">{{profile.username}}'s Profile</h2> --}}
-<h3 class="fixed-top text-center mx-auto profileRecipes mb-0">{{profile.username}}'s Recipes</h3>
+<h3 class="fixed-top text-center mx-auto profileRecipes">{{profile.username}}'s Recipes</h3>
 
 <div class="row recipeRow">
 {{#if recipe}}
@@ -9,16 +9,6 @@
   <div class="col-md-6 col-lg-4 mb-1 mt-4"> 
     <div class="card recipeDisplay">
       <div class="buttonContainer w-100">
-        
-        <!--View Btn-->
-        {{!-- <a href="#" data-toggle="modal" data-target="#{{id}}" class="btn btn-primary"><i class="fa fa-eye"></i></a> --}}
-        
-        
-        <!-- Favorite Btn -->
-        {{!-- {{#if ../user}}
-        <a href="/recipes/{{id}}" class="btn btn-dark ml-auto"><i class="fa fa-star" style="color: gold"></i></a>
-        {{/if}} --}}
-
       </div>
      {{#if image.url}}
       <img src="{{image.url}}" class="card-img-top" alt="...">

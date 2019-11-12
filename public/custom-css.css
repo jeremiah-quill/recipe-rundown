@@ -1,19 +1,32 @@
+* {
+  font-family: 'Nunito', sans-serif;
+  color: rgb(34, 48, 55);
+}
+body {
+  background-color: gainsboro;
+}
+
+/* RECIPE STREAMS */
 .recipeDisplay { 
   margin-bottom: 30px;
   transition: 500ms;
   border: none;
 }
-
 .recipeDisplay:hover {
   transform: scale(1.02);
   box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
 }
+.recipeRow {
+  margin-top: 40px;
+}
+.card-img-top {
+  height: 300px;
+}
 
-/* links color */
+/* LINKS */
 a {
   color: rgb(49, 137, 139);
 }
-
 a:hover {
   color: rgb(49, 137, 139);
 }
@@ -21,119 +34,49 @@ a:hover {
 .button-secondary {
   color: lightgray !important;
 }
-
 .addRecipeFloat {
   position: fixed;
   bottom: 15px;
   right: 15px;
 }
-
-.buttonContainer {
-  position: absolute;
-  display: flex;
+.btn {
+  border-radius: 3px;
 }
 
+
+/* WELCOME PAGE */
 img.bg {
-  /* Set rules to fill background */
   min-height: 100%;
   min-width: 1024px;
-  /* Set up proportionate scaling */
   width: 100%;
   height: auto;
-  /* Set up positioning */
   position: fixed;
   top: 0;
   left: 0;
 }
-
-@media screen and (max-width: 1024px) { /* Specific to this particular image */
+@media screen and (max-width: 1024px) {
   img.bg {
     left: 50%;
     margin-left: -512px;   /* 50% */
   }
 }
-
-.recipeRow {
-  margin-top: 40px;
-}
-
 .display-4 {
   font-family: 'Liu Jian Mao Cao', cursive;
 }
-
 .jumbotron-fluid {
   margin-top: 80px;
   position: relative;
 }
-
 .jumboContainer {
   color: lightgray !important;
 }
-
 .gray {
   color: lightgray;
 }
-
-
-/* .jumbotron-fluid h1 {
-  font-family: 'Liu Jian Mao Cao', cursive;
-} */
-
-/* .carousel {
-  margin: 0px 300px 300px;
-} */
-
-
-.recipe-thumb {
-  width: 75px;
-  height: 75px;
-  justify-content: center;
-  
-}
-
-/* .navbar{
-font-family: 'Nunito', sans-serif;
-} */
-
-* {
-  font-family: 'Nunito', sans-serif;
-  color: rgb(34, 48, 55);
-}
-
-body {
-  background-color: gainsboro;
-}
-
-.btn {
-  border-radius: 3px;
-}
-
-.whatINeed {
-  border-right: 1px solid black;
-}
-
-/* .navbar-nav {
-  padding: 20px;
-} */
-
-.navbar-nav li {
-  margin-right: 10px;
-}
-
-.recipeList li {
-  list-style-type: none;
-}
-
-.card-img-top {
-  height: 300px;
-}
-
-
 .welcomeContainer {
   width: 200px;
   height: 200px;
 }
-
 .welcomeContainer .col-6 {
   height: 100px;
   width: 100px;
@@ -144,44 +87,99 @@ body {
   flex-direction: column;
 }
 
-/* .nav-color {
-   color: lightgray;
-} */
 
-/* Style the active class (and buttons on mouse-over) */
+.recipe-thumb {
+  width: 75px;
+  height: 75px;
+  justify-content: center;
+  
+}
+.whatINeed {
+  border-right: 1px solid black;
+}
+
+
+.profileRecipes {
+  margin-top: 56px;
+  background-color: rgb(42, 112, 80);
+  height: 50px; 
+  padding-top: 8px;
+  color: lightgray;
+}
+
+/* BUTTONS */
+.btn-info {
+  background-color: rgb(246, 142, 55) !important;
+  border-color: rgb(246, 142, 55) !important;
+}
+.btn-info:hover {
+  color: rgb(34, 48, 55) !important;
+  background-color: rgb(247, 182, 68) !important;
+  border-color: rgb(247, 182, 68) !important;
+}
+.fa-user-plus {
+  color: rgb(49, 137, 139) !important;
+}
+.btn-success:hover {
+    border-color: rgb(247, 182, 68) !important;
+}
+.btn:focus, .btn:active:focus, .btn.active:focus {
+  box-shadow: none !important;
+}
+.fa, .showcaseUser {
+  color: rgb(49, 137, 139) !important;
+}
+
+.btn:hover {
+  background-color: rgb(247, 182, 68) !important;
+}
+.follow {
+  border: 1px solid rgb(49, 137, 139);
+  border-radius: 3px;
+  padding: 4px;
+  margin-left: auto;
+  text-decoration: none !important;
+}
+.follow:hover {
+  background-color: rgb(247, 182, 68) !important;
+}
+.fa-user {
+  color: lightgray !important;
+}
+.fa-cutlery {
+  color: rgb(150, 184, 168) !important;
+}
+.fa-plus {
+  color: white !important;
+}
+.btn-dark {
+  background-color: rgb(170, 108, 111);
+  border-color: rgb(170, 108, 111);
+}
+.btn-dark:hover {
+  border-color: rgb(247, 182, 68) !important;
+}
+.fa-minus {
+  color: white !important;
+}
+.btn-secondary:hover {
+  border-color: rgb(247, 182, 68) !important;
+}
+
+
+/* NAVBAR */
+.navbar-nav li {
+  margin-right: 10px;
+}
+.recipeList li {
+  list-style-type: none;
+}
 .current  {
   background-color: none !important;
   color: rgb(246, 142, 55) !important;
   /* transition: 1000ms */
   border-radius: 5px;
 }
-
-.profileRecipes {
-  margin-top: 56px;
-  background-color: rgb(145 59 51);
-  height: 50px; 
-  padding-top: 8px;
-  color: lightgray;
-  
-}
-
-.btn-info {
-  background-color: rgb(246, 142, 55) !important;
-  border-color: rgb(246, 142, 55) !important;
-}
-
-.btn-info:hover {
-  color: rgb(34, 48, 55) !important;
-  background-color: rgb(247, 182, 68) !important;
-  border-color: rgb(247, 182, 68) !important;
-}
-
-/* .btn-light {
-  background-color: rgb(34, 48, 55) !important;
-  border-color: rgb(34, 48, 55) !important;
-} */
-
-/* NAVBAR */
 .nav-item a:before {
   content: "";
   position: absolute;
@@ -196,114 +194,22 @@ body {
   -webkit-transition: all 0.3s ease-in-out 0s;
   transition: all 0.3s ease-in-out 0s;
 }
-
 .nav-item a:hover:before {
   visibility: visible;
   -webkit-transform: scaleX(1);
   transform: scaleX(1);
 }
-
 .nav-item a {
   color: lightgray;
   position: relative;
 }
-
-/* .nav-item a:focus {
-  color: rgb(246, 142, 55);
-} */
-
 .nav-color {
   background-color: rgb(42, 112, 80)
 }
-
-
- /* delete button */
-/* .btn-danger {
-    background-color: rgb(170, 108, 111);
-    border-color: rgb(170, 108, 111);
-} */
-/* .btn-danger:hover {
-  background-color: rgb(139, 51, 49);
-}
-
-.fa-trash {
-    color: black;
-}
-.btn-danger:hover .fa-trash{
-    color: white;
-}
-.fa-trash {
-  color: lightgray !important;
-} */
-
-
-
-
-/* BUTTON WARNING */
-/* .btn-warning {
-    background-color: rgb(246, 142, 55);
-    border-color: rgb(246, 142, 55);
-} */
-/* .fa-pencil {
-  color: black !important;
-} */
-/* .btn-danger:hover .fa-pencil{
-    color: white;
-}
-.fa-pencil {
-  color: rgb(49, 137, 139) !important;
-} */
-
-.fa-user-plus {
-  color: rgb(49, 137, 139) !important;
-}
-
-/* BUTTON PRIMARY */
-/* .btn-primary {
-  background-color: none;
-  border-color: none;
-}
-.btn-primary .fa-eye {
-  color: rgb(34, 48, 55);
-} */
-/* .btn-primary:hover .fa-eye {
-  color: rgb(34, 48, 55);
-} */
-
-/* .btn-primary:hover {
-  background-color: rgb(184, 91, 0);
-  border-color: rgb(184, 91, 0);
-}
-
-.btn-edit:hover {
-background-color: blue;
-}
-.btn-delete:hover {
-  background-color: blue;
-  } */
-
-
-/* BUTTON SUCCESS */
-/* .btn-success {
-  background-color: rgb(42, 112, 80);
-    border-color: rgb(42, 112, 80);
-} */
-
-.btn-success:hover {
-    /* background-color: rgb(118, 139, 139); */
-    border-color: rgb(247, 182, 68) !important;
-}
-
 .nav-background {
     background-color: rgb(42, 112, 80) !important;
     border-radius: 5px;
 }
-
-/* .fa-star {
-  color: rgb(255, 225, 134) !important;
-} */
-
-
 .navbar-brand {
   color: rgb(150, 184, 168) !important;
 }
@@ -315,60 +221,7 @@ background-color: blue;
   line-height: 1.5em;
 }
 
-.btn:focus, .btn:active:focus, .btn.active:focus {
-  box-shadow: none !important;
-}
-
-.fa, .showcaseUser {
-  color: rgb(49, 137, 139) !important;
-}
-
-.btn:hover {
-  background-color: rgb(247, 182, 68) !important;
-}
-
-.follow {
-  border: 1px solid rgb(49, 137, 139);
-  border-radius: 3px;
-  padding: 4px;
-  margin-left: auto;
-  text-decoration: none !important;
-}
-
-.follow:hover {
-  background-color: rgb(247, 182, 68) !important;
-}
-
-.fa-user {
-  color: lightgray !important;
-}
-
-.fa-cutlery {
-  color: rgb(150, 184, 168) !important;
-}
-
-.fa-plus {
-  color: white !important;
-}
 
 
-/* .btn-dark:hover {
-  background-color: rgb(139, 51, 49);
-  border-color: rgb(139, 51, 49);
-} */
-.btn-dark {
-  background-color: rgb(170, 108, 111);
-  border-color: rgb(170, 108, 111);
-}
-.btn-dark:hover {
-  border-color: rgb(247, 182, 68) !important;
-}
-.fa-minus {
-  color: white !important;
-}
-
-.btn-secondary:hover {
-  border-color: rgb(247, 182, 68) !important;
-}
 
 
