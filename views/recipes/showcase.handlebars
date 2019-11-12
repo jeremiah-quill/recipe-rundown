@@ -1,6 +1,13 @@
 
 <div class="card">
-    <div class="card-header d-flex"><a href="/recipes/{{recipe.id}}" class="btn mr-3"><i class="fa fa-star" style="color: gold"></i></a><h4 class="showcaseTitle">{{recipe.name}}</h4>  <a href="/profile/{{recipe.userId}}" class="btn ml-4 showcaseUser">More from {{recipe.username}}</a>
+    <div class="card-header d-flex">
+
+        {{#if user}}
+        <a href="/recipes/{{recipe.id}}" class="btn mr-3"><i class="fa fa-star" style="color: gold"></i></a>
+        {{/if}}
+        
+        
+        <h4 class="showcaseTitle">{{recipe.name}}</h4>  <a href="/profile/{{recipe.userId}}" class="btn ml-4 showcaseUser">More from {{recipe.username}}</a>
     
 {{!-- <div class="ml-auto">
 <a href="/profile/{{recipe.userId}}" class="ml-auto"><button class="btn btn-primary">More from {{recipe.username}}</button></a>    

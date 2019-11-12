@@ -14,8 +14,6 @@ a {
   color: rgb(49, 137, 139);
 }
 
-
-
 a:hover {
   color: rgb(49, 137, 139);
 }
@@ -66,8 +64,16 @@ img.bg {
 .jumbotron-fluid {
   margin-top: 80px;
   position: relative;
-  color: #fff8dcde;
 }
+
+.jumboContainer {
+  color: lightgray !important;
+}
+
+.gray {
+  color: lightgray;
+}
+
 
 /* .jumbotron-fluid h1 {
   font-family: 'Liu Jian Mao Cao', cursive;
@@ -84,7 +90,6 @@ img.bg {
   justify-content: center;
   
 }
-
 
 /* .navbar{
 font-family: 'Nunito', sans-serif;
@@ -118,15 +123,6 @@ body {
 .recipeList li {
   list-style-type: none;
 }
-
-/* .recipeList li:nth-child(n+2) {
-  margin-top: 10px;
-} */
-
-
-
-
-
 
 .card-img-top {
   height: 300px;
@@ -180,18 +176,10 @@ body {
   border-color: rgb(247, 182, 68) !important;
 }
 
-.btn-light {
+/* .btn-light {
   background-color: rgb(34, 48, 55) !important;
   border-color: rgb(34, 48, 55) !important;
-}
-
-
-
-
-
-
-
-
+} */
 
 /* NAVBAR */
 .nav-item a:before {
@@ -230,11 +218,11 @@ body {
 
 
  /* delete button */
-.btn-danger {
+/* .btn-danger {
     background-color: rgb(170, 108, 111);
     border-color: rgb(170, 108, 111);
-}
-.btn-danger:hover {
+} */
+/* .btn-danger:hover {
   background-color: rgb(139, 51, 49);
 }
 
@@ -246,52 +234,43 @@ body {
 }
 .fa-trash {
   color: lightgray !important;
-}
-.fa-minus {
-  color: white !important;
-}
-.btn-dark:hover {
-  background-color: rgb(139, 51, 49);
-  border-color: rgb(139, 51, 49);
-}
-.btn-dark {
-  background-color: rgb(170, 108, 111);
-  border-color: rgb(170, 108, 111);
-}
+} */
+
+
 
 
 /* BUTTON WARNING */
-.btn-warning {
+/* .btn-warning {
     background-color: rgb(246, 142, 55);
     border-color: rgb(246, 142, 55);
-}
+} */
 /* .fa-pencil {
   color: black !important;
 } */
-.btn-danger:hover .fa-pencil{
+/* .btn-danger:hover .fa-pencil{
     color: white;
 }
 .fa-pencil {
   color: rgb(49, 137, 139) !important;
-}
+} */
 
 .fa-user-plus {
   color: rgb(49, 137, 139) !important;
 }
 
 /* BUTTON PRIMARY */
-.btn-primary {
+/* .btn-primary {
   background-color: none;
   border-color: none;
 }
 .btn-primary .fa-eye {
   color: rgb(34, 48, 55);
-}
+} */
 /* .btn-primary:hover .fa-eye {
   color: rgb(34, 48, 55);
 } */
 
-.btn-primary:hover {
+/* .btn-primary:hover {
   background-color: rgb(184, 91, 0);
   border-color: rgb(184, 91, 0);
 }
@@ -301,18 +280,18 @@ background-color: blue;
 }
 .btn-delete:hover {
   background-color: blue;
-  }
+  } */
 
 
 /* BUTTON SUCCESS */
-.btn-success {
+/* .btn-success {
   background-color: rgb(42, 112, 80);
     border-color: rgb(42, 112, 80);
-}
+} */
 
 .btn-success:hover {
-    background-color: rgb(118, 139, 139);
-    border-color: rgb(118, 139, 139)
+    /* background-color: rgb(118, 139, 139); */
+    border-color: rgb(247, 182, 68) !important;
 }
 
 .nav-background {
@@ -320,39 +299,20 @@ background-color: blue;
     border-radius: 5px;
 }
 
-.fa-star {
+/* .fa-star {
   color: rgb(255, 225, 134) !important;
-}
-
-/* .dashboardBtnContainer {
-    width: 100px;
 } */
 
 
-.fa-cutlery {
-  color: rgb(150, 184, 168) !important;
-}
 .navbar-brand {
   color: rgb(150, 184, 168) !important;
 }
 
-.fa-user {
-  color: lightgray;
-}
 
-.fa-plus {
-  color: white;
-}
 
 .showcaseTitle {
   margin-bottom: 0px;
   line-height: 1.5em;
-}
-
-
-.card-body {
-  padding-top: 0px;
-  padding-right: 0px;
 }
 
 .btn:focus, .btn:active:focus, .btn.active:focus {
@@ -363,12 +323,9 @@ background-color: blue;
   color: rgb(49, 137, 139) !important;
 }
 
-
-
 .btn:hover {
   background-color: rgb(247, 182, 68) !important;
 }
-
 
 .follow {
   border: 1px solid rgb(49, 137, 139);
@@ -382,8 +339,32 @@ background-color: blue;
   background-color: rgb(247, 182, 68) !important;
 }
 
+.fa-user {
+  color: lightgray !important;
+}
+
+.fa-cutlery {
+  color: rgb(150, 184, 168) !important;
+}
+
+.fa-plus {
+  color: white !important;
+}
 
 
-
+/* .btn-dark:hover {
+  background-color: rgb(139, 51, 49);
+  border-color: rgb(139, 51, 49);
+} */
+.btn-dark {
+  background-color: rgb(170, 108, 111);
+  border-color: rgb(170, 108, 111);
+}
+.btn-dark:hover {
+  border-color: rgb(247, 182, 68) !important;
+}
+.fa-minus {
+  color: white !important;
+}
 
 
