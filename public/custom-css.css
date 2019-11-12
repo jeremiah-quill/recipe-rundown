@@ -226,6 +226,10 @@ img.bg {
   line-height: 1.5em;
 }
 
+.placeholderSpan {
+  color: rgb(246, 142, 55);
+  font-style: italic;
+}
 
 
 
