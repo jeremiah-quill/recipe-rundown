@@ -78,20 +78,6 @@ img.bg {
 .gray {
   color: lightgray;
 }
-.welcomeContainer {
-  width: 200px;
-  height: 200px;
-}
-.welcomeContainer .col-6 {
-  height: 100px;
-  width: 100px;
-  border: 1px solid #fff8dcde;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
 
 .recipe-thumb {
   width: 75px;
@@ -232,5 +218,12 @@ img.bg {
 }
 
 
+@media (max-width: 510px) {
+  .mobileLabel {
+    font-size: .75em;
+  }
+}
 
 
+
+  
