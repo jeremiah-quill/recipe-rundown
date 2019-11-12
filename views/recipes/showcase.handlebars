@@ -1,13 +1,13 @@
 
 <div class="card">
-    <div class="card-header d-flex"><a href="/recipes/{{recipe.id}}" class="btn btn-dark mr-3"><i class="fa fa-star" style="color: gold"></i></a><h4>{{recipe.name}}</h4>
+    <div class="card-header d-flex"><a href="/recipes/{{recipe.id}}" class="btn mr-3"><i class="fa fa-star" style="color: gold"></i></a><h4 class="showcaseTitle">{{recipe.name}}</h4>  <a href="/profile/{{recipe.userId}}" class="btn ml-4 showcaseUser">More from {{recipe.username}}</a>
     
-<div class="ml-auto">
+{{!-- <div class="ml-auto">
 <a href="/profile/{{recipe.userId}}" class="ml-auto"><button class="btn btn-primary">More from {{recipe.username}}</button></a>    
-</div>
+</div> --}}
 </div>
 
-    <div class="card-body">
+    <div class="card-body pt-4">
         <div class="row">
             <div class="col-md-3 whatINeed">
                 <h5 class="text-center mb-3">What you need</h5>

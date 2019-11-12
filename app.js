@@ -25,7 +25,7 @@ const hbs = exphbs.create({
         //             `<li>${currentRecipes[i].ingredients.quantity} ${currentREcipes[i].ingredients.measurement} ${currentRecipes[i].ingredients.anem}</li>`
         //         }
         //     }},
-  
+        
         privateEdit:function(userId, loggedId, recipeId) {
             if (userId == loggedId) {
                 return `<a href="/recipes/edit/${recipeId}" class="btn btn-warning"><i class="fa fa-pencil" ></i></a>`

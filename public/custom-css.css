@@ -1,85 +1,88 @@
 .recipeDisplay { 
-    margin-bottom: 30px;
-    transition: 500ms;
+  margin-bottom: 30px;
+  transition: 500ms;
+  border: none;
 }
 
 .recipeDisplay:hover {
-    transform: scale(1.02);
-    box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
+  transform: scale(1.02);
+  box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
 }
 
 /* links color */
 a {
-    color: rgb(190, 108, 65);
-  }
+  color: rgb(49, 137, 139);
+}
 
-  a:hover {
-    color: rgb(217, 138, 95)
-  }
+
+
+a:hover {
+  color: rgb(49, 137, 139);
+}
 
 .button-secondary {
-    color: lightgray !important;
+  color: lightgray !important;
 }
 
 .addRecipeFloat {
-    position: fixed;
-    bottom: 15px;
-    right: 15px;
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
 }
 
 .buttonContainer {
-    position: absolute;
-    display: flex;
+  position: absolute;
+  display: flex;
 }
 
 img.bg {
-    /* Set rules to fill background */
-    min-height: 100%;
-    min-width: 1024px;
-    /* Set up proportionate scaling */
-    width: 100%;
-    height: auto;
-    /* Set up positioning */
-    position: fixed;
-    top: 0;
-    left: 0;
+  /* Set rules to fill background */
+  min-height: 100%;
+  min-width: 1024px;
+  /* Set up proportionate scaling */
+  width: 100%;
+  height: auto;
+  /* Set up positioning */
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+@media screen and (max-width: 1024px) { /* Specific to this particular image */
+  img.bg {
+    left: 50%;
+    margin-left: -512px;   /* 50% */
   }
-  
-  @media screen and (max-width: 1024px) { /* Specific to this particular image */
-    img.bg {
-      left: 50%;
-      margin-left: -512px;   /* 50% */
-    }
-  }
+}
 
 .recipeRow {
-    margin-top: 40px;
+  margin-top: 40px;
 }
 
 .display-4 {
-    font-family: 'Liu Jian Mao Cao', cursive;
+  font-family: 'Liu Jian Mao Cao', cursive;
 }
 
 .jumbotron-fluid {
-    margin-top: 80px;
-    position: relative;
-    color: #fff8dcde;
+  margin-top: 80px;
+  position: relative;
+  color: #fff8dcde;
 }
 
 /* .jumbotron-fluid h1 {
-    font-family: 'Liu Jian Mao Cao', cursive;
+  font-family: 'Liu Jian Mao Cao', cursive;
 } */
 
 /* .carousel {
-    margin: 0px 300px 300px;
+  margin: 0px 300px 300px;
 } */
 
 
 .recipe-thumb {
-    width: 75px;
-    height: 75px;
-    justify-content: center;
-    
+  width: 75px;
+  height: 75px;
+  justify-content: center;
+  
 }
 
 
@@ -88,212 +91,296 @@ font-family: 'Nunito', sans-serif;
 } */
 
 * {
-    font-family: 'Nunito', sans-serif;
+  font-family: 'Nunito', sans-serif;
+  color: rgb(34, 48, 55);
 }
 
 body {
-    background-color: gainsboro;
+  background-color: gainsboro;
 }
 
 .btn {
-    border-radius: 3px;
+  border-radius: 3px;
 }
 
 .whatINeed {
-    border-right: 1px solid black;
+  border-right: 1px solid black;
 }
 
 /* .navbar-nav {
-    padding: 20px;
+  padding: 20px;
 } */
 
 .navbar-nav li {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 
 .recipeList li {
-    list-style-type: none;
+  list-style-type: none;
 }
 
 /* .recipeList li:nth-child(n+2) {
-    margin-top: 10px;
-  } */
+  margin-top: 10px;
+} */
 
 
 
 
-.nav-item a:before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: rgb(198, 168, 97);
-    visibility: hidden;
-    -webkit-transform: scaleX(0);
-    transform: scaleX(0);
-    -webkit-transition: all 0.3s ease-in-out 0s;
-    transition: all 0.3s ease-in-out 0s;
-}
 
-.nav-item a:hover:before {
-    visibility: visible;
-    -webkit-transform: scaleX(1);
-    transform: scaleX(1);
-}
 
 .card-img-top {
-    height: 300px;
+  height: 300px;
 }
 
 
 .welcomeContainer {
-    width: 200px;
-    height: 200px;
+  width: 200px;
+  height: 200px;
 }
 
 .welcomeContainer .col-6 {
-    height: 100px;
-    width: 100px;
-    border: 1px solid #fff8dcde;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  height: 100px;
+  width: 100px;
+  border: 1px solid #fff8dcde;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
- /* .nav-color {
-     color: lightgray;
- } */
+/* .nav-color {
+   color: lightgray;
+} */
 
- /* Style the active class (and buttons on mouse-over) */
+/* Style the active class (and buttons on mouse-over) */
 .current  {
-    background-color: none !important;
-    color: rgb(198, 168, 97) !important;
-    /* transition: 1000ms */
-    border-radius: 5px;
-  }
+  background-color: none !important;
+  color: rgb(246, 142, 55) !important;
+  /* transition: 1000ms */
+  border-radius: 5px;
+}
 
-  .profileRecipes {
-    margin-top: 56px;
-    background-color: rgb(145 59 51);
-    height: 50px; 
-    padding-top: 8px;
-    color: lightgray;
-    
-  }
+.profileRecipes {
+  margin-top: 56px;
+  background-color: rgb(145 59 51);
+  height: 50px; 
+  padding-top: 8px;
+  color: lightgray;
+  
+}
 
-  .nav-item a {
-    color: lightgray;
-    position: relative;
+.btn-info {
+  background-color: rgb(246, 142, 55) !important;
+  border-color: rgb(246, 142, 55) !important;
+}
+
+.btn-info:hover {
+  color: rgb(34, 48, 55) !important;
+  background-color: rgb(247, 182, 68) !important;
+  border-color: rgb(247, 182, 68) !important;
+}
+
+.btn-light {
+  background-color: rgb(34, 48, 55) !important;
+  border-color: rgb(34, 48, 55) !important;
 }
 
 
-   /* delete button */
-  .btn-danger {
-      background-color: #f4d2d4;
-      border-color: #f4d2d4;
-  }
-  .fa-trash {
-      color: black;
-  }
-  .btn-danger:hover .fa-trash{
-      color: white;
-  }
 
 
-/* edit button */
-  .btn-warning {
-      background-color: #e6e6e6;
-      border-color: #e6e6e6;
-  }
-  .fa-pencil {
+
+
+
+
+
+/* NAVBAR */
+.nav-item a:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: rgb(246, 142, 55);
+  visibility: hidden;
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transition: all 0.3s ease-in-out 0s;
+  transition: all 0.3s ease-in-out 0s;
+}
+
+.nav-item a:hover:before {
+  visibility: visible;
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+}
+
+.nav-item a {
+  color: lightgray;
+  position: relative;
+}
+
+/* .nav-item a:focus {
+  color: rgb(246, 142, 55);
+} */
+
+.nav-color {
+  background-color: rgb(42, 112, 80)
+}
+
+
+ /* delete button */
+.btn-danger {
+    background-color: rgb(170, 108, 111);
+    border-color: rgb(170, 108, 111);
+}
+.btn-danger:hover {
+  background-color: rgb(139, 51, 49);
+}
+
+.fa-trash {
     color: black;
 }
-  .btn-danger:hover .fa-pencil{
-      color: white;
+.btn-danger:hover .fa-trash{
+    color: white;
+}
+.fa-trash {
+  color: lightgray !important;
+}
+.fa-minus {
+  color: white !important;
+}
+.btn-dark:hover {
+  background-color: rgb(139, 51, 49);
+  border-color: rgb(139, 51, 49);
+}
+.btn-dark {
+  background-color: rgb(170, 108, 111);
+  border-color: rgb(170, 108, 111);
+}
+
+
+/* BUTTON WARNING */
+.btn-warning {
+    background-color: rgb(246, 142, 55);
+    border-color: rgb(246, 142, 55);
+}
+/* .fa-pencil {
+  color: black !important;
+} */
+.btn-danger:hover .fa-pencil{
+    color: white;
+}
+.fa-pencil {
+  color: rgb(49, 137, 139) !important;
+}
+
+.fa-user-plus {
+  color: rgb(49, 137, 139) !important;
+}
+
+/* BUTTON PRIMARY */
+.btn-primary {
+  background-color: none;
+  border-color: none;
+}
+.btn-primary .fa-eye {
+  color: rgb(34, 48, 55);
+}
+/* .btn-primary:hover .fa-eye {
+  color: rgb(34, 48, 55);
+} */
+
+.btn-primary:hover {
+  background-color: rgb(184, 91, 0);
+  border-color: rgb(184, 91, 0);
+}
+
+.btn-edit:hover {
+background-color: blue;
+}
+.btn-delete:hover {
+  background-color: blue;
   }
 
 
-/* navbar color */
-  .nav-color {
-      background-color: rgb(101, 117, 100)
-  }
+/* BUTTON SUCCESS */
+.btn-success {
+  background-color: rgb(42, 112, 80);
+    border-color: rgb(42, 112, 80);
+}
+
+.btn-success:hover {
+    background-color: rgb(118, 139, 139);
+    border-color: rgb(118, 139, 139)
+}
+
+.nav-background {
+    background-color: rgb(42, 112, 80) !important;
+    border-radius: 5px;
+}
+
+.fa-star {
+  color: rgb(255, 225, 134) !important;
+}
+
+/* .dashboardBtnContainer {
+    width: 100px;
+} */
+
+
+.fa-cutlery {
+  color: rgb(150, 184, 168) !important;
+}
+.navbar-brand {
+  color: rgb(150, 184, 168) !important;
+}
+
+.fa-user {
+  color: lightgray;
+}
+
+.fa-plus {
+  color: white;
+}
+
+.showcaseTitle {
+  margin-bottom: 0px;
+  line-height: 1.5em;
+}
+
+
+.card-body {
+  padding-top: 0px;
+  padding-right: 0px;
+}
+
+.btn:focus, .btn:active:focus, .btn.active:focus {
+  box-shadow: none !important;
+}
+
+.fa, .showcaseUser {
+  color: rgb(49, 137, 139) !important;
+}
 
 
 
+.btn:hover {
+  background-color: rgb(247, 182, 68) !important;
+}
 
 
-/* preview button */
-  .btn-primary {
-    background-color: rgb(145 59 51);
-    border-color: rgb(145 59 51);
-  }
-  .btn-primary .fa-eye {
-      color: lightgray;
-  }
+.follow {
+  border: 1px solid rgb(49, 137, 139);
+  border-radius: 3px;
+  padding: 4px;
+  margin-left: auto;
+  text-decoration: none !important;
+}
 
-  .btn-primary:hover {
-    background-color: rgb(181, 93, 85);
-    border-color: rgb(181, 93, 85)
-  }
- 
-
-
-  /* add button */
-  .btn-success {
-      background-color: rgb(145 59 51);
-      border-color: rgb(145 59 51);
-  }
-
-  .btn-success:hover {
-      background-color: rgb(181, 93, 85);
-      border-color: rgb(181, 93, 85)
-  }
-
-
-  .nav-background {
-      background-color: rgb(75, 84, 74) !important;
-      border-radius: 5px;
-  }
-
-  .fa-star {
-      color: rgb(198, 168, 97) !important;
-  }
-
-  .fa-minus {
-    color: rgb(198, 168, 97) !important;
-  }
-
-  .btn-dark:hover {
-    background-color: gray;
-    border-color: gray;
-  }
-
-  .fa-trash {
-    color: lightgray !important;
-  }
-
-  .fa-pencil {
-      color: lightgray !important;
-  }
-
-  .dashboardBtnContainer {
-      width: 100px;
-  }
-
-
-
-  
-
-
-
-
-
-
-
-
+.follow:hover {
+  background-color: rgb(247, 182, 68) !important;
+}
 
 
 

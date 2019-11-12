@@ -2,12 +2,12 @@
 {{#if recipes}}
 {{#each recipes}}
 
-  <div class="col-md-6 col-lg-4 mb-1"> 
+<a href="/recipes/showcase/{{name}}">  
+<div class="col-md-6 col-lg-4 mb-1"> 
     <div class="card recipeDisplay">
       <div class="buttonContainer w-100">
-        
         <!--View Btn-->
-        <a href="#" data-toggle="modal" data-target="#{{id}}" class="btn btn-primary"><i class="fa fa-eye"></i></a>
+        {{!-- <a href="#" data-toggle="modal" data-target="#{{id}}" class="btn btn-primary"><i class="fa fa-eye"></i></a> --}}
         
         {{!-- <!--Edit Btn-->
         {{{privateEdit userId ../user/id id}}}
@@ -16,26 +16,37 @@
         {{{privateDelete userId ../user/id id}}} --}}
         
         <!-- Favorite Btn -->
-        {{#if ../user}}
-        <a href="/recipes/{{id}}" class="btn btn-dark ml-auto"><i class="fa fa-star"></i></a>
-        {{/if}}
-
+        {{!-- {{#if ../user}}
+        <a href="/recipes/{{id}}" class="btn btn-light ml-auto"><i class="fa fa-star"></i></a>
+        {{/if}} --}}
       </div>
-
       {{#if image.url}}
       <img src="{{image.url}}" class="card-img-top" alt="...">
       {{else}}
       <img src="../public/placeholder.png" class="card-img-top" alt="...">
+     
       {{/if}}
+       </a>
 
+
+{{!-- THIS IS WHAT IM DOING --}}
 
       <div class="card-body">
-        <p class="card-text"><a href="/recipes/showcase/{{name}}">{{name}}</a></p>
-        <p class="card-text"><small class="text-muted">By: <a href="/profile/{{userId}}">{{username}}</a> <a href="/follow/{{userId}}"><i class="fa fa-user-plus"></i>
-</a></small></p>
+        <div class="d-flex justify-content-end">
+        <a href="#" data-toggle="modal" data-target="#{{id}}" class="btn"><i class="fa fa-eye"></i></a>
+        {{#if ../user}}
+        <a href="/recipes/{{id}}" class="btn"><i class="fa fa-star"></i></a>
+                {{/if}}
       </div>
+        <p class="card-text"><a href="/recipes/showcase/{{name}}">{{name}}</a></p>
+        <p class="card-text"><small class="text-muted w-100 d-flex mr-">By: <a href="/profile/{{userId}}" class="ml-1">{{username}}</a><a href="/follow/{{userId}}" class="follow ml-auto mr-3">Follow <i class="fa fa-user-plus"></i>
+        </a></small></p>
+      </div>
+      
     </div>
   </div>
+  
+
 {{/each}}
 </div>
 
