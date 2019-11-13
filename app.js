@@ -25,17 +25,59 @@ const hbs = exphbs.create({
         //             `<li>${currentRecipes[i].ingredients.quantity} ${currentREcipes[i].ingredients.measurement} ${currentRecipes[i].ingredients.anem}</li>`
         //         }
         //     }},
-        
-        privateEdit:function(userId, loggedId, recipeId) {
-            if (userId == loggedId) {
-                return `<a href="/recipes/edit/${recipeId}" class="btn btn-warning"><i class="fa fa-pencil" ></i></a>`
-            } 
-        },
-        privateDelete: function(userId, loggedId, recipeId) {
-            if(userId==loggedId){
-                return `<a href="#" data-toggle="modal" data-target="#del${recipeId}" class="btn btn-danger"><i class="fa fa-trash"></i></a>`
+
+        // isLandingPage: function(){
+        //     var routeName = Router.current().route.getName();
+        //     if (routeName === '/recipes/add' || routeName === '/recipes/edit')
+        //        return false;
+        //     else 
+        //        return true;
+        // },
+
+        isFollowing: function(user, following, userId) {
+            if(user){
+                let followValue = false
+            for(let i=0; i<following.length; i++) {
+                if(following[i].id == userId){
+                    followValue = true
+                    // return `<a class="follow ml-auto mr-3">Following <i class="fa fa-check"></i>
+                    // </a>`
+                } 
             }
+            if(followValue) {return `<a href="/unfollow/${userId}" class="unfollow ml-auto mr-3">Following <i class="fa fa-check"></i>
+                    </a>`} else {
+                        return `<a href="/follow/${userId}" class="follow ml-auto mr-3">Follow <i class="fa fa-user-plus"></i>
+                </a>`
+                    }
+                }
+
+            // if(following == userId){
+            //     return `<a class="follow ml-auto mr-3">Following <i class="fa fa-check"></i>
+            //     </a>`
+            // } else {
+            //     return `<a href="/follow/${userId}" class="follow ml-auto mr-3">Follow <i class="fa fa-user-plus"></i>
+            //     </a>`
+            // }
+            // return `<p>${following} + ${userId}</p>`
+          
+
+            // if(loggedId == userId) {
+            //     return `<p>Following</p>`
+            // } else {
+            //     return  `<a href="/follow/${userId}" class="follow ml-auto mr-3">Follow <i class="fa fa-user-plus"></i>
+            //     </a>`
+            // }
         },
+        // privateEdit:function(userId, loggedId, recipeId) {
+        //     if (userId == loggedId) {
+        //         return `<a href="/recipes/edit/${recipeId}" class="btn btn-warning"><i class="fa fa-pencil" ></i></a>`
+        //     } 
+        // },
+        // privateDelete: function(userId, loggedId, recipeId) {
+        //     if(userId==loggedId){
+        //         return `<a href="#" data-toggle="modal" data-target="#del${recipeId}" class="btn btn-danger"><i class="fa fa-trash"></i></a>`
+        //     }
+        // },
         arrayLoop:function(quantityArray, measurementArray, ingredientArray) {
             let list = `<ul>`
             for(let i=0; i<quantityArray.length; i++) {

@@ -50,7 +50,7 @@
 </div>
                     {{/each}}
                     {{else}}
-                    <li class="list-group-item text-center">To get started, add a recipe with the green button in the bottom right of the screen</li>
+                    <li class="list-group-item text-center">To get started, add a recipe with the orange button in the bottom right of the screen</li>
                     {{/if}}
                 </ul>
             </div>
@@ -62,7 +62,7 @@
             <div class="card-header text-center">
             Following
             </div>
-            <ul class="list-group list-group-flush recipeList">
+            <ul class="list-group list-group-flush recipeList overflow-auto">
                 {{#if user.following}}
                 {{#each user.following}}
                 <a href="/profile/{{_id}}" class="list-group-item list-group-item-action">{{username}}</a>
@@ -76,7 +76,7 @@
             <div class="card-header text-center">
             Followers
             </div>
-            <ul class="list-group list-group-flush recipeList">
+            <ul class="list-group list-group-flush recipeList overflow-auto">
                 {{#if user.followers}}
                 {{#each user.followers}}
                 <a href="/profile/{{_id}}" class="list-group-item list-group-item-action"><li>{{username}}</li></a>
@@ -102,6 +102,9 @@
 
     </div>
 </div>
+        {{#if user}}
+            <a href="/recipes/add" class="btn btn-lg btn-info addRecipeFloat">Create a Recipe</a>
+        {{/if}}
 
 
 

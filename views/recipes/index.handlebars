@@ -5,21 +5,6 @@
 <a href="/recipes/showcase/{{name}}">  
 <div class="col-md-6 col-lg-4 mb-1"> 
     <div class="card recipeDisplay">
-      <div class="buttonContainer w-100">
-        <!--View Btn-->
-        {{!-- <a href="#" data-toggle="modal" data-target="#{{id}}" class="btn btn-primary"><i class="fa fa-eye"></i></a> --}}
-        
-        {{!-- <!--Edit Btn-->
-        {{{privateEdit userId ../user/id id}}}
-        
-        <!--Delete Btn-->
-        {{{privateDelete userId ../user/id id}}} --}}
-        
-        <!-- Favorite Btn -->
-        {{!-- {{#if ../user}}
-        <a href="/recipes/{{id}}" class="btn btn-light ml-auto"><i class="fa fa-star"></i></a>
-        {{/if}} --}}
-      </div>
       {{#if image.url}}
       <img src="{{image.url}}" class="card-img-top" alt="...">
       {{else}}
@@ -28,19 +13,31 @@
       {{/if}}
        </a>
 
-
-{{!-- THIS IS WHAT IM DOING --}}
-
       <div class="card-body pt-0 pr-0">
         <div class="d-flex justify-content-end">
         <a href="#" data-toggle="modal" data-target="#{{id}}" class="btn"><i class="fa fa-eye"></i></a>
         {{#if ../user}}
         <a href="/recipes/{{id}}" class="btn"><i class="fa fa-star"></i></a>
-                {{/if}}
+        {{/if}}
       </div>
         <p class="card-text"><a href="/recipes/showcase/{{name}}">{{name}}</a></p>
-        <p class="card-text"><small class="text-muted w-100 d-flex mr-">By: <a href="/profile/{{userId}}" class="ml-1">{{username}}</a><a href="/follow/{{userId}}" class="follow ml-auto mr-3">Follow <i class="fa fa-user-plus"></i>
-        </a></small></p>
+        <p class="card-text"><small class="text-muted w-100 d-flex mr-">By: <a href="/profile/{{userId}}" class="ml-1">{{username}}</a>
+        
+        {{!-- IS FOLLOWING --}}
+        
+        {{!-- <a href="/follow/{{userId}}" class="follow ml-auto mr-3">Follow <i class="fa fa-user-plus"></i>
+        </a> --}}
+       
+        
+        {{{isFollowing ../user ../user.following userId}}}
+       
+        {{!-- <p>I am following {{../user.following.[0].id}}</p>
+                <p>I am following {{userId}}</p> --}}
+
+  
+        
+        
+        </small></p>
       </div>
       
     </div>
@@ -98,7 +95,7 @@
 {{else}}
 <div class="card w-75 mx-auto"> 
 <div class="card-body text-center">
-  To get started, add a recipe with the green button in the bottom right of the screen
+  To get started, add a recipe with the orange button in the bottom right of the screen
 </div>
 </div>
 
@@ -106,7 +103,11 @@
 
 
 {{/if}}
+        {{#if user}}
+            <a href="/recipes/add" class="btn btn-lg btn-info addRecipeFloat">Create a Recipe</a>
+        {{/if}}
 
+<script src='/public/button-js.js'></script>
 
 
 

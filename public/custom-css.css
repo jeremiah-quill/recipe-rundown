@@ -134,6 +134,20 @@ img.bg {
 .follow:hover {
   background-color: rgb(247, 182, 68) !important;
 }
+.unfollow {
+  border: 1px solid rgb(49, 137, 139);
+  border-radius: 3px;
+  padding: 4px;
+  margin-left: auto;
+  text-decoration: none !important;
+}
+.unfollow:hover {
+  background-color: rgb(247, 182, 68) !important;
+
+}
+/* .unfollow:hover:before {
+  content: 'Unfollow'
+} */
 .fa-user {
   color: lightgray !important;
 }
@@ -164,6 +178,9 @@ img.bg {
 }
 .recipeList li {
   list-style-type: none;
+}
+.recipeList {
+  max-height: 125px;
 }
 .current  {
   background-color: none !important;

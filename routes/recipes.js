@@ -12,6 +12,7 @@ const storage = cloudinaryStorage({
     transformation: [{ width: 348, height: 236.81, crop: "limit" }]
     });
     const parser = multer({ storage: storage });
+    
 
 
 // // Load Recipe Model
@@ -24,13 +25,31 @@ const User = mongoose.model('users');
 
 // Public Recipes route
 router.get('/', (req, res) => {
-    Recipe.find({})
-    .sort({date:'desc'})
-    .then(recipes => {
-        res.render('recipes/index', {
-            recipes: recipes
+    if(!req.user){
+        Recipe.find({})
+        .sort({date:'desc'})
+        .then(recipes => {
+            res.render('recipes/index', {
+                recipes: recipes
+            })
         })
-    })
+    } else {
+        User.findOne({
+            _id: req.user.id
+        })
+        .populate('following')
+        .then((user)=>{
+            Recipe.find({})
+            .sort({date:'desc'})
+            .then(recipes => {
+                res.render('recipes/index', {
+                    recipes: recipes,
+                    user: user
+                })
+            })
+        })
+
+    }
 });
   
 // Add recipe route

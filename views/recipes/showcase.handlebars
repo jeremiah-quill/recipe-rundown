@@ -16,15 +16,15 @@
 
     <div class="card-body pt-4">
         <div class="row">
-            <div class="col-md-3 whatINeed">
+            <div class="col-md-4 whatINeed">
                 <h5 class="text-center mb-3">What you need</h5>
                     {{{arrayLoop recipe.ingredients.quantity recipe.ingredients.measurement recipe.ingredients.name}}}
             </div>
-            <div class="col-md-9">
+            <div class="col-md-8">
                 <h5 class="text-center mb-3">What to do</h5>
                 <ol>
                     {{#each recipe.instructions}}
-                    <li class="ml-5">{{this}}</li>
+                    <li>{{this}}</li>
                     {{/each}}
                 </ol>
             </div>
@@ -38,3 +38,6 @@
         </div> --}}
     </div>
 </div>
+        {{#if user}}
+            <a href="/recipes/add" class="btn btn-lg btn-info addRecipeFloat">Create a Recipe</a>
+        {{/if}}

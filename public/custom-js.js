@@ -3,6 +3,13 @@ const ingredientContainer = document.querySelector('.ingredientContainer');
 const addIngredientBtn = document.querySelector('.addIngredientBtn');
 const instructionContainer = document.querySelector('.instructionContainer');
 const addInstructionBtn = document.querySelector('.addInstructionBtn');
+const unfollow = document.getElementsByClassName('unfollow');
+
+for(let i=0; i<unfollow.length; i++){
+    unfollow[i].addEventListener('mouseover', () => {
+        console.log('hi')
+    })
+}
 
 
 

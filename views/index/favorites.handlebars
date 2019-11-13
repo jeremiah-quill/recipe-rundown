@@ -27,8 +27,16 @@
         {{!-- <p class="card-text"><small class="text-muted">By: <a href="/profile/{{static.userId}}">{{static.username}}</a> <a href="/follow/{{static.userId}}"><i class="fa fa-user-plus"></i></a></small></p> --}}
 
 
-<p class="card-text"><small class="text-muted w-100 d-flex mr-">By: <a href="/profile/{{static.userId}}" class="ml-1">{{static.username}}</a><a href="/follow/{{static.userId}}" class="follow ml-auto mr-3">Follow <i class="fa fa-user-plus"></i>
-</a></small></p>
+<p class="card-text"><small class="text-muted w-100 d-flex mr-">By: <a href="/profile/{{static.userId}}" class="ml-1">{{static.username}}</a>
+
+
+{{!-- <a href="/follow/{{static.userId}}" class="follow ml-auto mr-3">Follow <i class="fa fa-user-plus"></i>
+</a> --}}
+{{{isFollowing ../user ../user.following static.userId}}}
+
+
+
+</small></p>
 
       </div>
     </div>
@@ -96,6 +104,9 @@
 {{/if}}
 </div>
 
+        {{#if user}}
+            <a href="/recipes/add" class="btn btn-lg btn-info addRecipeFloat">Create a Recipe</a>
+        {{/if}}
 
 
 <script src='/public/favorites.js'></script>

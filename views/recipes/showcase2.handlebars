@@ -8,19 +8,19 @@
 
     <div class="card-body pt-4 static">
         <div class="row">
-            <div class="col-md-3 whatINeed">
+            <div class="col-md-4 whatINeed">
                 <h5 class="text-center mb-3">What you need</h5>
                 <div>
                     {{{arrayLoop recipe.static.ingredients.quantity recipe.static.ingredients.measurement recipe.static.ingredients.name}}}
                 </div>
 
             </div>
-            <div class="col-md-9">
+            <div class="col-md-8">
                 <h5 class="text-center mb-3">What to do</h5>
                
                 <ol>
                     {{#each recipe.static.instructions}}
-                    <li class="ml-5 text-blue">{{this}}</li>
+                    <li>{{this}}</li>
                     {{/each}}
                 </ol>
                 
@@ -66,6 +66,9 @@
     </div>
 
 </div>
+        {{#if user}}
+            <a href="/recipes/add" class="btn btn-lg btn-info addRecipeFloat">Create a Recipe</a>
+        {{/if}}
 
 
 <script src='/public/favorites.js'></script>

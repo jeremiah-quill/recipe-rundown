@@ -25,6 +25,7 @@ router.get('/favorites', ensureAuthenticated, (req, res) => {
         _id: req.user.id
     })
     .populate('favorites.live')
+    .populate('following')
     .then(user => {
         res.render('index/favorites', {
             user: user
@@ -51,6 +52,7 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
 
 // Profile route
 router.get('/profile/:id', (req, res) => {
+    if(!req.user){
     Recipe.find({
         userId: req.params.id
     })
@@ -64,6 +66,29 @@ router.get('/profile/:id', (req, res) => {
         })
     })
     })
+} else {
+    User.findOne({
+        _id: req.user.id
+    })
+    .populate('following')
+    .then(user => {
+        Recipe.find({
+            userId: req.params.id
+        })
+        .populate('user')
+        .then(recipe => {
+            User.findOne({_id: req.params.id})
+            .then(profile => {
+            res.render('index/profile', {
+                recipe: recipe,
+                profile: profile,
+                user: user
+            })
+        })
+        })
+    })
+
+}
 })
 
 // My cookbook route
@@ -207,7 +232,34 @@ router.get('/follow/:id', ensureAuthenticated, async (req, res) => {
 })
 
 // //UNFOLLOW
-// router.patch('/unfollow/:id', authenticate, async (req, res) => {
+router.get('/unfollow/:id', ensureAuthenticated, async (req, res) => {
+    const {id} = req.params
+    // if (req.user.id === req.params.id) {
+    //     req.flash('error_msg', "Sorry, you can't follow yourself")
+    //     res.redirect('/recipes')
+    // } else if (req.user.following.includes(req.params.id)){
+    //     req.flash('error_msg', "You are already following this user")
+    //     res.redirect('/recipes')
+    // } else {
+        const query = {
+            _id: req.user.id,
+            following: { $not: { $elemMatch: { $eq: id } } }
+        }
+        const update = {
+            $pull: { following: id }
+        }
+        const updated = await User.updateOne(query, update)
+        const secondQuery = {
+            _id: id,
+            followers: { $not: { $elemMatch: { $eq: req.user.id } } }
+        }
+        const secondUpdate = {
+            $pull: { followers: req.user.id }
+        }
+        const secondUpdated = await User.updateOne(secondQuery, secondUpdate)
+        req.flash('success_msg', 'Removed to followers');
+        res.redirect('/recipes');
+        // }
 //     try {
 //         const { id } = req.params
 
@@ -253,7 +305,7 @@ router.get('/follow/:id', ensureAuthenticated, async (req, res) => {
 //     } catch (err) {
 //         res.status(400).send({ error: err.message })
 //     }
-// })
+})
 
 // Logout
 router.get('/logout', function(req, res){
