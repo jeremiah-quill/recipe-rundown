@@ -176,12 +176,17 @@ img.bg {
 .navbar-nav li {
   margin-right: 10px;
 }
-.recipeList li {
+
+.dashboardList li {
   list-style-type: none;
 }
-.recipeList {
+.followList {
   max-height: 125px;
 }
+.recipeList {
+  max-height: 325px;
+}
+
 .current  {
   background-color: none !important;
   color: rgb(246, 142, 55) !important;

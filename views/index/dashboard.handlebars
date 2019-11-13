@@ -6,7 +6,7 @@
               <div class="card-header text-center">
             My Recipes
             </div>
-                <ul class="list-group list-group-flush recipeList">
+                <ul class="list-group list-group-flush recipeList overflow-auto">
                     {{#if recipe}}
                     {{#each recipe}}
 
@@ -62,7 +62,7 @@
             <div class="card-header text-center">
             Following
             </div>
-            <ul class="list-group list-group-flush recipeList overflow-auto">
+            <ul class="list-group list-group-flush dashboardList followList overflow-auto">
                 {{#if user.following}}
                 {{#each user.following}}
                 <a href="/profile/{{_id}}" class="list-group-item list-group-item-action">{{username}}</a>
@@ -76,7 +76,7 @@
             <div class="card-header text-center">
             Followers
             </div>
-            <ul class="list-group list-group-flush recipeList overflow-auto">
+            <ul class="list-group list-group-flush dashboardList followList overflow-auto">
                 {{#if user.followers}}
                 {{#each user.followers}}
                 <a href="/profile/{{_id}}" class="list-group-item list-group-item-action"><li>{{username}}</li></a>
