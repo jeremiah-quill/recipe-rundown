@@ -6,18 +6,18 @@ body {
   background-color: gainsboro;
 }
 
-.ingredient-row:first-child .form-group:last-child .moveup {
+.ingredient-row:first-child .form-group:first-child .moveup {
   display: none;
 }
 
-.ingredient-row:last-child .form-group:last-child .movedown {
+.ingredient-row:last-child .form-group:first-child .movedown {
   display: none;
 }
-.instruction-row:first-child .form-group:last-child .moveup {
+.instruction-row:first-child .form-group:first-child .moveup {
   display: none;
 }
 
-.instruction-row:last-child .form-group:last-child .movedown {
+.instruction-row:last-child .form-group:first-child .movedown {
   display: none;
 }
 
