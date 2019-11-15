@@ -5,12 +5,30 @@ const instructionContainer = document.querySelector('.instructionContainer');
 const addInstructionBtn = document.querySelector('.addInstructionBtn');
 const unfollow = document.getElementsByClassName('unfollow');
 
-for(let i=0; i<unfollow.length; i++){
-    unfollow[i].addEventListener('mouseover', () => {
-        console.log('hi')
-    })
-}
 
+
+// Move recipe items up and down
+const list = document.getElementById('ingredientMoveContainer');
+list.addEventListener("click", (event) => {
+  let recipeItem = event.target.parentNode.parentNode;
+  if (event.target.classList.contains('moveup')) {
+    list.insertBefore(recipeItem, recipeItem.previousElementSibling);
+  }
+  if (event.target.classList.contains('movedown')) {
+    list.insertBefore(recipeItem.nextElementSibling, recipeItem);
+  }
+});
+// move instructions up and down
+const list2 = document.getElementById('instructionMoveContainer');
+list2.addEventListener("click", (event) => {
+  let recipeItem = event.target.parentNode.parentNode;
+  if (event.target.classList.contains('moveup')) {
+    list2.insertBefore(recipeItem, recipeItem.previousElementSibling);
+  }
+  if (event.target.classList.contains('movedown')) {
+    list2.insertBefore(recipeItem.nextElementSibling, recipeItem);
+  }
+});
 
 
 
@@ -38,13 +56,18 @@ function deleteInstruction(e) {
 
 function addIngredient() {
     let newIngredient = document.createElement('div');
-    newIngredient.className = 'form-row'
+    newIngredient.classList.add('form-row', 'ingredient-row')
     newIngredient.innerHTML = 
-    `<div class="form-group col-2">
+    `
+    <div class="form-group form-button col-auto d-flex flex-column justify-content-center">
+    <i class="fa fa-sort-up moveup"></i>
+    <i class="fa fa-sort-down movedown"></i>
+</div>
+    <div class="form-group col-2 form-button">
                        
     <input name="quantity" type="number" step="0.01" class="form-control">
 </div>
-<div class="form-group col-3">
+<div class="form-group col-3 form-button">
     
     <select name="measurement" class="custom-select measurement">
         <option selected></option>
@@ -74,22 +97,27 @@ function addIngredient() {
         <option value="pieces">pieces</option>
     </select>
 </div>
-<div class="form-group col-5">
+<div class="form-group col-5 form-button">
    
     <input name="ingredient" type="text" class="form-control">
 </div>
-<div class="form-group col-1 d-flex">
+<div class="form-group col-auto form-button">
     <button type="button" class="btn btn-dark mt-auto deleteIngredientBtn" style="height: 38px"><i class="fa fa-minus"></i></button>
-</div>`
-ingredientContainer.appendChild(newIngredient);
+</div>
+`
+ingredientMoveContainer.appendChild(newIngredient);
 };
 
 function addInstruction() {
     let stepCount = document.querySelectorAll('.steps').length + 1;
     let newInstruction = document.createElement('div');
-    newInstruction.className = 'form-row';
+    newInstruction.classList.add('form-row', 'instruction-row');
     newInstruction.innerHTML = 
     `
+    <div class='form-group form-button col-auto d-flex flex-column justify-content-center'>
+    <i class="fa fa-sort-up moveup"></i>
+    <i class="fa fa-sort-down movedown"></i>
+</div>
     <div class="form-group col-10">
     <div class="input-group">
         <div class="input-group-prepend">
@@ -98,13 +126,13 @@ function addInstruction() {
         <input name="step" type="text" class="form-control" id="inlineFormInputGroup">
     </div>
 </div>
-<div class="form-group col-1 d-flex">
-
+<div class="form-group col-auto form-button">
     <button type="button" class="btn btn-dark mt-auto deleteInstructionBtn" style="height: 38px"><i class="fa fa-minus"></i></button>
 </div>
+
   
   `
-  instructionContainer.appendChild(newInstruction);
+  instructionMoveContainer.appendChild(newInstruction);
 };
 
 function labelInstructions() {

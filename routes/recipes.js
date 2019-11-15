@@ -59,6 +59,11 @@ router.get('/add',  ensureAuthenticated, (req, res) => {
 
 // Add recipe form submit
 router.post('/add', parser.single("image"), (req, res) => {
+if(!req.body.ingredient || !req.body.quantity || !req.body.measurement || !req.body.step ){
+    req.flash('error_msg', 'Your recipe must include both a full ingredient and at least 1 step');
+    res.redirect('/recipes/add')
+} else {
+
   if(req.file){
     const newRecipe = {
         name: req.body.recipeName,
@@ -104,8 +109,7 @@ router.post('/add', parser.single("image"), (req, res) => {
         res.redirect('/dashboard')
     })
   }
-
-
+} 
 });
 
 // Edit recipe route
@@ -130,6 +134,11 @@ router.put('/:id', parser.single("image"), (req, res) => {
         _id: req.params.id
     })
     .then(recipe => {
+        if(!req.body.ingredient || !req.body.quantity || !req.body.measurement || !req.body.step ){
+            req.flash('error_msg', 'Your recipe must include both a full ingredient and at least 1 step');
+            res.redirect('/dashboard')
+        } else {
+
         if(!req.file){
         
         recipe.ingredients = {
@@ -161,6 +170,8 @@ router.put('/:id', parser.single("image"), (req, res) => {
                 res.redirect('/dashboard');
             })
     }
+
+        }
 }
     )
 })

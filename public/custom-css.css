@@ -6,6 +6,39 @@ body {
   background-color: gainsboro;
 }
 
+.ingredient-row:first-child .form-group:last-child .moveup {
+  display: none;
+}
+
+.ingredient-row:last-child .form-group:last-child .movedown {
+  display: none;
+}
+.instruction-row:first-child .form-group:last-child .moveup {
+  display: none;
+}
+
+.instruction-row:last-child .form-group:last-child .movedown {
+  display: none;
+}
+
+.moveup:hover, .movedown:hover {
+  cursor: pointer;
+  color: rgb(246, 142, 55) !important;
+}
+
+.moveup {
+margin-left: 2px;
+}
+.movedown {
+  margin-left: 2px;
+}
+
+
+
+
+
+
+
 /* RECIPE STREAMS */
 .recipeDisplay { 
   margin-bottom: 30px;
@@ -243,6 +276,14 @@ img.bg {
 @media (max-width: 510px) {
   .mobileLabel {
     font-size: .75em;
+  }
+ .form-button {
+   padding-left: 0px !important;
+   padding-right: 0px !important;
+ }
+  .recipe-form-padding {
+    padding-right: 0px;
+    padding-left: 0px;
   }
 }
 

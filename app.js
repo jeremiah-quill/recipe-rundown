@@ -17,31 +17,12 @@ const Recipe = mongoose.model('recipes');
 
 const hbs = exphbs.create({
     helpers: {
-        //THIS WORKS
-        // findCurrentRecipe:function(previewId, currentRecipes) {
-        //     for(let i=0; i<currentRecipes.length; i++) {
-        //         if(previewId == currentRecipes[i].id){
-        //             return `<p>${currentRecipes[i].ingredients.name}</p>`
-        //             `<li>${currentRecipes[i].ingredients.quantity} ${currentREcipes[i].ingredients.measurement} ${currentRecipes[i].ingredients.anem}</li>`
-        //         }
-        //     }},
-
-        // isLandingPage: function(){
-        //     var routeName = Router.current().route.getName();
-        //     if (routeName === '/recipes/add' || routeName === '/recipes/edit')
-        //        return false;
-        //     else 
-        //        return true;
-        // },
-
         isFollowing: function(user, following, userId) {
             if(user){
                 let followValue = false
             for(let i=0; i<following.length; i++) {
                 if(following[i].id == userId){
                     followValue = true
-                    // return `<a class="follow ml-auto mr-3">Following <i class="fa fa-check"></i>
-                    // </a>`
                 } 
             }
             if(followValue) {return `<a href="/unfollow/${userId}" class="unfollow ml-auto mr-3">Following <i class="fa fa-check"></i>
@@ -50,34 +31,7 @@ const hbs = exphbs.create({
                 </a>`
                     }
                 }
-
-            // if(following == userId){
-            //     return `<a class="follow ml-auto mr-3">Following <i class="fa fa-check"></i>
-            //     </a>`
-            // } else {
-            //     return `<a href="/follow/${userId}" class="follow ml-auto mr-3">Follow <i class="fa fa-user-plus"></i>
-            //     </a>`
-            // }
-            // return `<p>${following} + ${userId}</p>`
-          
-
-            // if(loggedId == userId) {
-            //     return `<p>Following</p>`
-            // } else {
-            //     return  `<a href="/follow/${userId}" class="follow ml-auto mr-3">Follow <i class="fa fa-user-plus"></i>
-            //     </a>`
-            // }
         },
-        // privateEdit:function(userId, loggedId, recipeId) {
-        //     if (userId == loggedId) {
-        //         return `<a href="/recipes/edit/${recipeId}" class="btn btn-warning"><i class="fa fa-pencil" ></i></a>`
-        //     } 
-        // },
-        // privateDelete: function(userId, loggedId, recipeId) {
-        //     if(userId==loggedId){
-        //         return `<a href="#" data-toggle="modal" data-target="#del${recipeId}" class="btn btn-danger"><i class="fa fa-trash"></i></a>`
-        //     }
-        // },
         arrayLoop:function(quantityArray, measurementArray, ingredientArray) {
             let list = `<ul>`
             for(let i=0; i<quantityArray.length; i++) {
@@ -86,19 +40,21 @@ const hbs = exphbs.create({
             list += `</ul>`
             return list
         },
-        
-
         populateFormIngredients:function(quantityArray, measurementArray, ingredientArray) {
             let editIngredients = '';
             for(let i=1; i<quantityArray.length; i++) {
                 editIngredients += 
                 `
-                <div class="form-row">
-                        <div class="form-group col-2">
+                <div class="form-row ingredient-row">
+                <div class="form-group form-button col-auto d-flex flex-column justify-content-center">
+                    <i class="fa fa-sort-up moveup"></i>
+                    <i class="fa fa-sort-down movedown"></i>
+                </div>
+                        <div class="form-group col-2 form-button">
                             
                             <input name="quantity" step="0.01" type="number" class="form-control" value="${quantityArray[i]}">
                         </div>
-                        <div class="form-group col-3">
+                        <div class="form-group col-3 form-button">
                             
                             <select name="measurement" class="custom-select measurement">
                                 <option selected >${measurementArray[i]}</option>
@@ -128,14 +84,15 @@ const hbs = exphbs.create({
                                 <option value="pieces">pieces</option>
                             </select>
                         </div>
-                        <div class="form-group col-5">
-                           
+                        <div class="form-group col-5 form-button">
                             <input name="ingredient" type="text" class="form-control" value="${ingredientArray[i]}">
                         </div>
-                        <div class="form-group col-1 d-flex">
+                        <div class="form-group col-auto form-button">
                         <button type="button" class="btn btn-dark mt-auto deleteInstructionBtn" style="height: 38px"><i class="fa fa-minus"></i></button>
                         </div>
-                    </div>`
+                      
+                    </div>
+                    `
             }
             return editIngredients
         },
@@ -143,21 +100,25 @@ const hbs = exphbs.create({
             let addedInstructions =''
             for (let i=1; i<instructions.length; i++){
                 addedInstructions+=
-                `  <div class="form-row">
-                <div class="form-group col-10">
+                `  <div class="form-row instruction-row">
+                <div class="form-group form-button col-auto d-flex flex-column justify-content-center">
+                <i class="fa fa-sort-up moveup"></i>
+                <i class="fa fa-sort-down movedown"></i>
+            </div>
+                <div class="form-group col-10 form-button">
                     <div class="input-group">
                         <div class="input-group-prepend">
-                            <div class="input-group-text steps">Step 1</div>
+                            <div class="input-group-text steps">Step ${i+1}</div>
                         </div>
                         <input name="step" type="text" class="form-control" id="inlineFormInputGroup" value="${instructions[i]}">
                     </div>
                 </div>
-                <div class="form-group col-1 d-flex">
+                <div class="form-group col-auto form-button">
                 <button type="button" class="btn btn-dark mt-auto deleteInstructionBtn" style="height: 38px"><i class="fa fa-minus"></i></button>
                 </div>
-            </div>`
-
-
+                
+            </div>
+           `
             }
             return addedInstructions
         }
