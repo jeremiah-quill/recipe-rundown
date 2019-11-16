@@ -26,6 +26,20 @@ body {
   color: rgb(246, 142, 55) !important;
 }
 
+.list-group-item-action:hover {
+  box-shadow: inset 1px 0 0 #dadce0, 
+              inset -1px 0 0 #dadce0, 
+              0 1px 2px 0 rgba(60, 64, 67, .3),
+              0 1px 3px 1px rgba(60, 64, 67, .15);
+  /* z-index: 1; */
+}
+
+.card, .addRecipeFloat {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+
+
 .moveup {
 margin-left: 2px;
 }
@@ -47,7 +61,7 @@ margin-left: 2px;
 }
 .recipeDisplay:hover {
   transform: scale(1.02);
-  box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 8px 0 rgb(246, 142, 55);
 }
 .recipeRow {
   margin-top: 40px;
