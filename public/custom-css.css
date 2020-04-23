@@ -6,26 +6,35 @@ body {
   background-color: gainsboro;
 }
 
+.card, .addRecipeFloat {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+/* move up and down arrows */
 .ingredient-row:first-child .form-group:first-child .moveup {
   display: none;
 }
-
 .ingredient-row:last-child .form-group:first-child .movedown {
   display: none;
 }
 .instruction-row:first-child .form-group:first-child .moveup {
   display: none;
 }
-
 .instruction-row:last-child .form-group:first-child .movedown {
   display: none;
 }
-
 .moveup:hover, .movedown:hover {
   cursor: pointer;
   color: rgb(246, 142, 55) !important;
 }
+.moveup {
+  margin-left: 2px;
+  }
+.movedown {
+    margin-left: 2px;
+}
 
+/* dashboard lists */
 .list-group-item-action:hover {
   box-shadow: inset 1px 0 0 #dadce0, 
               inset -1px 0 0 #dadce0, 
@@ -33,24 +42,6 @@ body {
               0 1px 3px 1px rgba(60, 64, 67, .15);
   /* z-index: 1; */
 }
-
-.card, .addRecipeFloat {
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-}
-
-
-
-.moveup {
-margin-left: 2px;
-}
-.movedown {
-  margin-left: 2px;
-}
-
-
-
-
-
 
 
 /* RECIPE STREAMS */
@@ -61,7 +52,7 @@ margin-left: 2px;
 }
 .recipeDisplay:hover {
   transform: scale(1.02);
-  box-shadow: 0 4px 8px 0 rgb(246, 142, 55);
+  box-shadow: 0 0px 8px 0 rgb(246, 142, 55);
 }
 .recipeRow {
   margin-top: 40px;
